@@ -680,6 +680,51 @@ Using try/except blocks for error handling:
 # Note: The pdb.set_trace() command is commented out because it's meant for interactive debugging sessions.
 # To use it, uncomment the import pdb; pdb.set_trace() line, and run the script in an environment where you can interact with the debugger.
 
+# ************* Exercise 21: Modules *************
+# Modules in Python
 
-# ************* Exercise 16: Dictionary *************
+# Function to check if arguments contain Python keywords
+def contain_keywords(*args):
+    from keyword import iskeyword
+    return any(iskeyword(arg) for arg in args)
+
+# Function to interleave two strings using a function from another module
+def get_interwoven(str1, str2):
+    # Assuming sect20_lambdas.py is in the same directory and contains the interleave function
+    from sect20_lambdas import interleave
+    return interleave(str1, str2)
+
+# Function to print messages in ASCII art style using pyfiglet and termcolor
+def print_art(message, color):
+    # Note: You need to install pyfiglet and termcolor using pip before running this function
+    # python3 -m pip install pyfiglet
+    # python3 -m pip install termcolor
+    from pyfiglet import Figlet
+    from termcolor import colored
+
+    try:
+        ascii_art = Figlet(font='slant').renderText(message)
+        colored_ascii = colored(ascii_art, color=color, on_color='on_green', attrs=['blink'])
+        print(colored_ascii)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Example usage
+if __name__ == "__main__":
+    # Check for Python keywords
+    print(contain_keywords("def", "class", "foot"))  # Example output: True
+
+    # Interleave two strings
+    print(get_interwoven("hi", "ha"))  # Example output: "hhia"
+
+    # Print ASCII art message
+    # Commented out to prevent running on script execution; uncomment to use
+    # message = input('Give me a message to print: ')
+    # color = input('What is your favorite color? ')
+    # print_art(message, color)
+
+# This script demonstrates how to work with modules in Python, including importing and using functions from both built-in and external modules. 
+# The `print_art` function requires the external modules `pyfiglet` and `termcolor` to be installed via pip.
+
+
 # ************* Exercise 16: Dictionary *************

@@ -1,0 +1,2 @@
+- [Big O](https://github.com/mykkelol/learn-python3-dsa/blob/main/01-big-o/notes.md)
+- [Classes](https://github.com/mykkelol/learn-python3-dsa/blob/main/02-classes/notes.md)
