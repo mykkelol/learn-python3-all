@@ -1,5 +1,5 @@
 # ************* LinkedList *************
-# Created LinkedList and Node classes
+# Create LinkedList and Node classes
 # LinkedList class should have append, prepend, pop_first, pop, get, set_value, insert, remove, reverse, and print_list methods
 """ Also do
     find_middle_node()
@@ -12,7 +12,7 @@
 """
 
 # ************* Doubly Linked List *************
-# Created DoublyLinkedList and Node classes
+# Create DoublyLinkedList and Node classes
 # DLL class should have append, pop, prepend, pop_first, get, set_value, insert, remove, and print_list methods
 """ Also do
     swap_first_last()
@@ -23,7 +23,7 @@
 """
 
 # ************* Stacks & Queues *************
-# Created Stack, Queues, and Node classes
+# Create Stack, Queues, and Node classes
 # Stack class should have push, pop, and print_stack
 # Queue class should have enqueue, dequeue, and print_queue
 """ Also do for stack
@@ -40,3 +40,6 @@
     is_empty()
 """
 
+# ************* Trees *************
+# Create BinarySearchTree and Node classes
+# BinarySearchTree class should have insert and contains
