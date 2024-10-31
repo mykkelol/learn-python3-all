@@ -43,3 +43,19 @@
 # ************* Trees *************
 # Create BinarySearchTree and Node classes
 # BinarySearchTree class should have insert and contains
+
+# ************* Hash Tables *************
+# Create HashTable class
+# HashTable class should have __hash, set_item, get_item, get_keys, print_table
+""" Also outside HashTable class do
+    item_in_common
+    find_duplicates
+    first_non_repeating_char
+    group_anagrams
+    two_sum
+    subarray_sum
+    remove_duplicates
+    has_unique_chars
+    find_pairs
+    longest_consecutive_sequence
+"""
