@@ -59,3 +59,19 @@
     find_pairs
     longest_consecutive_sequence
 """
+
+# ************* Graphs *************
+# Create Graph class
+# Graph class should have add_vertex, add_edge, remove_edge, remove_vertex, print_graph
+""" Also outside HashTable class do
+    item_in_common
+    find_duplicates
+    first_non_repeating_char
+    group_anagrams
+    two_sum
+    subarray_sum
+    remove_duplicates
+    has_unique_chars
+    find_pairs
+    longest_consecutive_sequence
+"""
