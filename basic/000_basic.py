@@ -726,5 +726,65 @@ if __name__ == "__main__":
 # This script demonstrates how to work with modules in Python, including importing and using functions from both built-in and external modules. 
 # The `print_art` function requires the external modules `pyfiglet` and `termcolor` to be installed via pip.
 
+# ************* Exercise 22: Dictionary *************
+# Working with Dictionaries in Python
 
-# ************* Exercise 16: Dictionary *************
+# Sum of all donations
+donations = dict(sam=25.0, lena=88.99, chuck=13.0, linus=99.5, stan=150.0, lisa=50.25, harrison=10.0)
+total_donations = sum(donations.values())
+
+# Setting initial game state
+game_properties = ["current_score", "high_score", "number_of_lives", "items_in_inventory", "power_ups", "ammo", "enemies_on_screen", "enemy_kills", "enemy_kill_streaks", "minutes_played", "notifications", "achievements"]
+initial_game_state = {}.fromkeys(game_properties, 0)
+
+# Creating a Spotify playlist
+playlist = {
+    'title': 'favorites',
+    'author': 'mykkelol',
+    'songs': [
+        {'title': 'Malibu', 'artists': ['Miley', 'DJ Khaled'], 'duration': 2.5},
+        {'title': '22', 'artists': ['Tay Tay', 'Mahomes'], 'duration': 3}
+    ]
+}
+
+# Calculating total length of playlist
+total_length = sum(song['duration'] for song in playlist['songs'])
+playlist['total_duration'] = total_length
+
+# Creating a dictionary from two strings
+str1, str2 = 'ABC', '123'
+my_dict = {str1[i]: str2[i] for i in range(len(str1))}
+
+# Dictionary comprehension with conditionals
+nums = range(1, 6)
+nums_dict = {n: 'even' if n % 2 == 0 else 'odd' for n in nums}
+
+# Updating a dictionary and converting specific keys/values to uppercase
+instructor = {'name': 'Blue', 'city': 'San Francisco', 'color': 'purple'}
+updated_instructor = {key.upper() if key == 'color' else key: value.upper() if key == 'color' else value for key, value in instructor.items()}
+
+# Creating a dictionary from two lists without using zip()
+list1, list2 = ["CA", "NJ", "RI"], ["California", "New Jersey", "Rhode Island"]
+state_dict = {list1[i]: list2[i] for i in range(len(list1))}
+
+# Converting a list of lists into a dictionary
+person = [["name", "Jared"], ["job", "Musician"], ["city", "Bern"]]
+person_dict = dict(person)
+
+# Creating a dictionary with vowels as keys and 0 as default value
+vowel_dict = {}.fromkeys('aeiou', 0)
+
+# Dictionary of ASCII values for capital letters A-Z
+ascii_dict = {n: chr(n) for n in range(65, 91)}
+
+# Demonstration of function calls and variable values
+print("Total Donations:", total_donations)
+print("Initial Game State:", initial_game_state)
+print("Playlist with Total Duration:", playlist)
+print("Dictionary from Strings:", my_dict)
+print("Nums Dict (Odd/Even):", nums_dict)
+print("Updated Instructor Dict:", updated_instructor)
+print("State Dict:", state_dict)
+print("Person Dict:", person_dict)
+print("Vowel Dict:", vowel_dict)
+print("ASCII Dict:", ascii_dict)
