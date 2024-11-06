@@ -476,81 +476,49 @@ print("Sample Set after clearing:", sample_set)
 # ************* Exercise 18: Functions *************
 # Exercise 1: Return the Day of the Week
 def return_day(n):
-    days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    if 1 <= n <= 7:
-        return days[n-1]
-    return None
+    pass
 
 # Exercise 2: Count Letter Occurrences
 def multiple_letter_count(string):
-    return {letter: string.count(letter) for letter in set(string)}
+    pass
 
 # Exercise 3: Check if a String is a Palindrome
 def check_palindrome(string):
-    cleaned_string = string.replace(" ", "").lower()
-    return cleaned_string == cleaned_string[::-1]
+    pass
 
 # Exercise 4: Product of All Even Numbers
 def product_of_even(nums):
-    product = 1
-    for num in nums:
-        if num % 2 == 0:
-            product *= num
-    return product
+    pass
 
 # Exercise 5: Capitalize a String
 def capitalize_string(string):
-    if not string:
-        return ""
-    return string[0].upper() + string[1:]
+    pass
 
 # Exercise 6: Filter Truthy Values
 def compact(collection):
-    return [item for item in collection if item]
+    pass
 
 # Exercise 7: Intersection of Two Lists
 def intersection(collection1, collection2):
-    return list(set(collection1) & set(collection2))
+    pass
 
 # Exercise 8: Partition List Based on a Callback
 def isEven(num):
-    return num % 2 == 0
+    pass
 
 def partition(nums, callback):
-    return [[n for n in nums if callback(n)], [n for n in nums if not callback(n)]]
+    pass
 
 # Exercise 9: Understanding Function Parameters
 def all_my_friends(a, b, *numbers, word='woof', **words):
-    print(f"a = {a}, b = {b}, numbers = {numbers}, word = {word}, words = {words}")
+    pass
 
 # Call the function to demonstrate parameter usage
 all_my_friends(1, 2, 3, beep=1, boop=2, bop=3)
 
 # Exercise 10: Advanced Calculator
 def calculate(**kwargs):
-    operation = kwargs.get('operation', 'add')
-    make_float = kwargs.get('make_float', False)
-    first = kwargs.get('first', 0)
-    second = kwargs.get('second', 0)
-    message = kwargs.get('message', 'The result is')
-
-    if operation == 'add':
-        result = first + second
-    elif operation == 'subtract':
-        result = first - second
-    elif operation == 'multiply':
-        result = first * second
-    elif operation == 'divide':
-        result = first / second
-    else:
-        return "Invalid operation"
-
-    if make_float:
-        result = float(result)
-    else:
-        result = int(result)
-
-    return f"{message} {result}"
+    pass
 
 # Demonstration of function calls
 print(return_day(1))
