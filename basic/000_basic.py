@@ -716,34 +716,34 @@ playlist = {
 }
 
 # Calculating total length of playlist
-total_length = sum(song['duration'] for song in playlist['songs'])
+total_length = ''
 playlist['total_duration'] = total_length
 
 # Creating a dictionary from two strings
 str1, str2 = 'ABC', '123'
-my_dict = {str1[i]: str2[i] for i in range(len(str1))}
+my_dict = ''
 
 # Dictionary comprehension with conditionals
 nums = range(1, 6)
-nums_dict = {n: 'even' if n % 2 == 0 else 'odd' for n in nums}
+nums_dict = ''
 
 # Updating a dictionary and converting specific keys/values to uppercase
 instructor = {'name': 'Blue', 'city': 'San Francisco', 'color': 'purple'}
-updated_instructor = {key.upper() if key == 'color' else key: value.upper() if key == 'color' else value for key, value in instructor.items()}
+updated_instructor = ''
 
 # Creating a dictionary from two lists without using zip()
 list1, list2 = ["CA", "NJ", "RI"], ["California", "New Jersey", "Rhode Island"]
-state_dict = {list1[i]: list2[i] for i in range(len(list1))}
+state_dict = ''
 
 # Converting a list of lists into a dictionary
 person = [["name", "Jared"], ["job", "Musician"], ["city", "Bern"]]
-person_dict = dict(person)
+person_dict = ''
 
 # Creating a dictionary with vowels as keys and 0 as default value
-vowel_dict = {}.fromkeys('aeiou', 0)
+vowel_dict = ''
 
 # Dictionary of ASCII values for capital letters A-Z
-ascii_dict = {n: chr(n) for n in range(65, 91)}
+ascii_dict = ''
 
 # Demonstration of function calls and variable values
 print("Total Donations:", total_donations)
