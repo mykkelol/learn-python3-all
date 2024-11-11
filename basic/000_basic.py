@@ -699,11 +699,11 @@ if __name__ == "__main__":
 
 # Sum of all donations
 donations = dict(sam=25.0, lena=88.99, chuck=13.0, linus=99.5, stan=150.0, lisa=50.25, harrison=10.0)
-total_donations = sum(donations.values())
+total_donations = ''
 
 # Setting initial game state
 game_properties = ["current_score", "high_score", "number_of_lives", "items_in_inventory", "power_ups", "ammo", "enemies_on_screen", "enemy_kills", "enemy_kill_streaks", "minutes_played", "notifications", "achievements"]
-initial_game_state = {}.fromkeys(game_properties, 0)
+initial_game_state = ''
 
 # Creating a Spotify playlist
 playlist = {
