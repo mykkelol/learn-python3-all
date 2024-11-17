@@ -44,6 +44,38 @@ class LinkedList:
             self.head = new_node
         self.length += 1
         return True
+    
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        self.head = self.head.next
+        self.length -= 1
+        return temp
+    
+    def pop(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        pre = None
+        while temp.next:
+            pre = temp
+            temp = temp.next
+        self.tail = pre
+        self.tail.next = None
+        self.length -= 1
+        if self.length == 0:
+            self.head = None
+            self.tail = None
+        return temp
+    
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp
 
 # ************* Doubly Linked List *************
 # Create DoublyLinkedList and Node classes
