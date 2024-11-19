@@ -76,6 +76,47 @@ class LinkedList:
         for _ in range(index):
             temp = temp.next
         return temp
+    
+    def set_value(self, index, value):
+        temp = self.get(index)
+        if temp is None:
+            return False
+        temp.value = value
+        return True
+    
+    def insert(self, index, value):
+        if index < 0 or index >= self.length:
+            return False
+        if index == 0:
+            self.prepend(value)
+        if index == self.length - 1:
+            self.append(value)
+        new_node = Node(value)
+        pre = self.get(index - 1)
+        new_node.next = pre.next
+        pre.next = new_node
+        self.length += 1
+        return True
+    
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return False
+        if index == 0:
+            self.pop_first()
+        if index == self.length - 1:
+            self.pop()
+        pre = self.get(index - 1)
+        temp = pre.next
+        pre.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return temp
+    
+    def print_linked_list(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.value)
+            temp = temp.next
 
 # ************* Doubly Linked List *************
 # Create DoublyLinkedList and Node classes
