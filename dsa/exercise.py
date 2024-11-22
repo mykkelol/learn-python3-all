@@ -165,6 +165,20 @@ class DoublyLinkedList:
             self.head = new_node
         self.length += 1
         return True
+    
+    def pop(self):
+        if self.length is 0:
+            return None
+        temp = self.tail
+        if self.length is 1:
+            self.tail = None
+            self.head = None
+        else:
+            self.tail = self.tail.prev
+            self.tail.next = None
+            temp.prev = None
+        self.length -= 1
+        return temp
 
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
