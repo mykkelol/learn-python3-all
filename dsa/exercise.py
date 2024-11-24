@@ -167,16 +167,30 @@ class DoublyLinkedList:
         return True
     
     def pop(self):
-        if self.length is 0:
+        if self.length == 0:
             return None
         temp = self.tail
-        if self.length is 1:
+        if self.length == 1:
             self.tail = None
             self.head = None
         else:
             self.tail = self.tail.prev
             self.tail.next = None
             temp.prev = None
+        self.length -= 1
+        return temp
+
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        if self.length == 1:
+            self.tail = None
+            self.head = None
+        else:
+            self.head = self.head.next
+            self.head.prev = None
+            temp.next = None
         self.length -= 1
         return temp
 
