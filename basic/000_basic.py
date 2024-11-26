@@ -61,8 +61,9 @@
 
 # Task 1: Create the `create_smile_armies` function that accepts a number of armies and a number of rows per army, returning armies of smilies.
 def create_smile_armies(num_of_armies, num_of_rows):
-    # Your code here 
-    pass
+    for _ in range(num_of_rows):
+        for army in range(num_of_armies):
+            print('😜' * army)
 
 # Task 2: Create the `intersection` function that accepts two lists and returns a list of their intersection.
 def intersection(a, b):
