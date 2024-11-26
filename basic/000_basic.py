@@ -67,8 +67,7 @@ def create_smile_armies(num_of_armies, num_of_rows):
 
 # Task 2: Create the `intersection` function that accepts two lists and returns a list of their intersection.
 def intersection(a, b):
-    # Your code here
-    pass
+    return [n for n in a if n in b]
 
 # ************* Exercise 2: List *************
 
