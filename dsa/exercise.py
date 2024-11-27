@@ -231,6 +231,25 @@ class DoublyLinkedList:
         
         self.length += 1
         return new_node
+    
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return False
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        
+        temp = self.get(index)
+        before = temp.prev
+        after = temp.next
+
+        before.next = after
+        after.prev = before
+        temp.next = None
+
+        self.length -= 1
+        return True
 
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
