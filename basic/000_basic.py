@@ -87,8 +87,7 @@ def dict_it_up(str1, str2):
 
 # Task 2: Create the `do_it_all` function that accepts a list, converts it into a tuple, and returns a unique list.
 def do_it_all(nums):
-    # Your code here
-    pass
+    return list(set(tuple(nums)))
 
 # Task 3: Create the `multiple_letter_count` function that accepts a string and returns a dict that counts the number of occurrences of each letter.
 def multiple_letter_count(string):
