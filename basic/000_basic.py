@@ -83,8 +83,7 @@ def get_n_matrix(N):
 
 # Task 1: Create the `dict_it_up` function that accepts str1 and str2, returning two dicts.
 def dict_it_up(str1, str2):
-    # Your code here
-    pass
+    return {str1[i]:str2[i] for i in range(len(str2))}
 
 # Task 2: Create the `do_it_all` function that accepts a list, converts it into a tuple, and returns a unique list.
 def do_it_all(nums):
