@@ -77,8 +77,7 @@ def lower_reversal(names):
 
 # Task 2: Create the `get_n_matrix` function that accepts an N and returns an NxN matrix of stars.
 def get_n_matrix(N):
-    # Your code here
-    pass
+    return [['*' * N for j in range(N)] for i in range(N)]
 
 # ************* Exercise 3: Dict, Tuple, Set *************
 
