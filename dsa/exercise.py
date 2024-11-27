@@ -241,12 +241,10 @@ class DoublyLinkedList:
             return self.pop()
         
         temp = self.get(index)
-        before = temp.prev
-        after = temp.next
-
-        before.next = after
-        after.prev = before
+        temp.next.prev = temp.prev
+        temp.prev.next = temp.next
         temp.next = None
+        temp.prev = None
 
         self.length -= 1
         return True
