@@ -73,8 +73,7 @@ def intersection(a, b):
 
 # Task 1: Create the `lower_reversal` function that accepts a list of names, returning a list of it reversed and lowercase.
 def lower_reversal(names):
-    # Your code here
-    pass
+    return [name.lower()[::-1] for name in names]
 
 # Task 2: Create the `get_n_matrix` function that accepts an N and returns an NxN matrix of stars.
 def get_n_matrix(N):
