@@ -95,8 +95,7 @@ def multiple_letter_count(string):
 
 # Task 4: Create the `check_palindrome` function that accepts a string and returns a boolean indicating if it's a palindrome.
 def check_palindrome(string):
-    # Your code here
-    pass
+    return string == string[::-1]
 
 # Task 5: Create the `intersection_join` function that returns a list of intersections between two lists using join.
 def intersection_join(a, b):
