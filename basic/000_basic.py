@@ -91,8 +91,7 @@ def do_it_all(nums):
 
 # Task 3: Create the `multiple_letter_count` function that accepts a string and returns a dict that counts the number of occurrences of each letter.
 def multiple_letter_count(string):
-    # Your code here
-    pass
+    return {c: string.count(c) for c in range(len(string))}
 
 # Task 4: Create the `check_palindrome` function that accepts a string and returns a boolean indicating if it's a palindrome.
 def check_palindrome(string):

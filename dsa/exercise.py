@@ -248,6 +248,12 @@ class DoublyLinkedList:
 
         self.length -= 1
         return True
+    
+    def print_doubly(self):
+        temp = self.head
+        while temp.next:
+            print(temp.value)
+            temp = temp.next
 
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
