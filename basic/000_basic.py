@@ -99,15 +99,16 @@ def check_palindrome(string):
 
 # Task 5: Create the `intersection_join` function that returns a list of intersections between two lists using join.
 def intersection_join(a, b):
-    # Your code here
-    pass
+     return list(set(a) & set(b))
 
 # ************* Exercise 4: Lambda, *args, *kwargs *************
 
 # Task 1: Create the `partition` function given a list of nums and a callback that validates each element.
+def isEven(num):
+    return num % 2 == 0
+    
 def partition(nums, callback):
-    # Your code here
-    pass
+    return [[n for n in nums if callback(n)], [n for n in nums if not callback(n)]]
 
 # Task 2: Create the `all_my_friends` function to understand *args and **kwargs.
 def all_my_friends(a, b, *numbers, word='woof', **words):
