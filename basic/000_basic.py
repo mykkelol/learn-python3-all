@@ -112,12 +112,12 @@ def partition(nums, callback):
 
 # Task 2: Create the `all_my_friends` function to understand *args and **kwargs.
 def all_my_friends(a, b, *numbers, word='woof', **words):
-    # Your code here
-    pass
+    return f'all my friends are {a}, {b}, {numbers}, {word}, and more like: {words.get("bob")}'
+
+print(all_my_friends('Elon', 'Jeff', 1,2,3,4, word='ruff',bob='purple'))
 
 # Task 3: Create the `decrement_list` function that accepts a list of nums and returns a list with all elements decremented by 1.
 def decrement_list(l):
-    # Your code here
     pass
 
 # Task 4: Create the `is_all_strings` function that accepts a list and returns a boolean if the list contains all strings.
