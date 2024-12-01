@@ -118,7 +118,7 @@ print(all_my_friends('Elon', 'Jeff', 1,2,3,4, word='ruff',bob='purple'))
 
 # Task 3: Create the `decrement_list` function that accepts a list of nums and returns a list with all elements decremented by 1.
 def decrement_list(l):
-    pass
+    return list(map(lambda n: n - 1, l))
 
 # Task 4: Create the `is_all_strings` function that accepts a list and returns a boolean if the list contains all strings.
 def is_all_strings(l):
