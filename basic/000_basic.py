@@ -132,8 +132,7 @@ def is_all_strings(l):
 
 # Task 5: Create the `get_longest_lyrics_songs` function that accepts a playlist and returns it sorted by longest lyrics.
 def get_longest_lyrics_songs(l):
-    # Your code here
-    pass
+    return sorted(l, key=lambda song: len(song['lyrics']), reverse=True)
 
 # Task 6: Create the `max_magnitude` function that returns the max magnitude (furthest from zero) given a list.
 def max_magnitude(l):
