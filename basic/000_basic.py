@@ -136,8 +136,7 @@ def get_longest_lyrics_songs(l):
 
 # Task 6: Create the `max_magnitude` function that returns the max magnitude (furthest from zero) given a list.
 def max_magnitude(l):
-    # Your code here
-    pass
+    return max(abs(n) for n in l)
 
 # Task 7: Given three lists of student names, midterm grades, and final grades, create a function that returns a dict of students and their average grades.
 def student_avg_grades(students, finals, midterms):
