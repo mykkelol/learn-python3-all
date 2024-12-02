@@ -57,6 +57,12 @@
 # Discuss range(start, end, step) and meaning of each argument with an example
 # -----------------------------------------------------------------------------
 
+# -----------------------------------------------------------------------------
+# Question 8:
+# Create Account class that can deposit, withdraw, transfer funds to another account, and record a transaction (type, amount, timestamp)
+# Create Bank class that can get_top_k_accounts_by_outgoing, add, and get Account
+# -----------------------------------------------------------------------------
+
 # ************* Exercise 1: Basics *************
 
 # Task 1: Create the `create_smile_armies` function that accepts a number of armies and a number of rows per army, returning armies of smilies.
@@ -122,8 +128,7 @@ def decrement_list(l):
 
 # Task 4: Create the `is_all_strings` function that accepts a list and returns a boolean if the list contains all strings.
 def is_all_strings(l):
-    # Your code here
-    pass
+    return all(type(s) is str for s in l)
 
 # Task 5: Create the `get_longest_lyrics_songs` function that accepts a playlist and returns it sorted by longest lyrics.
 def get_longest_lyrics_songs(l):
