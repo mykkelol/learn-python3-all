@@ -62,6 +62,84 @@
 # Create Account class that can deposit, withdraw, transfer funds to another account, and record a transaction (type, amount, timestamp)
 # Create Bank class that can get_top_k_accounts_by_outgoing, add, and get Account
 # -----------------------------------------------------------------------------
+from datetime import datetime
+
+class Account:
+    def __init__(self, account_number, balance=0):
+        self.account_number = account_number
+        self.balance = balance
+        self.transactions = []
+
+    def record_transaction(self, type, amount):
+        self.transactions.append({
+            'type': type,
+            'amount': amount,
+            'timestamp': datetime.now(),
+        })
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            self.record_transaction('deposit', amount)
+            return True
+        else:
+            print('Amount cannot be 0')
+            return False
+    
+    def withdraw(self, amount):
+        if self.balance >= amount:
+            if amount > 0:
+                self.balance -= amount
+                self.record_transaction('withdraw', amount)
+                return True
+            else:
+                print('Amount cannot be 0')
+        else:
+            print('Insufficient funds')
+        return False
+
+    def transfer_fund(self, receiver, amount):
+        if self.withdraw(amount):
+            receiver.deposit(amount)
+            print('Transfer succeeded')
+            return True
+        else:
+            print('Transfer failed')
+            return False
+        
+class Bank:
+    def __init__(self):
+        self.accounts = []
+
+    def get_account(self, account_number):
+        return next((account for account in self.accounts if account.account_number == account_number), None)
+    
+    def add_account(self, account):
+        self.accounts.append(account)
+        return True
+    
+    def get_top_k_accounts_by_outgoing(self, k):
+        sorted_accounts = sorted(self.accounts, key=lambda account: sum(t['amount'] for t in account.transactions if t['type'] == 'withdraw'), reverse=True)
+        return sorted_accounts[:k]
+    
+    def get_top_k_accounts_by_volume(self, k):
+        sorted_accounts = sorted(self.accounts, key=lambda account: len(account.transactions), reverse=True)
+        return sorted_accounts[:k]
+    
+svb = Bank()
+account1 = Account('JASDDDAS40930', 500)
+account2 = Account('JASDDDAS40931', 0)
+svb.add_account(account1)
+svb.add_account(account2)
+account1.transfer_fund(account2, 100)
+account2.withdraw(50)
+print(svb.get_account('JASDDDAS40931').balance)
+account1.deposit(150)
+print(svb.get_account('JASDDDAS40931').balance)
+account2.withdraw(50)
+print(svb.get_account('JASDDDAS40931').balance)
+print([account.__dict__ for account in svb.get_top_k_accounts_by_outgoing(3)])
+print(svb.get_top_k_accounts_by_volume(1)[0].__dict__)
 
 # ************* Exercise 1: Basics *************
 
@@ -140,8 +218,11 @@ def max_magnitude(l):
 
 # Task 7: Given three lists of student names, midterm grades, and final grades, create a function that returns a dict of students and their average grades.
 def student_avg_grades(students, finals, midterms):
-    # Your code here
     pass
+
+students = ['aang', 'korra', 'sato']
+finals = [98, 89, 99]
+midterms = [91, 95, 90]
 
 # Task 8: Create the `interleave` function that returns one string interwoven from two provided strings.
 def interleave(str1, str2):
