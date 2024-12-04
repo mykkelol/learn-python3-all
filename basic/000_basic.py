@@ -218,16 +218,25 @@ def max_magnitude(l):
 
 # Task 7: Given three lists of student names, midterm grades, and final grades, create a function that returns a dict of students and their average grades.
 def student_avg_grades(students, finals, midterms):
-    pass
+    lambda_alt = dict(
+        zip(
+            students,
+            map(lambda pair: sum(pair) / len(pair), zip(finals, midterms))
+        )
+    )
+
+    list_alt = {student[0]: (student[1] + student[2]) / 2 for student in zip(students, finals, midterms)}
+
+    return list_alt
 
 students = ['aang', 'korra', 'sato']
 finals = [98, 89, 99]
 midterms = [91, 95, 90]
+print(student_avg_grades(students, finals, midterms))
 
 # Task 8: Create the `interleave` function that returns one string interwoven from two provided strings.
 def interleave(str1, str2):
-    # Your code here
-    pass
+    return ''.join(''.join(pair) for pair in zip(str1, str2))
 
 # ************* Exercise 5: Debugging *************
 
