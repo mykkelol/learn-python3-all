@@ -112,6 +112,15 @@ class LinkedList:
         self.length -= 1
         return temp
     
+    def find_middle_node(self):
+        slow = self.head
+        fast = self.head
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+
+    
     def print_linked_list(self):
         temp = self.head
         while temp is not None:
