@@ -255,19 +255,35 @@ def divide(num1, num2):
 # Task 1: Create a class `User` with specified attributes and methods.
 
 # create class User that has class attributes, active_users and banned_users
-# the class should have three instance attributes: username, likes, age
-# the class should have three instance methods: logout, likes, change_username
+# xthe class should have three instance attributes: username, likes, age
+# the class should have three instance methods: logout, add_like, change_username
 # the class should have one class method: from_csv
-# the class should have one three methods to access and write a private instance property: status
+# the class should have three methods to access and write a private instance property: status
 # the class should print the username and total likes
 # create class Admin that inherits User with attributes (users_banned, active_admins) and methods (ban_user)
 # the class Admin should leverage polymorphism when Admin logs out
 
 class User:
+    active_users = 0
+    banned_users = 0
+
+    @classmethod
+    def from_csv(cls, csv):
+        pass
+
     def __init__(self, username, age):
         self.username = username
         self.age = age
         self.likes = 0
+
+    def logout(self):
+        pass
+    
+    def add_like(self):
+        pass
+    
+    def change_username(self, username):
+        pass
 
 # Task 2: Create a subclass `Admin` that inherits from `User` and includes additional attributes and methods.
 class Admin(User):
