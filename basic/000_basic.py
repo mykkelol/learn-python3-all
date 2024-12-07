@@ -255,7 +255,7 @@ def divide(num1, num2):
 # Task 1: Create a class `User` with specified attributes and methods.
 
 # create class User that has class attributes, active_users and banned_users
-# xthe class should have three instance attributes: username, likes, age
+# the class should have three instance attributes: username, likes, age
 # the class should have three instance methods: logout, add_like, change_username
 # the class should have one class method: from_csv
 # the class should have three methods to access and write a private instance property: status
@@ -280,6 +280,9 @@ class User:
         self._status = 'online'
         User.active_users += 1
 
+    def __repr__(self):
+        return f'{self.username} has {self.likes} likes'
+
     def logout(self):
         User.active_users -= 1
         self._status = 'offline'
@@ -299,9 +302,24 @@ class User:
         if status == 'banned':
             self.likes = 0
             self._status = 'banned'
-            User.active_users -= 1
             User.banned_users.append(self.username)
+            if self.status == 'active':
+                User.active_users -= 1
 
+asaKaPa001 = User('asaKaPa001', 6)
+asaKaPa002 = User('asaKaPa002', 8)
+print(User.active_users)
+asaKaPa001.logout()
+print(asaKaPa001)
+print(asaKaPa001.status)
+print(User.active_users)
+asaKaPa001.status = 'banned'
+print(asaKaPa001.status)
+Xx_asaKaPa001_xX = User.from_csv("Xx_asaKaPa001_xX,12")
+print(Xx_asaKaPa001_xX.status)
+print(asaKaPa001.status)
+print(asaKaPa002.status)
+print(User.active_users)
 
 # Task 2: Create a subclass `Admin` that inherits from `User` and includes additional attributes and methods.
 class Admin(User):
