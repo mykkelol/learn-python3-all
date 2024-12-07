@@ -326,14 +326,22 @@ class Admin(User):
     
     active_admins = 0
 
+    @classmethod
+    def get_active_admins(cls):
+        return cls.active_admins
+
     def __init__(self, username, age, type = 'admin'):
-        pass
+        super().__init__(username, age, type)
+        self.users_banned = []
+        Admin.active_admins += 1
 
     def ban_user(self, user, reason):
-        pass
+        user.status = 'banned'
+        self.users_banned.append({'user': user, 'reason': reason})
 
     def logout(self):
-        pass
+        User.active_users -= 1
+        Admin.active_admins -= 1
 
 # ************* Exercise 7: Iterators & Generators *************
 
