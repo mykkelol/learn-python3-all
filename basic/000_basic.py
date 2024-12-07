@@ -265,7 +265,7 @@ def divide(num1, num2):
 
 class User:
     active_users = 0
-    banned_users = 0
+    banned_users = []
 
     @classmethod
     def from_csv(cls, csv):
@@ -289,6 +289,19 @@ class User:
     
     def change_username(self, username):
         self.username = username
+
+    @property
+    def status(self):
+        return self._status
+    
+    @status.setter
+    def status(self, status):
+        if status == 'banned':
+            self.likes = 0
+            self._status = 'banned'
+            User.active_users -= 1
+            User.banned_users.append(self.username)
+
 
 # Task 2: Create a subclass `Admin` that inherits from `User` and includes additional attributes and methods.
 class Admin(User):
