@@ -335,13 +335,27 @@ class Admin(User):
         self.users_banned = []
         Admin.active_admins += 1
 
+    def __repr__(self):
+        return f'{self.username} banned {len(self.users_banned)} users'
+
     def ban_user(self, user, reason):
         user.status = 'banned'
         self.users_banned.append({'user': user, 'reason': reason})
 
     def logout(self):
-        User.active_users -= 1
+        super().logout()
+        # User.active_users -= 1
         Admin.active_admins -= 1
+
+narc001 = Admin('narc001', 35)
+narc001 = Admin('narc001', 35)
+narc001.ban_user(Xx_asaKaPa001_xX, 'ip ban')
+print(Admin.get_active_admins())
+print(User.active_users)
+narc001.logout()
+print(narc001.status)
+print(Admin.get_active_admins())
+print(User.get_users_stats())
 
 # ************* Exercise 7: Iterators & Generators *************
 
