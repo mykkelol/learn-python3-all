@@ -323,8 +323,17 @@ print(User.active_users)
 
 # Task 2: Create a subclass `Admin` that inherits from `User` and includes additional attributes and methods.
 class Admin(User):
-    # Your code here
-    pass
+    
+    active_admins = 0
+
+    def __init__(self, username, age, type = 'admin'):
+        pass
+
+    def ban_user(self, user, reason):
+        pass
+
+    def logout(self):
+        pass
 
 # ************* Exercise 7: Iterators & Generators *************
 
