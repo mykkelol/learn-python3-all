@@ -269,21 +269,26 @@ class User:
 
     @classmethod
     def from_csv(cls, csv):
-        pass
+        username, age = csv.split(',')
+        return cls(username, int(age))
 
-    def __init__(self, username, age):
+    def __init__(self, username, age, type = 'member'):
         self.username = username
         self.age = age
+        self.type = type
         self.likes = 0
+        self._status = 'online'
+        User.active_users += 1
 
     def logout(self):
-        pass
+        User.active_users -= 1
+        self._status = 'offline'
     
     def add_like(self):
-        pass
+        self.likes += 1
     
     def change_username(self, username):
-        pass
+        self.username = username
 
 # Task 2: Create a subclass `Admin` that inherits from `User` and includes additional attributes and methods.
 class Admin(User):
