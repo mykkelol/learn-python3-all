@@ -130,22 +130,39 @@ class LinkedList:
                 return True
         return False
     
-    def find_kth_from_end(self, k):
+    def find_kth_from_end_naive(self, k):
         if k < 0:
             return -1
         if k == 1:
-            return self.head
+            return self.tail
         if k == self.length:
             return self.head 
         i = 0
         temp = self.head
-        while temp.next is not None:
+        while temp:
             if self.length - i == k:
                 return temp
             else:
                 i += 1
                 temp = temp.next
         return -1
+    
+    def find_kth_from_end(self, k):
+        if k < 0:
+            return -1
+        if k == 1:
+            return self.tail
+        if k == self.length:
+            return self.head
+        slow = fast = self.head
+        for _ in range(k):
+            if fast is None:
+                return None
+            fast = fast.next
+        while fast:
+            fast = fast.next
+            slow = slow.next
+        return slow
     
     def print_linked_list(self):
         temp = self.head
