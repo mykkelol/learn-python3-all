@@ -164,6 +164,25 @@ class LinkedList:
             slow = slow.next
         return slow
     
+    def partition_list(self, x):
+        current = self.head
+        if current is None:
+            return None
+        dummy1 = Node(0)
+        dummy2 = Node(0)
+        prev1 = dummy1
+        prev2 = dummy2
+        while current:
+            if current.value < x:
+                prev1.next = current
+                prev1 = current
+            else:
+                prev2.next = current
+                prev2 = current
+            current = current.next
+        prev1.next = None
+        prev2.next = None
+    
     def print_linked_list(self):
         temp = self.head
         while temp is not None:
