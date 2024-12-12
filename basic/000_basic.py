@@ -361,8 +361,15 @@ print(User.get_users_stats())
 
 # Task 1: Write a function that generates a Fibonacci sequence up to a given length.
 def get_fib_list(n):
-    # Your code here
-    pass
+    nums = []
+    for i in range(n):
+        if i == 0:
+            nums.append(0)
+        if i == 1:
+            nums.append(1)
+        if i > 1:
+            nums.append(nums[i - 1] + nums[i - 2])
+    return nums
 
 # Task 2: Write a generator function that generates a Fibonacci sequence up to a given integer.
 def get_fib_generator(max):
