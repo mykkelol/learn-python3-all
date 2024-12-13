@@ -421,8 +421,10 @@ def get_scraped_books():
 
 # Task 1: Write a function that asks users for km input stored in kms var, then convert the km into miles stored in miles var, and rewrite miles but rounded. Then return the rounded miles with interopolation
 def your_kms():
-    # Your code here
-    pass
+    kms = input('How many miles did Biden walked today?')
+    miles = kms / 1.60934
+    miles = round(miles, 2)
+    print(f'Ok you said Biden walked {kms} km and in the US, he walked {miles} miles!')
 
 # ************* Exercise 14: List *************
 
