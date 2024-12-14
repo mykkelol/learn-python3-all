@@ -430,7 +430,7 @@ def your_kms():
 
 # Task 1.1: Retrieve the last element using negative indexing
 numbers = [10, 20, 30, 40, 50]
-# Your code here to print the last element
+print(numbers[-1])
 
 # Task 1.2: Create a reversed version of numbers using slicing
 # Your code here to create and print reversed_numbers
