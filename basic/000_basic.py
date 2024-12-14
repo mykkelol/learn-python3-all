@@ -433,7 +433,7 @@ numbers = [10, 20, 30, 40, 50]
 print(numbers[-1])
 
 # Task 1.2: Create a reversed version of numbers using slicing
-# Your code here to create and print reversed_numbers
+print(numbers[::-1])
 
 # Task 2.1: Join the fruits into a string separated by commas
 fruits = ['apple', 'banana', 'cherry']
