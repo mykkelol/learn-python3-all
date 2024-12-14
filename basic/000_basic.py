@@ -437,7 +437,7 @@ print(numbers[::-1])
 
 # Task 2.1: Join the fruits into a string separated by commas
 fruits = ['apple', 'banana', 'cherry']
-# Your code here to create and print the joined string
+print(','.join(fruits))
 
 # Task 2.2: Count how many times 4 appears in the list
 numbers = [1, 2, 3, 4, 4, 4, 5]
