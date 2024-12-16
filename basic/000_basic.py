@@ -441,10 +441,10 @@ print(','.join(fruits))
 
 # Task 2.2: Count how many times 4 appears in the list
 numbers = [1, 2, 3, 4, 4, 4, 5]
-# Your code here to count and print the occurrences of 4
+numbers.count(4)
 
 # Task 2.3: Replace 2, 3, 4 with 'a', 'b', 'c' using slicing
-# Your code here to modify and print the modified list
+numbers[1:3] = ['a', 'b', 'c']
 
 # Task 2.4: Swap the elements in the list without using temporary variables
 words = ['hello', 'world']
