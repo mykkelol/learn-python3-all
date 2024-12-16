@@ -448,23 +448,23 @@ numbers[1:3] = ['a', 'b', 'c']
 
 # Task 2.4: Swap the elements in the list without using temporary variables
 words = ['hello', 'world']
-# Your code here to swap and print the swapped list
+words[0], words[1] = words[1], words[0]
 
 # Task 3.1: Append 'green' to colors
 colors = ['red', 'blue']
-# Your code here to append and print the list
+colors.append('green')
 
 # Task 3.2: Extend colors with ['yellow', 'purple']
-# Your code here to extend and print the list
+colors.extend(['yellow', 'purple'])
 
 # Task 3.3: Insert 'orange' at the beginning of the colors list
-# Your code here to insert and print the list
+colors.insert(0, 'orange')
 
 # Task 3.4: Remove 'blue' from the colors list
-# Your code here to remove and print the list
+colors.remove('blue')
 
 # Task 3.5: Pop the last element from colors and print it
-# Your code here to pop and print the popped element and the list
+colors.pop()
 
 # Task 4.1: Create a list of even numbers from nums using slicing
 nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
