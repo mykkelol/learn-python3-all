@@ -468,13 +468,16 @@ colors.pop()
 
 # Task 4.1: Create a list of even numbers from nums using slicing
 nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-# Your code here to create and print even_nums
+nums[1::2]
 
 # Task 4.2: Reverse the nums list in-place
-# Your code here to reverse and print nums
+nums[::-1]
 
 # Task 4.3: Create a shallow copy of nums and prove it's a shallow copy
-# Your code here to create a copy, modify it, and show both lists
+nums2 = nums
+nums3 = nums[:]
+print(nums2 == nums) # True
+print(nums3 == nums) # False
 
 # Task 4.4: Reverse the order of the first three elements in chars
 chars = ['a', 'b', 'c', 'd', 'e']
