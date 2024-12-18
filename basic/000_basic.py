@@ -485,6 +485,10 @@ chars[:3] = chars[2::-1]
 print(chars)
 
 # Bonus: Explain the difference between list_a == list_a[:] and list_a is list_a[:]
+# When slicing, i.e. list_a[:], Python creates a shallow copy of the initial list
+# By creating a whole new list, Python saves this in a difference in the memory
+# When comparing by == operator, we're checking if the elements in the list equals; thus, returns True
+# When comparing by is keyword, we're checking if the two list are stored in the same place in the memory; thus, returns False
 
 # ************* Exercise 15: List Comprehension *************
 
