@@ -481,7 +481,8 @@ print(nums3 == nums) # False
 
 # Task 4.4: Reverse the order of the first three elements in chars
 chars = ['a', 'b', 'c', 'd', 'e']
-# Your code here to modify and print chars
+chars[:3] = chars[2::-1]
+print(chars)
 
 # Bonus: Explain the difference between list_a == list_a[:] and list_a is list_a[:]
 
