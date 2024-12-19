@@ -184,18 +184,19 @@ class LinkedList:
         prev2.next = None
 
     def remove_duplicates(self):
-        nodes = {}
-        temp = self.head
-        pre = None
-        while temp:
-            if nodes.get(temp.value) is None:
-                nodes[temp.value] = True
-            else:
-                pre.next = temp.next
+        if self.head is None:
+            return None
+        current = self.head
+        prev = None
+        values = set()
+        while current:
+            if current.value in values:
+                prev.next = current.next
                 self.length -= 1
-            pre = temp
-            temp = temp.next
-        return True
+            else:
+                values.add(current.value)
+            prev = current
+            current = current.next
     
     def print_linked_list(self):
         temp = self.head
