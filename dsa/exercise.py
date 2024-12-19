@@ -182,12 +182,37 @@ class LinkedList:
             current = current.next
         prev1.next = None
         prev2.next = None
+
+    def remove_duplicates(self):
+        nodes = {}
+        temp = self.head
+        pre = None
+        while temp:
+            if nodes.get(temp.value) is None:
+                nodes[temp.value] = True
+            else:
+                pre.next = temp.next
+                self.length -= 1
+            pre = temp
+            temp = temp.next
+        return True
     
     def print_linked_list(self):
         temp = self.head
         while temp is not None:
             print(temp.value)
             temp = temp.next
+
+my_ll = LinkedList(1)
+my_ll.append(2)
+my_ll.append(2)
+my_ll.append(3)
+my_ll.append(4)
+my_ll.append(4)
+my_ll.append(5)
+my_ll.print_linked_list()
+my_ll.remove_duplicates()
+my_ll.print_linked_list()
 
 # ************* Doubly Linked List *************
 # Create DoublyLinkedList and Node classes
