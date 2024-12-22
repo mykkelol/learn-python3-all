@@ -536,7 +536,7 @@ total_donation = sum(donations[n] for n in donations)
 # Exercise 2: Initial Game State
 # Set an initial state value of 0 for all game properties listed in the game_properties list.
 game_properties = ["current_score", "high_score", "number_of_lives", "items_in_inventory", "power_ups", "ammo", "enemies_on_screen", "enemy_kills", "enemy_kill_streaks", "minutes_played", "notifications", "achievements"] 
-# Your code here to create initial_game_state
+game_properties = {}.fromkeys(game_properties, 0)
 
 # Exercise 3: Spotify Playlist Duration
 # Given a playlist dictionary, calculate the total length of all songs in the playlist and update the playlist dictionary with this new key-value pair.

@@ -200,7 +200,6 @@ class LinkedList:
 
         for _ in range(start):
             prev = prev.next
-
         current = prev
 
         for _ in range(end):

@@ -202,25 +202,13 @@ class LinkedList:
         pass
 
     def reverse_between(self, start, end):
-        """ 
-        1 > 2 > 3 > 4 > 5 
-        0 > 1 > 2 > 3 > 4
-        (1, 3)
-        1 > 4 > 3 > 2 > 5 
-        """
-        if self.head is None:
+        if self.length <= 1:
             return None
-        if start < self.length - 1 and end >= self.length - 1:
+        if end >= self.length or start < 0 or start >= end:
             return None
-        nodes = {}
-        current = self.head
-        i = 0
-        while current:
-            if i >= start or i <= end:
-                nodes[i] = current
-            i += 1
-            current = current.next
-    
+
+        dummy_node = Node(0)
+
     def print_linked_list(self):
         temp = self.head
         while temp is not None:
