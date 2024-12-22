@@ -531,7 +531,7 @@ print([[j for j in range(3)] for i in range(3)])
 # Exercise 1: Sum of Donations
 # Given a dictionary of donations, calculate the total amount of donations.
 donations = dict(sam=25.0, lena=88.99, chuck=13.0, linus=99.5, stan=150.0, lisa=50.25, harrison=10.0)
-# Your code here to calculate total_donations
+total_donation = sum(donations[n] for n in donations)
 
 # Exercise 2: Initial Game State
 # Set an initial state value of 0 for all game properties listed in the game_properties list.
