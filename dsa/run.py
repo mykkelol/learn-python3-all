@@ -189,23 +189,27 @@ class LinkedList:
         pass
 
     def reverse_between(self, start, end):
-        if self.head is None:
+        if self.length <= 1:
             return None
-        if start < self.length - 1 and end > self.length - 1:
+        if end >= self.length or start < 0 or start >= end:
             return None
-        nodes = {}
-        current = self.head
-        i = 0
-        while current:
-            if i >= start and i <= end:
-                nodes[i] = [current, current.value]
-            i += 1
-            current = current.next
-
-        print(nodes)
         
-        for node in nodes:
-            nodes.get(node)[0].value = nodes.get(self.length - 1 - node)[1]
+        dummy_node = Node(0)
+        dummy_node.next = self.head
+        prev = dummy_node
+
+        for _ in range(start):
+            prev = prev.next
+
+        current = prev
+
+        for _ in range(end):
+            temp = current.next
+            current.next = temp.next
+            temp.next = prev.next
+            prev.next = temp
+
+        self.head = dummy_node.next
 
     def print_linked_list(self):
         temp = self.head
@@ -225,6 +229,6 @@ print('-----------------')
 my_ll.remove_duplicates()
 my_ll.print_linked_list()
 print('-----------------')
-my_ll.reverse_between(1,3)
+my_ll.reverse_between(1,4)
 print('-----------------')
 my_ll.print_linked_list()
