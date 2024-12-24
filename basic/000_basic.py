@@ -556,19 +556,19 @@ playlist = {
         }
     ]
 }
-total_length = sum(song.duration for song in playlist.songs)
-playlist.total_length = total_length
+total_duration = sum(song.duration for song in playlist.songs)
+playlist.update({'total_duration': total_duration})
 
 # Exercise 4: String to Dictionary
 # Given two strings, str1 and str2, create a dictionary with str1 characters as keys and str2 characters as corresponding values.
 str1 = 'ABC'
 str2 = '123'
-# Your code here to create my_dict
+print({str1[i]:str2[i] for i in range(len(str1))})
 
 # Exercise 5: Odd or Even Dictionary
 # Given a list of numbers, create a dictionary where the numbers are keys and the values indicate whether the number is odd or even.
 nums = range(1,6)
-# Your code here to create my_dict
+print({n:'even' if n % 2 == 0 else 'odd' for n in nums})
 
 # Exercise 6: Update and Transform
 # Given a dictionary of an instructor, update the key "color" and its value to uppercase.
