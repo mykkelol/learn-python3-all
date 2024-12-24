@@ -556,7 +556,8 @@ playlist = {
         }
     ]
 }
-# Your code here to calculate total_length and update playlist
+total_length = sum(song.duration for song in playlist.songs)
+playlist.total_length = total_length
 
 # Exercise 4: String to Dictionary
 # Given two strings, str1 and str2, create a dictionary with str1 characters as keys and str2 characters as corresponding values.

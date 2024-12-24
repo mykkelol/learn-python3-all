@@ -208,6 +208,38 @@ class LinkedList:
             return None
 
         dummy_node = Node(0)
+        dummy_node.next = self.head
+        prev = dummy_node
+
+        """ 
+        1 > 2 > 3 > 4 > 5
+        0 > 1 > 2 > 3 > 4
+        (1,3)
+
+        prev = NULL
+        
+        prev = 0(1)
+        current = 1(2)
+        temp = 2(3)
+
+        1st iteration: 0 > 1 > 2 > 1 > 4 and prev.next becomes node 2
+        2nd iteration: 0 > 1 > 2 > 1 > 4 and prev.next becomes node 2
+        """
+
+        for _ in range(start):
+            prev = prev.next
+        
+        # node 2(3)
+        current = prev.next
+
+        for _ in range(end - start):
+            # node 3(4)
+            temp = current.next
+            # node 3(4) becomes node 4(3)
+            current.next = temp.next
+            # node 4(3) becomes node 4(3)
+            temp.next = prev.next
+            prev.next = temp
 
     def print_linked_list(self):
         temp = self.head
