@@ -573,26 +573,34 @@ print({n:'even' if n % 2 == 0 else 'odd' for n in nums})
 # Exercise 6: Update and Transform
 # Given a dictionary of an instructor, update the key "color" and its value to uppercase.
 my_dict = {'name': 'Blue', 'city': 'San Francisco', 'color': 'purple'}
-# Your code here to transform my_dict
+my_dict.update({'color': my_dict['color'].upper()})
+print(my_dict)
 
 # Exercise 7: Lists to Dictionary Without Zip
 # Given two lists, create a dictionary with list1 elements as keys and list2 elements as corresponding values without using the zip() function.
 list1 = ["CA", "NJ", "RI"]
 list2 = ["California", "New Jersey", "Rhode Island"]
-# Your code here to create my_dict
+my_dict = {list1[i]:list2[i] for i in range(len(list1))}
+print(my_dict)
+print({state[0]:state[1] for state in zip(list1, list2)})
 
 # Exercise 8: List of Lists to Dictionary
 # Given a list of lists where each sublist contains two elements (a key and a value), convert this into a dictionary.
 person = [["name", "Jared"], ["job", "Musician"], ["city", "Bern"]]  
-# Your code here to create my_dict
+person1 = dict(person)
+person2 = {k:v for k,v in person}
+print(person1)
+print(person2)
 
 # Exercise 9: Vowel Dictionary
 # Create a dictionary with each vowel as a key and all values set to 0.
-# Your code here to create my_dict
+my_dict = {}.fromkeys('aeiou', 0)
+print(my_dict)
 
 # Exercise 10: ASCII Dictionary
 # Create a dictionary where the keys are numbers from 65 to 90 (inclusive), and the values are the corresponding ASCII characters (capital A-Z).
-# Your code here to create my_dict
+my_dict = {k:chr(k) for k in range(65, 91)}
+print(my_dict)
 
 # ************* Exercise 17: Tuples & Sets *************
 
