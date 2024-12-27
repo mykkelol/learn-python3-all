@@ -607,19 +607,18 @@ print(my_dict)
 # Exercise 1: Creating and Accessing Tuples
 print("Exercise 1: Creating and Accessing Tuples")
 # 1. Create a tuple named `numbers` containing the numbers 1 through 4.
-numbers = ()
-print("Numbers Tuple:", numbers)
+print((1,2,3,4))
 
 # 2. Convert the list `[1, 3, 3, 7]` into a tuple named `list_to_tuple`.
-list_to_tuple = ()
+list_to_tuple = tuple([1,3,3,7])
 print("List to Tuple:", list_to_tuple)
 
 # 3. Access and print the second element of the tuple `(1, 3, (3, 7))`.
-complex_tuple = ()
-print("Second Element of Complex Tuple:", complex_tuple[2][1])
+complex_tuple = (1, 3, (3, 7))
+print("Second Element of Complex Tuple:", complex_tuple[2])
 
 # 4. Create a tuple containing just the number 1 named `single_element_tuple`.
-single_element_tuple = ()
+single_element_tuple = (1,)
 print("Single Element Tuple:", single_element_tuple)
 
 # Exercise 2: Tuple Methods
@@ -627,11 +626,11 @@ print("\nExercise 2: Tuple Methods")
 values = (1, 3, 3, 7)
 
 # 1. Count how many times `3` appears in the tuple `values`.
-count_three = values
+count_three = values.count(3)
 print("Number of 3s:", count_three)
 
 # 2. Find the index of the number `7` in the tuple `values`.
-index_seven = values
+index_seven = values.index(7)
 print("Index of 7:", index_seven)
 
 # Sets Exercises
@@ -639,17 +638,17 @@ print("Index of 7:", index_seven)
 # Exercise 3: Working with Sets
 print("\nExercise 3: Working with Sets")
 # 1. Create a set and demonstrate adding a duplicate.
-unique_numbers = {}
+unique_numbers = {1,3,3,7}
 unique_numbers
 print("Unique Numbers Set:", unique_numbers)
 
 # 2. Set comprehension to create squares from 0 to 9.
-squares = {}
+squares = {n**2 for n in range(10)}
 print("Squares Set:", squares)
 
 # 3. Count unique vowels in 'sequoia'.
-unique_vowels_count = {}
-print("Unique Vowels Count in 'sequoia':", unique_vowels_count)
+unique_vowels_count = {c for c in 'sequoia' if c in 'aeiou'}
+print("Unique Vowels Count in 'sequoia':", len(unique_vowels_count))
 
 # Exercise 4: Advanced Set Operations
 print("\nExercise 4: Advanced Set Operations")
@@ -657,30 +656,30 @@ set1 = {1, 2, 3}
 set2 = {3, 4, 5}
 
 # Add `6` to `set1`.
-set1
+set1.add(6)
 print("Set1 after adding 6:", set1)
 
 # Remove `2` from `set1` using .remove() method.
-set1
+set1.remove(2)
 print("Set1 after removing 2:", set1)
 
 # Use .discard() method to remove `5` from `set2`.
-set2
+set2.remove(5)
 print("Set2 after discarding 5:", set2)
 
 # Union of `set1` and `set2`.
-union_set = {}
+union_set = set1 | set2
 print("Union of Set1 and Set2:", union_set)
 
 # Intersection of `set1` and `set2`.
-intersection_set = {}
+intersection_set = set1 & set2
 print("Intersection of Set1 and Set2:", intersection_set)
 
 # Demonstrate .copy() and .clear() methods.
 sample_set = {1, 2, 3, 4, 5}
-sample_set_copy = {}
+sample_set_copy = sample_set.copy()
 print("Copy of Sample Set:", sample_set_copy)
-sample_set
+sample_set.clear()
 print("Sample Set after clearing:", sample_set)
 
 # ************* Exercise 18: Functions *************
