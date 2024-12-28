@@ -685,38 +685,52 @@ print("Sample Set after clearing:", sample_set)
 # ************* Exercise 18: Functions *************
 # Exercise 1: Return the Day of the Week
 def return_day(n):
-    pass
+    return ["Sunday","Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday"][n-1]
+print(return_day(1))
 
 # Exercise 2: Count Letter Occurrences
 def multiple_letter_count(string):
-    pass
+    return {c:string.lower().count(c) for c in string.lower()}
+print(multiple_letter_count('SAturday'))
 
 # Exercise 3: Check if a String is a Palindrome
 def check_palindrome(string):
-    pass
+    parsed_str = string.lower()
+    return parsed_str == parsed_str[::-1]
+print(check_palindrome('racecar'))
 
 # Exercise 4: Product of All Even Numbers
 def product_of_even(nums):
-    pass
+    product = 1
+    for n in nums:
+        if n % 2 == 0:
+            product *= n
+    return product
+print(product_of_even([1,2,3,4,5]))
 
 # Exercise 5: Capitalize a String
 def capitalize_string(string):
-    pass
+    return string[0].upper() + string[1:]
+print(capitalize_string('test'))
 
 # Exercise 6: Filter Truthy Values
 def compact(collection):
-    pass
+    return [truth for truth in collection if truth]
+print(compact([0, 1, True, False, None, '', 'Test']))
 
 # Exercise 7: Intersection of Two Lists
 def intersection(collection1, collection2):
-    pass
+    return list(set(collection1) & set(collection2))
+print(intersection([1,2,3,4],[2,4,6,8]))
 
 # Exercise 8: Partition List Based on a Callback
 def isEven(num):
-    pass
+    return num % 2 == 0
 
 def partition(nums, callback):
-    pass
+    return [[n for n in nums if callback(n)], [n for n in nums if not callback(n)]]
+
+print(partition([1,2,3,4,5], isEven))
 
 # Exercise 9: Understanding Function Parameters
 def all_my_friends(a, b, *numbers, word='woof', **words):
