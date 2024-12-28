@@ -734,14 +734,26 @@ print(partition([1,2,3,4,5], isEven))
 
 # Exercise 9: Understanding Function Parameters
 def all_my_friends(a, b, *numbers, word='woof', **words):
-    pass
+    return f'{a, b, numbers, word, words}'
 
 # Call the function to demonstrate parameter usage
-all_my_friends(1, 2, 3, beep=1, boop=2, bop=3)
+print(all_my_friends(1, 2, 3, beep=1, boop=2, bop=3))
+print(all_my_friends(1, 2, 3, 4, 5, word='mewo', beep=1, boop=2, bop=3))
 
 # Exercise 10: Advanced Calculator
+def add(n1, n2):
+    return n1 + n2
+
 def calculate(**kwargs):
-    pass
+    operation = kwargs['operation']
+    first = kwargs['first']
+    second = kwargs['second']
+    make_float = kwargs['make_float']
+
+    calculated = operation(first, second)
+    return float(calculated) if make_float else calculated
+
+print(calculate(operation=add, make_float=True, first=1, second=2))
 
 # Demonstration of function calls
 print(return_day(1))
