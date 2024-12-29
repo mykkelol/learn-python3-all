@@ -885,6 +885,56 @@ Using try/except blocks for error handling:
 # Note: The pdb.set_trace() command is commented out because it's meant for interactive debugging sessions.
 # To use it, uncomment the import pdb; pdb.set_trace() line, and run the script in an environment where you can interact with the debugger.
 
+# Realistic example of try, except, else, raise, and finally
+def fetch_user_data(username):
+    """
+    Attempt to connect to database and fetch user data.
+    Demonstrates try/except/else/finally blocks and custom exceptions.
+    """
+    db = DatabaseConnection(
+        host="example.com",
+        username="admin",
+        password="wrong_password"  # Intentionally wrong to demonstrate error handling
+    )
+    
+    try:
+        print(f"Attempting to fetch data for user: {username}")
+        db.connect()
+        
+        # Simulate data processing that might raise different types of errors
+        if username == "":
+            raise ValueError("Username cannot be empty")
+        
+        if not isinstance(username, str):
+            raise TypeError("Username must be a string")
+            
+        # If we get here, the connection was successful and username is valid
+        print(f"Successfully retrieved data for {username}")
+        
+    except DatabaseConnectionError as e:
+        print(f"Database connection failed: {e}")
+        return None
+        
+    except ValueError as e:
+        print(f"Invalid input: {e}")
+        return None
+        
+    except TypeError as e:
+        print(f"Type error: {e}")
+        return None
+        
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return None
+        
+    else:
+        print("Data fetch completed successfully")
+        return {"username": username, "status": "active"}
+        
+    finally:
+        print("Cleanup: Ensuring database connection is closed")
+        db.disconnect()
+
 # ************* Exercise 21: Modules *************
 # Modules in Python
 
@@ -936,7 +986,7 @@ if __name__ == "__main__":
 
 # Sum of all donations
 donations = dict(sam=25.0, lena=88.99, chuck=13.0, linus=99.5, stan=150.0, lisa=50.25, harrison=10.0)
-total_donations = ''
+total_donations = sum(donations.get(donation) for donation in donations)
 
 # Setting initial game state
 game_properties = ["current_score", "high_score", "number_of_lives", "items_in_inventory", "power_ups", "ammo", "enemies_on_screen", "enemy_kills", "enemy_kill_streaks", "minutes_played", "notifications", "achievements"]
