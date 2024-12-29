@@ -772,15 +772,16 @@ print(calculate(operation='add', make_float=True, first=1, second=2))
 
 # Decrement List
 def decrement_list(l):
-    pass
+    return list(map(lambda n: n - 1, l))
 
 # Remove Negatives
 def remove_negatives(l):
-    pass
+    return list(filter(lambda n: n >= 0, l))
 
 # Check if All Elements are Strings
 def is_all_strings(lst):
-    pass
+    return all(type(s) == str for s in lst)
+    # return len(list(filter(lambda s: type(s) == str, lst))) == len(lst)
 
 # Sort Playlist by Length of Lyrics
 playlist = [
@@ -790,22 +791,22 @@ playlist = [
 ]
 
 def get_longest_lyrics_songs(playlist):
-    pass
+    return sorted(playlist, key=lambda song: len(song.get('lyric')), reverse=True)[0]
 
 def get_longest_lyrics(playlist):
-    pass
+    return max(len(s['lyric']) for s in playlist)
 
 # Get Min and Max from a List
 def get_extremes(l):
-    pass
+    return (min(l), max(l))
 
 # Max Magnitude
 def max_magnitude(l):
-    pass
+    return max(abs(n) for n in l)
 
 # Sum of Evens
 def sum_of_evens(*args):
-    pass
+    return sum(n for n in args if n % 2 == 0)
 
 # Student Average Grades
 students = ['aang', 'korra', 'sato']
@@ -813,15 +814,16 @@ finals = [98, 89, 99]
 midterms = [91, 95, 90]
 
 def student_avg_grades(students, finals, midterms):
-    pass
+    return {student[0]:student[1] for student in zip(students, [sum(scores) / len(scores)  for scores in zip(finals, midterms)])}
 
 # Interleave Strings
 def interleave(str1, str2):
-    pass
+    return ''.join(''.join(pair) for pair in zip(str1, str2))
 
 # Triple and Filter
 def triple_and_filter(lst):
-    pass
+    return list(map(lambda n: n * 3, filter(lambda n: n % 4 == 0, lst)))
+    return [n * 3 for n in lst if n % 4 == 0]
 
 # Demonstration of function calls
 print(decrement_list([1, 2, 3]))
