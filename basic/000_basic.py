@@ -990,7 +990,7 @@ total_donations = sum(donations.get(donation) for donation in donations)
 
 # Setting initial game state
 game_properties = ["current_score", "high_score", "number_of_lives", "items_in_inventory", "power_ups", "ammo", "enemies_on_screen", "enemy_kills", "enemy_kill_streaks", "minutes_played", "notifications", "achievements"]
-initial_game_state = ''
+initial_game_state = {}.fromkeys(game_properties, 0)
 
 # Creating a Spotify playlist
 playlist = {
@@ -1003,34 +1003,36 @@ playlist = {
 }
 
 # Calculating total length of playlist
-total_length = ''
+total_length = len(playlist['songs'])
 playlist['total_duration'] = total_length
 
 # Creating a dictionary from two strings
 str1, str2 = 'ABC', '123'
-my_dict = ''
+my_dict = {str1[i]:str2[i] for i in range(len(str1))}
 
 # Dictionary comprehension with conditionals
 nums = range(1, 6)
-nums_dict = ''
+nums_dict = {n:'even' if n % 2 == 0 else 'odd' for n in nums}
 
 # Updating a dictionary and converting specific keys/values to uppercase
 instructor = {'name': 'Blue', 'city': 'San Francisco', 'color': 'purple'}
-updated_instructor = ''
+instructor.update({'color': instructor['color'].upper()})
+updated_instructor = instructor
 
 # Creating a dictionary from two lists without using zip()
 list1, list2 = ["CA", "NJ", "RI"], ["California", "New Jersey", "Rhode Island"]
-state_dict = ''
+state_dict = {list1[i]:list2[i] for i in range(len(list1))}
+state_dict = {code:state_name for code, state_name in zip(list1, list2)}
 
 # Converting a list of lists into a dictionary
 person = [["name", "Jared"], ["job", "Musician"], ["city", "Bern"]]
-person_dict = ''
+person_dict = {k:v for k,v in person}
 
 # Creating a dictionary with vowels as keys and 0 as default value
-vowel_dict = ''
+vowel_dict = {}.fromkeys('aeiou', 0)
 
 # Dictionary of ASCII values for capital letters A-Z
-ascii_dict = ''
+ascii_dict = {c:chars(c) for c in range(65, 91)}
 
 # Demonstration of function calls and variable values
 print("Total Donations:", total_donations)
