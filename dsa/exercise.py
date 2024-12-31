@@ -389,11 +389,25 @@ class DoublyLinkedList:
         self.length -= 1
         return True
     
+    def swap_first_last(self):
+        if self.length <= 1:
+            return None
+        self.head.value, self.tail.value = self.tail.value, self.head.value
+    
     def print_doubly(self):
         temp = self.head
-        while temp.next:
+        while temp:
             print(temp.value)
             temp = temp.next
+
+my_dll = DoublyLinkedList(1)
+my_dll.append(2)
+my_dll.append(3)
+my_dll.append(4)
+my_dll.append(5)
+my_dll.print_doubly()
+my_dll.swap_first_last()
+my_dll.print_doubly()
 
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
