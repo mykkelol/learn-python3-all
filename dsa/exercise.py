@@ -391,8 +391,23 @@ class DoublyLinkedList:
     
     def swap_first_last(self):
         if self.length <= 1:
-            return None
+            return False
         self.head.value, self.tail.value = self.tail.value, self.head.value
+        return True
+
+    def reverse(self):
+        if self.length <= 1:
+            return False
+        nodes = {}
+        current = self.head
+        for i in range(self.length):
+            if i < self.length // 2: 
+                nodes[self.length - i - 1] = current
+            else:
+                if nodes.get(i):
+                    nodes[i].value, current.value = current.value, nodes[i].value
+            current = current.next
+        return True
     
     def print_doubly(self):
         temp = self.head
@@ -406,7 +421,7 @@ my_dll.append(3)
 my_dll.append(4)
 my_dll.append(5)
 my_dll.print_doubly()
-my_dll.swap_first_last()
+my_dll.reverse()
 my_dll.print_doubly()
 
 # ************* Stacks & Queues *************
