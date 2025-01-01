@@ -394,8 +394,16 @@ class DoublyLinkedList:
             return False
         self.head.value, self.tail.value = self.tail.value, self.head.value
         return True
-
+    
     def reverse(self):
+        temp = self.head
+        while temp:
+            temp.prev, temp.next = temp.next, temp.prev
+            temp = temp.prev
+        self.head, self.tail = self.tail, self.head
+        return True
+
+    def reverse_values(self):
         if self.length <= 1:
             return False
         nodes = {}
