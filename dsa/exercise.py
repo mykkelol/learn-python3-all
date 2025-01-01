@@ -408,13 +408,26 @@ class DoublyLinkedList:
             return False
         nodes = {}
         current = self.head
-        for i in range(self.length):
-            if i < self.length // 2: 
-                nodes[self.length - i - 1] = current
+        length = self.length
+        for i in range(length):
+            if i < length // 2: 
+                nodes[length - i - 1] = current
             else:
                 if nodes.get(i):
                     nodes[i].value, current.value = current.value, nodes[i].value
             current = current.next
+        return True
+    
+    def is_palindrome(self):
+        if self.length <= 0:
+            return True
+        front = self.head
+        back = self.tail
+        for _ in range(self.length // 2):
+            if front.value is not back.value:
+                return False
+            front = front.next
+            back = back.prev
         return True
     
     def print_doubly(self):
