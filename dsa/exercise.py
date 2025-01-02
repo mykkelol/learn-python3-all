@@ -430,6 +430,15 @@ class DoublyLinkedList:
             back = back.prev
         return True
     
+    def pairwise_swap_values(self):
+        temp = self.head
+        while temp and temp.next:
+            temp.value, temp.next.value = temp.next.value, temp.value
+            temp = temp.next
+
+    def pairwise_swap_nodes(self):
+        pass
+    
     def print_doubly(self):
         temp = self.head
         while temp:
