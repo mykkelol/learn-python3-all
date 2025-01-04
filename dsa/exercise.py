@@ -437,6 +437,7 @@ class DoublyLinkedList:
             temp = temp.next
 
     def pairwise_swap_nodes(self):
+        dummy_node = Node(4)
         pass
     
     def print_doubly(self):
