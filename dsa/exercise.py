@@ -249,13 +249,11 @@ class LinkedList:
 
 my_ll = LinkedList(1)
 my_ll.append(2)
-my_ll.append(2)
 my_ll.append(3)
-my_ll.append(4)
 my_ll.append(4)
 my_ll.append(5)
 my_ll.print_linked_list()
-my_ll.remove_duplicates()
+my_ll.reverse_between()
 my_ll.print_linked_list()
 
 # ************* Doubly Linked List *************
@@ -470,6 +468,33 @@ class DoublyLinkedList:
         if self.head:
             self.head.prev = None
 
+    def pairwise_swap(self):
+        # dummy → 1 ↔ 2 ↔ 3 ↔ 4
+        dummy_node = Node(0)
+        dummy_node.next = self.head
+        prev = dummy_node
+
+        while prev.next and prev.next.next:
+            first = prev.next
+            second = first.next
+
+            # dummy → 2 → 1 → 3 ↔ 4
+            prev.next = second
+            first.next = second.next
+            second.next = first
+            
+            # dummy ↔ 2 ↔ 1 ↔ 3 ↔ 4
+            second.prev = prev
+            first.prev = second
+            if first.next:
+                first.next.prev = first
+
+            prev = first
+
+        # 2 ↔ 1 ↔ 4 ↔ 3
+        self.head = dummy_node.next
+        self.head.prev = None
+        
     def print_doubly(self):
         temp = self.head
         while temp:
@@ -482,7 +507,7 @@ my_dll.append(3)
 my_dll.append(4)
 my_dll.append(5)
 my_dll.print_doubly()
-my_dll.reverse()
+my_dll.pairwise_swap()
 my_dll.print_doubly()
 
 # ************* Stacks & Queues *************
