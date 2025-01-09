@@ -198,8 +198,14 @@ class LinkedList:
             prev = current
             current = current.next
 
+    # binary decimal is calculated as sum of aggregated binaries multiplied by 2 plus current binary
     def binary_to_decimal(self):
-        pass
+        decimal = 0
+        temp = self.head
+        while temp:
+            decimal = decimal * 2 + temp.value
+            temp = temp.next
+        return decimal
 
     def reverse_between(self, start, end):
         # (1, 3) in: dummy → 1 → 2 → 3 → 4 → 5 → 6
