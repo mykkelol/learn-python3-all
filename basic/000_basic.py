@@ -62,172 +62,83 @@
 # Create Account class that can deposit, withdraw, transfer funds to another account, and record a transaction (type, amount, timestamp)
 # Create Bank class that can get_top_k_accounts_by_outgoing, add, and get Account
 # -----------------------------------------------------------------------------
-from datetime import datetime
-
-class Account:
-    def __init__(self, account_number, balance=0):
-        self.account_number = account_number
-        self.balance = balance
-        self.transactions = []
-
-    def record_transaction(self, type, amount):
-        self.transactions.append({
-            'type': type,
-            'amount': amount,
-            'timestamp': datetime.now(),
-        })
-
-    def deposit(self, amount):
-        if amount > 0:
-            self.balance += amount
-            self.record_transaction('deposit', amount)
-            return True
-        else:
-            print('Amount cannot be 0')
-            return False
-    
-    def withdraw(self, amount):
-        if self.balance >= amount:
-            if amount > 0:
-                self.balance -= amount
-                self.record_transaction('withdraw', amount)
-                return True
-            else:
-                print('Amount cannot be 0')
-        else:
-            print('Insufficient funds')
-        return False
-
-    def transfer_fund(self, receiver, amount):
-        if self.withdraw(amount):
-            receiver.deposit(amount)
-            print('Transfer succeeded')
-            return True
-        else:
-            print('Transfer failed')
-            return False
-        
-class Bank:
-    def __init__(self):
-        self.accounts = []
-
-    def get_account(self, account_number):
-        return next((account for account in self.accounts if account.account_number == account_number), None)
-    
-    def add_account(self, account):
-        self.accounts.append(account)
-        return True
-    
-    def get_top_k_accounts_by_outgoing(self, k):
-        sorted_accounts = sorted(self.accounts, key=lambda account: sum(t['amount'] for t in account.transactions if t['type'] == 'withdraw'), reverse=True)
-        return sorted_accounts[:k]
-    
-    def get_top_k_accounts_by_volume(self, k):
-        sorted_accounts = sorted(self.accounts, key=lambda account: len(account.transactions), reverse=True)
-        return sorted_accounts[:k]
-    
-svb = Bank()
-account1 = Account('JASDDDAS40930', 500)
-account2 = Account('JASDDDAS40931', 0)
-svb.add_account(account1)
-svb.add_account(account2)
-account1.transfer_fund(account2, 100)
-account2.withdraw(50)
-print(svb.get_account('JASDDDAS40931').balance)
-account1.deposit(150)
-print(svb.get_account('JASDDDAS40931').balance)
-account2.withdraw(50)
-print(svb.get_account('JASDDDAS40931').balance)
-print([account.__dict__ for account in svb.get_top_k_accounts_by_outgoing(3)])
-print(svb.get_top_k_accounts_by_volume(1)[0].__dict__)
 
 # ************* Exercise 1: Basics *************
 
 # Task 1: Create the `create_smile_armies` function that accepts a number of armies and a number of rows per army, returning armies of smilies.
 def create_smile_armies(num_of_armies, num_of_rows):
-    for _ in range(num_of_rows):
-        for army in range(num_of_armies):
-            print('😜' * army)
+    pass
 
 # Task 2: Create the `intersection` function that accepts two lists and returns a list of their intersection.
 def intersection(a, b):
-    return [n for n in a if n in b]
+    pass
 
 # ************* Exercise 2: List *************
 
 # Task 1: Create the `lower_reversal` function that accepts a list of names, returning a list of it reversed and lowercase.
 def lower_reversal(names):
-    return [name.lower()[::-1] for name in names]
+    pass
 
 # Task 2: Create the `get_n_matrix` function that accepts an N and returns an NxN matrix of stars.
 def get_n_matrix(N):
-    return [['*' * N for j in range(N)] for i in range(N)]
+    pass
 
 # ************* Exercise 3: Dict, Tuple, Set *************
 
 # Task 1: Create the `dict_it_up` function that accepts str1 and str2, returning two dicts.
 def dict_it_up(str1, str2):
-    return {str1[i]:str2[i] for i in range(len(str2))}
+    pass
 
 # Task 2: Create the `do_it_all` function that accepts a list, converts it into a tuple, and returns a unique list.
 def do_it_all(nums):
-    return list(set(tuple(nums)))
+    pass
 
 # Task 3: Create the `multiple_letter_count` function that accepts a string and returns a dict that counts the number of occurrences of each letter.
 def multiple_letter_count(string):
-    return {c: string.count(c) for c in range(len(string))}
+    pass
 
 # Task 4: Create the `check_palindrome` function that accepts a string and returns a boolean indicating if it's a palindrome.
 def check_palindrome(string):
-    return string == string[::-1]
+    pass
 
 # Task 5: Create the `intersection_join` function that returns a list of intersections between two lists using join.
 def intersection_join(a, b):
-     return list(set(a) & set(b))
+    pass
 
 # ************* Exercise 4: Lambda, *args, *kwargs *************
 
 # Task 1: Create the `partition` function given a list of nums and a callback that validates each element.
 def isEven(num):
-    return num % 2 == 0
+    pass
     
 def partition(nums, callback):
-    return [[n for n in nums if callback(n)], [n for n in nums if not callback(n)]]
+    pass
 
 # Task 2: Create the `all_my_friends` function to understand *args and **kwargs.
 def all_my_friends(a, b, *numbers, word='woof', **words):
-    return f'all my friends are {a}, {b}, {numbers}, {word}, and more like: {words.get("bob")}'
+    pass
 
 print(all_my_friends('Elon', 'Jeff', 1,2,3,4, word='ruff',bob='purple'))
 
 # Task 3: Create the `decrement_list` function that accepts a list of nums and returns a list with all elements decremented by 1.
 def decrement_list(l):
-    return list(map(lambda n: n - 1, l))
+    pass
 
 # Task 4: Create the `is_all_strings` function that accepts a list and returns a boolean if the list contains all strings.
 def is_all_strings(l):
-    return all(type(s) is str for s in l)
+    pass
 
 # Task 5: Create the `get_longest_lyrics_songs` function that accepts a playlist and returns it sorted by longest lyrics.
 def get_longest_lyrics_songs(l):
-    return sorted(l, key=lambda song: len(song['lyrics']), reverse=True)
+    pass
 
 # Task 6: Create the `max_magnitude` function that returns the max magnitude (furthest from zero) given a list.
 def max_magnitude(l):
-    return max(abs(n) for n in l)
+    pass
 
 # Task 7: Given three lists of student names, midterm grades, and final grades, create a function that returns a dict of students and their average grades.
 def student_avg_grades(students, finals, midterms):
-    lambda_alt = dict(
-        zip(
-            students,
-            map(lambda pair: sum(pair) / len(pair), zip(finals, midterms))
-        )
-    )
-
-    list_alt = {student[0]: (student[1] + student[2]) / 2 for student in zip(students, finals, midterms)}
-
-    return list_alt
+    pass
 
 students = ['aang', 'korra', 'sato']
 finals = [98, 89, 99]
@@ -236,7 +147,7 @@ print(student_avg_grades(students, finals, midterms))
 
 # Task 8: Create the `interleave` function that returns one string interwoven from two provided strings.
 def interleave(str1, str2):
-    return ''.join(''.join(pair) for pair in zip(str1, str2))
+    pass
 
 # ************* Exercise 5: Debugging *************
 
@@ -263,113 +174,11 @@ def divide(num1, num2):
 # create class Admin that inherits User with attributes (users_banned, active_admins) and methods (ban_user)
 # the class Admin should leverage polymorphism when Admin logs out
 
-class User:
-    active_users = 0
-    banned_users = []
-
-    @classmethod
-    def from_csv(cls, csv):
-        username, age = csv.split(',')
-        return cls(username, int(age))
-
-    def __init__(self, username, age, type = 'member'):
-        self.username = username
-        self.age = age
-        self.type = type
-        self.likes = 0
-        self._status = 'online'
-        User.active_users += 1
-
-    def __repr__(self):
-        return f'{self.username} has {self.likes} likes'
-
-    def logout(self):
-        User.active_users -= 1
-        self._status = 'offline'
-    
-    def add_like(self):
-        self.likes += 1
-    
-    def change_username(self, username):
-        self.username = username
-
-    @property
-    def status(self):
-        return self._status
-    
-    @status.setter
-    def status(self, status):
-        if status == 'banned':
-            self.likes = 0
-            self._status = 'banned'
-            User.banned_users.append(self.username)
-            if self.status == 'active':
-                User.active_users -= 1
-
-asaKaPa001 = User('asaKaPa001', 6)
-asaKaPa002 = User('asaKaPa002', 8)
-print(User.active_users)
-asaKaPa001.logout()
-print(asaKaPa001)
-print(asaKaPa001.status)
-print(User.active_users)
-asaKaPa001.status = 'banned'
-print(asaKaPa001.status)
-Xx_asaKaPa001_xX = User.from_csv("Xx_asaKaPa001_xX,12")
-print(Xx_asaKaPa001_xX.status)
-print(asaKaPa001.status)
-print(asaKaPa002.status)
-print(User.active_users)
-
-# Task 2: Create a subclass `Admin` that inherits from `User` and includes additional attributes and methods.
-class Admin(User):
-    
-    active_admins = 0
-
-    @classmethod
-    def get_active_admins(cls):
-        return cls.active_admins
-
-    def __init__(self, username, age, type = 'admin'):
-        super().__init__(username, age, type)
-        self.users_banned = []
-        Admin.active_admins += 1
-
-    def __repr__(self):
-        return f'{self.username} banned {len(self.users_banned)} users'
-
-    def ban_user(self, user, reason):
-        user.status = 'banned'
-        self.users_banned.append({'user': user, 'reason': reason})
-
-    def logout(self):
-        super().logout()
-        # User.active_users -= 1
-        Admin.active_admins -= 1
-
-narc001 = Admin('narc001', 35)
-narc001 = Admin('narc001', 35)
-narc001.ban_user(Xx_asaKaPa001_xX, 'ip ban')
-print(Admin.get_active_admins())
-print(User.active_users)
-narc001.logout()
-print(narc001.status)
-print(Admin.get_active_admins())
-print(User.get_users_stats())
-
 # ************* Exercise 7: Iterators & Generators *************
 
 # Task 1: Write a function that generates a Fibonacci sequence up to a given length.
 def get_fib_list(n):
-    nums = []
-    for i in range(n):
-        if i == 0:
-            nums.append(0)
-        if i == 1:
-            nums.append(1)
-        if i > 1:
-            nums.append(nums[i - 1] + nums[i - 2])
-    return nums
+    pass
 
 # Task 2: Write a generator function that generates a Fibonacci sequence up to a given integer.
 def get_fib_generator(max):
@@ -421,68 +230,60 @@ def get_scraped_books():
 
 # Task 1: Write a function that asks users for km input stored in kms var, then convert the km into miles stored in miles var, and rewrite miles but rounded. Then return the rounded miles with interopolation
 def your_kms():
-    kms = input('How many miles did Biden walked today?')
-    miles = float(kms) / 1.60934
-    miles = round(miles, 2)
-    print(f'Ok you said Biden walked {kms} km and in the US, he walked {miles} miles!')
+    pass
 
 # ************* Exercise 14: List *************
 
 # Task 1.1: Retrieve the last element using negative indexing
 numbers = [10, 20, 30, 40, 50]
-print(numbers[-1])
+print()
 
 # Task 1.2: Create a reversed version of numbers using slicing
-print(numbers[::-1])
+print()
 
 # Task 2.1: Join the fruits into a string separated by commas
 fruits = ['apple', 'banana', 'cherry']
-print(','.join(fruits))
+print()
 
 # Task 2.2: Count how many times 4 appears in the list
 numbers = [1, 2, 3, 4, 4, 4, 5]
-numbers.count(4)
+print()
 
 # Task 2.3: Replace 2, 3, 4 with 'a', 'b', 'c' using slicing
-numbers[1:3] = ['a', 'b', 'c']
+print()
 
 # Task 2.4: Swap the elements in the list without using temporary variables
 words = ['hello', 'world']
-words[0], words[1] = words[1], words[0]
+print()
 
 # Task 3.1: Append 'green' to colors
 colors = ['red', 'blue']
-colors.append('green')
+print()
 
 # Task 3.2: Extend colors with ['yellow', 'purple']
-colors.extend(['yellow', 'purple'])
+print()
 
 # Task 3.3: Insert 'orange' at the beginning of the colors list
-colors.insert(0, 'orange')
+print()
 
 # Task 3.4: Remove 'blue' from the colors list
-colors.remove('blue')
+print()
 
 # Task 3.5: Pop the last element from colors and print it
-colors.pop()
+print()
 
 # Task 4.1: Create a list of even numbers from nums using slicing
 nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-nums[1::2]
+print()
 
 # Task 4.2: Reverse the nums list in-place
-nums[::-1]
+print()
 
 # Task 4.3: Create a shallow copy of nums and prove it's a shallow copy
-nums2 = nums
-nums3 = nums[:]
-print(nums2 == nums) # True
-print(nums3 == nums) # False
+print()
 
 # Task 4.4: Reverse the order of the first three elements in chars
-chars = ['a', 'b', 'c', 'd', 'e']
-chars[:3] = chars[2::-1]
-print(chars)
+print()
 
 # Bonus: Explain the difference between list_a == list_a[:] and list_a is list_a[:]
 # When slicing, i.e. list_a[:], Python creates a shallow copy of the initial list
@@ -494,49 +295,48 @@ print(chars)
 
 # Task 1: Return the first letter of each name in the list names
 names = ["Elie", "Tim", "Matt"]
-print([name[0] for name in names])
+print()
 
 # Task 2: Return all even numbers between 1 to 6
-print([n for n in range(1,7)])
+print()
 
 # Task 3: Find the intersection between two lists (elements present in both lists)
 list_a = [1, 2, 3, 4]
 list_b = [3, 4, 5, 6]
-print([n for n in list_a if n in list_b])
+print()
 
 # Task 4: Reverse each name in the list names and convert them to lowercase
 names = ["Elie", "Tim", "Matt"]
-print([name[::-1].lower() for name in names])
+print()
 
 # Task 5: Return a list of numbers between 1 and 100 that are divisible by 12
-print([n for n in range(1, 101) if n % 12 == 0])
+print()
 
 # Task 6: Convert the string "amazing" to a list containing all its letters except for vowels
 word = 'amazing'
-print([l if l in 'aeiuo' else 'X' for l in list(word)])
+print()
 
 # Task 7: Print all coordinates from a list of location coordinates
 locations = [[10.423, 9.123], [37.212, -14.092], [21.367, 32.572]]
-[print(location) for location in locations]
+print()
 
 # Task 8: Return a 3x3 matrix filled with stars
-rows = 3
-print([['*' * rows for j in range(rows)] for i in range(rows)])
+print()
 
 # Task 9: Return nested lists of [0, 1, 2] three times
-print([[j for j in range(3)] for i in range(3)])
+print()
 
 # ************* Exercise 16: Dictionary *************
 
 # Exercise 1: Sum of Donations
 # Given a dictionary of donations, calculate the total amount of donations.
 donations = dict(sam=25.0, lena=88.99, chuck=13.0, linus=99.5, stan=150.0, lisa=50.25, harrison=10.0)
-total_donation = sum(donations[n] for n in donations)
+print()
 
 # Exercise 2: Initial Game State
 # Set an initial state value of 0 for all game properties listed in the game_properties list.
 game_properties = ["current_score", "high_score", "number_of_lives", "items_in_inventory", "power_ups", "ammo", "enemies_on_screen", "enemy_kills", "enemy_kill_streaks", "minutes_played", "notifications", "achievements"] 
-game_properties = {}.fromkeys(game_properties, 0)
+print()
 
 # Exercise 3: Spotify Playlist Duration
 # Given a playlist dictionary, calculate the total length of all songs in the playlist and update the playlist dictionary with this new key-value pair.
@@ -556,81 +356,72 @@ playlist = {
         }
     ]
 }
-total_duration = sum(song.duration for song in playlist.songs)
-playlist.update({'total_duration': total_duration})
+print()
 
 # Exercise 4: String to Dictionary
 # Given two strings, str1 and str2, create a dictionary with str1 characters as keys and str2 characters as corresponding values.
 str1 = 'ABC'
 str2 = '123'
-print({str1[i]:str2[i] for i in range(len(str1))})
+print()
 
 # Exercise 5: Odd or Even Dictionary
 # Given a list of numbers, create a dictionary where the numbers are keys and the values indicate whether the number is odd or even.
 nums = range(1,6)
-print({n:'even' if n % 2 == 0 else 'odd' for n in nums})
+print()
 
 # Exercise 6: Update and Transform
 # Given a dictionary of an instructor, update the key "color" and its value to uppercase.
 my_dict = {'name': 'Blue', 'city': 'San Francisco', 'color': 'purple'}
-my_dict.update({'color': my_dict['color'].upper()})
-print(my_dict)
+print()
 
 # Exercise 7: Lists to Dictionary Without Zip
 # Given two lists, create a dictionary with list1 elements as keys and list2 elements as corresponding values without using the zip() function.
 list1 = ["CA", "NJ", "RI"]
 list2 = ["California", "New Jersey", "Rhode Island"]
-my_dict = {list1[i]:list2[i] for i in range(len(list1))}
-print(my_dict)
-print({state[0]:state[1] for state in zip(list1, list2)})
+print()
 
 # Exercise 8: List of Lists to Dictionary
 # Given a list of lists where each sublist contains two elements (a key and a value), convert this into a dictionary.
 person = [["name", "Jared"], ["job", "Musician"], ["city", "Bern"]]  
-person1 = dict(person)
-person2 = {k:v for k,v in person}
-print(person1)
-print(person2)
+print()
 
 # Exercise 9: Vowel Dictionary
 # Create a dictionary with each vowel as a key and all values set to 0.
-my_dict = {}.fromkeys('aeiou', 0)
-print(my_dict)
+print()
 
 # Exercise 10: ASCII Dictionary
 # Create a dictionary where the keys are numbers from 65 to 90 (inclusive), and the values are the corresponding ASCII characters (capital A-Z).
-my_dict = {k:chr(k) for k in range(65, 91)}
-print(my_dict)
+print()
 
 # ************* Exercise 17: Tuples & Sets *************
 
 # Exercise 1: Creating and Accessing Tuples
 print("Exercise 1: Creating and Accessing Tuples")
 # 1. Create a tuple named `numbers` containing the numbers 1 through 4.
-print((1,2,3,4))
+print()
 
 # 2. Convert the list `[1, 3, 3, 7]` into a tuple named `list_to_tuple`.
 list_to_tuple = tuple([1,3,3,7])
-print("List to Tuple:", list_to_tuple)
+print()
 
 # 3. Access and print the second element of the tuple `(1, 3, (3, 7))`.
 complex_tuple = (1, 3, (3, 7))
-print("Second Element of Complex Tuple:", complex_tuple[2])
+print()
 
 # 4. Create a tuple containing just the number 1 named `single_element_tuple`.
 single_element_tuple = (1,)
-print("Single Element Tuple:", single_element_tuple)
+print()
 
 # Exercise 2: Tuple Methods
 print("\nExercise 2: Tuple Methods")
 values = (1, 3, 3, 7)
 
 # 1. Count how many times `3` appears in the tuple `values`.
-count_three = values.count(3)
+count_three = None
 print("Number of 3s:", count_three)
 
 # 2. Find the index of the number `7` in the tuple `values`.
-index_seven = values.index(7)
+index_seven = None
 print("Index of 7:", index_seven)
 
 # Sets Exercises
@@ -638,7 +429,7 @@ print("Index of 7:", index_seven)
 # Exercise 3: Working with Sets
 print("\nExercise 3: Working with Sets")
 # 1. Create a set and demonstrate adding a duplicate.
-unique_numbers = {1,3,3,7}
+unique_numbers = None
 unique_numbers
 print("Unique Numbers Set:", unique_numbers)
 
