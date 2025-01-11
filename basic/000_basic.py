@@ -434,11 +434,11 @@ unique_numbers
 print("Unique Numbers Set:", unique_numbers)
 
 # 2. Set comprehension to create squares from 0 to 9.
-squares = {n**2 for n in range(10)}
+squares = None
 print("Squares Set:", squares)
 
 # 3. Count unique vowels in 'sequoia'.
-unique_vowels_count = {c for c in 'sequoia' if c in 'aeiou'}
+unique_vowels_count = None
 print("Unique Vowels Count in 'sequoia':", len(unique_vowels_count))
 
 # Exercise 4: Advanced Set Operations
@@ -447,30 +447,30 @@ set1 = {1, 2, 3}
 set2 = {3, 4, 5}
 
 # Add `6` to `set1`.
-set1.add(6)
+None
 print("Set1 after adding 6:", set1)
 
 # Remove `2` from `set1` using .remove() method.
-set1.remove(2)
+None
 print("Set1 after removing 2:", set1)
 
 # Use .discard() method to remove `5` from `set2`.
-set2.remove(5)
+None
 print("Set2 after discarding 5:", set2)
 
 # Union of `set1` and `set2`.
-union_set = set1 | set2
+None
 print("Union of Set1 and Set2:", union_set)
 
 # Intersection of `set1` and `set2`.
-intersection_set = set1 & set2
+None
 print("Intersection of Set1 and Set2:", intersection_set)
 
 # Demonstrate .copy() and .clear() methods.
 sample_set = {1, 2, 3, 4, 5}
-sample_set_copy = sample_set.copy()
+sample_set_copy = None
 print("Copy of Sample Set:", sample_set_copy)
-sample_set.clear()
+None
 print("Sample Set after clearing:", sample_set)
 
 # ************* Exercise 18: Functions *************
