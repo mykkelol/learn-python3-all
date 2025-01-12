@@ -476,56 +476,51 @@ print("Sample Set after clearing:", sample_set)
 # ************* Exercise 18: Functions *************
 # Exercise 1: Return the Day of the Week
 def return_day(n):
-    return ["Sunday","Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday"][n-1]
+    pass
 print(return_day(1))
 
 # Exercise 2: Count Letter Occurrences
 def multiple_letter_count(string):
-    return {c:string.lower().count(c) for c in string.lower()}
+    pass
 print(multiple_letter_count('SAturday'))
 
 # Exercise 3: Check if a String is a Palindrome
 def check_palindrome(string):
-    parsed_str = string.lower()
-    return parsed_str == parsed_str[::-1]
+    pass
 print(check_palindrome('racecar'))
 
 # Exercise 4: Product of All Even Numbers
 def product_of_even(nums):
-    product = 1
-    for n in nums:
-        if n % 2 == 0:
-            product *= n
-    return product
+    pass
 print(product_of_even([1,2,3,4,5]))
 
 # Exercise 5: Capitalize a String
 def capitalize_string(string):
-    return string[0].upper() + string[1:]
+    pass
 print(capitalize_string('test'))
 
 # Exercise 6: Filter Truthy Values
 def compact(collection):
-    return [truth for truth in collection if truth]
+    pass
 print(compact([0, 1, True, False, None, '', 'Test']))
 
 # Exercise 7: Intersection of Two Lists
 def intersection(collection1, collection2):
-    return list(set(collection1) & set(collection2))
+    pass
 print(intersection([1,2,3,4],[2,4,6,8]))
 
 # Exercise 8: Partition List Based on a Callback
 def isEven(num):
-    return num % 2 == 0
+    pass
 
 def partition(nums, callback):
-    return [[n for n in nums if callback(n)], [n for n in nums if not callback(n)]]
+    pass
 
 print(partition([1,2,3,4,5], isEven))
 
 # Exercise 9: Understanding Function Parameters
 def all_my_friends(a, b, *numbers, word='woof', **words):
-    return f'{a, b, numbers, word, words}'
+    pass
 
 # Call the function to demonstrate parameter usage
 print(all_my_friends(1, 2, 3, beep=1, boop=2, bop=3))
@@ -533,16 +528,10 @@ print(all_my_friends(1, 2, 3, 4, 5, word='mewo', beep=1, boop=2, bop=3))
 
 # Exercise 10: Advanced Calculator
 def add(n1, n2):
-    return n1 + n2
+    pass
 
 def calculate(**kwargs):
-    operation = kwargs['operation']
-    first = kwargs['first']
-    second = kwargs['second']
-    make_float = kwargs['make_float']
-
-    calculated = operation(first, second)
-    return float(calculated) if make_float else calculated
+    pass
 
 print(calculate(operation=add, make_float=True, first=1, second=2))
 
@@ -563,16 +552,15 @@ print(calculate(operation='add', make_float=True, first=1, second=2))
 
 # Decrement List
 def decrement_list(l):
-    return list(map(lambda n: n - 1, l))
+    pass
 
 # Remove Negatives
 def remove_negatives(l):
-    return list(filter(lambda n: n >= 0, l))
+    pass
 
 # Check if All Elements are Strings
 def is_all_strings(lst):
-    return all(type(s) == str for s in lst)
-    # return len(list(filter(lambda s: type(s) == str, lst))) == len(lst)
+    pass
 
 # Sort Playlist by Length of Lyrics
 playlist = [
@@ -582,22 +570,22 @@ playlist = [
 ]
 
 def get_longest_lyrics_songs(playlist):
-    return sorted(playlist, key=lambda song: len(song.get('lyric')), reverse=True)[0]
+    pass
 
 def get_longest_lyrics(playlist):
-    return max(len(s['lyric']) for s in playlist)
+    pass
 
 # Get Min and Max from a List
 def get_extremes(l):
-    return (min(l), max(l))
+    pass
 
 # Max Magnitude
 def max_magnitude(l):
-    return max(abs(n) for n in l)
+    pass
 
 # Sum of Evens
 def sum_of_evens(*args):
-    return sum(n for n in args if n % 2 == 0)
+    pass
 
 # Student Average Grades
 students = ['aang', 'korra', 'sato']
@@ -605,16 +593,15 @@ finals = [98, 89, 99]
 midterms = [91, 95, 90]
 
 def student_avg_grades(students, finals, midterms):
-    return {student[0]:student[1] for student in zip(students, [sum(scores) / len(scores)  for scores in zip(finals, midterms)])}
+    pass
 
 # Interleave Strings
 def interleave(str1, str2):
-    return ''.join(''.join(pair) for pair in zip(str1, str2))
+    pass
 
 # Triple and Filter
 def triple_and_filter(lst):
-    return list(map(lambda n: n * 3, filter(lambda n: n % 4 == 0, lst)))
-    return [n * 3 for n in lst if n % 4 == 0]
+    pass
 
 # Demonstration of function calls
 print(decrement_list([1, 2, 3]))
@@ -777,7 +764,7 @@ if __name__ == "__main__":
 
 # Sum of all donations
 donations = dict(sam=25.0, lena=88.99, chuck=13.0, linus=99.5, stan=150.0, lisa=50.25, harrison=10.0)
-total_donations = sum(donations.get(donation) for donation in donations)
+total_donations = None
 
 # Setting initial game state
 game_properties = ["current_score", "high_score", "number_of_lives", "items_in_inventory", "power_ups", "ammo", "enemies_on_screen", "enemy_kills", "enemy_kill_streaks", "minutes_played", "notifications", "achievements"]
@@ -795,35 +782,30 @@ playlist = {
 
 # Calculating total length of playlist
 total_length = len(playlist['songs'])
-playlist['total_duration'] = total_length
+pass
 
 # Creating a dictionary from two strings
 str1, str2 = 'ABC', '123'
-my_dict = {str1[i]:str2[i] for i in range(len(str1))}
+my_dict = None
 
 # Dictionary comprehension with conditionals
 nums = range(1, 6)
-nums_dict = {n:'even' if n % 2 == 0 else 'odd' for n in nums}
+nums_dict = None
 
 # Updating a dictionary and converting specific keys/values to uppercase
 instructor = {'name': 'Blue', 'city': 'San Francisco', 'color': 'purple'}
-instructor.update({'color': instructor['color'].upper()})
-updated_instructor = instructor
 
 # Creating a dictionary from two lists without using zip()
 list1, list2 = ["CA", "NJ", "RI"], ["California", "New Jersey", "Rhode Island"]
-state_dict = {list1[i]:list2[i] for i in range(len(list1))}
-state_dict = {code:state_name for code, state_name in zip(list1, list2)}
 
 # Converting a list of lists into a dictionary
 person = [["name", "Jared"], ["job", "Musician"], ["city", "Bern"]]
-person_dict = {k:v for k,v in person}
 
 # Creating a dictionary with vowels as keys and 0 as default value
-vowel_dict = {}.fromkeys('aeiou', 0)
+vowel_dict = None
 
 # Dictionary of ASCII values for capital letters A-Z
-ascii_dict = {c:chars(c) for c in range(65, 91)}
+ascii_dict = None
 
 # Demonstration of function calls and variable values
 print("Total Donations:", total_donations)
