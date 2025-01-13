@@ -11,15 +11,6 @@
     reverse_between()
 """
 
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.next = None
-
-class LinkedList:
-    def __init__(self, value):
-        pass
-
 # ************* Doubly Linked List *************
 # Create DoublyLinkedList and Node classes
 # DLL class should have append, pop, prepend, pop_first, get, set_value, insert, remove, and print_list methods
@@ -30,16 +21,6 @@ class LinkedList:
     pairwise_swap_values()
     pairwise_swap_nodes()
 """
-
-class Node:
-    def __init__(self, value):
-        self.value = value
-        self.next = None
-        self.prev = None
-
-class DoublyLinkedList:
-    def __init__(self, value):
-        pass
 
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
