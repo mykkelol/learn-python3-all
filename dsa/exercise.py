@@ -133,7 +133,20 @@ class LinkedList:
             temp.next = before
             before = temp
             temp = after
+
+    def find_middle_node(self):
+        slow = self.head
+        fast = self.head
+
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+            
+        return slow
     
+    def partition_list(self):
+        pass
+
     def print_list(self):
         temp = self.head
         while temp:
@@ -144,8 +157,10 @@ my_ll = LinkedList(1)
 my_ll.append(2)
 my_ll.append(3)
 my_ll.append(4)
+my_ll.append(5)
 my_ll.print_list()
 print('-------')
+print(my_ll.find_middle_node())
 my_ll.reverse()
 my_ll.print_list()
 
