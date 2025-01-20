@@ -162,6 +162,8 @@ class LinkedList:
             current.next = node_to_move.next #5
             node_to_move.next = prev.next #3
             prev.next = node_to_move
+
+        self.head = dummy.next
     
     def print_list(self):
         temp = self.head
