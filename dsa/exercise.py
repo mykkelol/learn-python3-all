@@ -147,6 +147,22 @@ class LinkedList:
     def partition_list(self):
         pass
 
+    def reverse_between(self, start, end):
+        dummy = Node(0)
+        dummy.next = self.head
+        prev = dummy
+
+        for _ in range(start):
+            prev = prev.next
+
+        current = prev.next
+
+        for _ in range(end - start):
+            node_to_move = current.next #4
+            current.next = node_to_move.next #5
+            node_to_move.next = prev.next #3
+            prev.next = node_to_move
+    
     def print_list(self):
         temp = self.head
         while temp:
