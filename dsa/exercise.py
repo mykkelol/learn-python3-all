@@ -144,8 +144,11 @@ class LinkedList:
             
         return slow
     
-    def partition_list(self):
-        pass
+    def partition_list(self, x):
+        # 3 > 8 > 5 > 10 > 2 > 1 with x = 5
+        # 3 > 2 > 1 > 8 > 5 > 10
+        dummy1 = Node(0)
+        dummy2 = Node(0)
 
     def reverse_between(self, start, end):
         dummy = Node(0)
@@ -164,7 +167,7 @@ class LinkedList:
             prev.next = node_to_move
 
         self.head = dummy.next
-    
+
     def print_list(self):
         temp = self.head
         while temp:
@@ -176,6 +179,9 @@ my_ll.append(2)
 my_ll.append(3)
 my_ll.append(4)
 my_ll.append(5)
+my_ll.print_list()
+print('-------')
+my_ll.partition_list(5)
 my_ll.print_list()
 print('-------')
 print(my_ll.find_middle_node())
