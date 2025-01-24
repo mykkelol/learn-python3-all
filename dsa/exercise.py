@@ -143,6 +143,17 @@ class LinkedList:
             fast = fast.next.next
             
         return slow
+
+    def find_kth_from_end(self, k):
+        if k > self.length:
+            return -1
+        
+        temp = self.head
+        for i in range(self.length):
+            if self.length - k == i:
+                return temp
+            temp = temp.next
+        return None
     
     def partition_list(self, x):
         # 3 > 8 > 5 > 10 > 2 > 1 with x = 5
