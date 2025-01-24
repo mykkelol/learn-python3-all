@@ -146,6 +146,13 @@ class LinkedList:
             
         return False
     
+    def binary_to_decimal(self):
+        temp = self.head
+        decimal = 0
+        while temp:
+            decimal = (decimal * 2) + temp.value
+        return decimal
+
     def find_middle_node(self):
         slow = self.head
         fast = self.head
