@@ -334,6 +334,12 @@ class DoublyLinkedList:
                 temp = temp.prev
         return temp
     
+    def set_value(self, index, value):
+        temp = self.get(index)
+        if temp is None:
+            return False
+        temp.value = value
+        return True
 
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
