@@ -376,7 +376,25 @@ class DoublyLinkedList:
 
         self.length -= 1
         return True
+    
+    def swap_first_last(self):
+        if self.length <= 1:
+            return False
+        self.head.value, self.tail.value = self.tail.value, self.head.value
+        return True
 
+    def reverse(self):
+        pass
+
+    def is_palindrome(self):
+        pass
+
+    def pairwise_swap_values(self):
+        pass
+
+    def pairwise_swap_nodes(self):
+        pass
+    
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
 # Stack class should have push, pop, and print_stack
