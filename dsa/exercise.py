@@ -360,6 +360,12 @@ class DoublyLinkedList:
         self.length += 1
         return True
     
+    def print_list(self):
+        temp = self.head
+        while temp:
+            print(temp.value)
+            temp = temp.next
+    
     def remove(self, index):
         if index < 0 or index >= self.length:
             return False
@@ -384,7 +390,14 @@ class DoublyLinkedList:
         return True
 
     def reverse(self):
-        pass
+        if self.length <= 1:
+            return False
+        temp = self.head
+        while temp:
+            temp.prev, temp.next = temp.next, temp.prev
+            temp = temp.prev
+        self.head, self.tail = self.tail, self.head
+        return True
 
     def is_palindrome(self):
         pass
