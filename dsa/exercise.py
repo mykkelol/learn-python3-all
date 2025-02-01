@@ -400,14 +400,17 @@ class DoublyLinkedList:
         return True
 
     def is_palindrome(self):
-        pass
+        if self.length <= 1:
+            return True
+        front = self.head
+        back = self.tail
+        for _ in range(self.length // 2):
+            if front.value is not back.value:
+                return False
+            front = front.next
+            back = back.prev
+        return True
 
-    def pairwise_swap_values(self):
-        pass
-
-    def pairwise_swap_nodes(self):
-        pass
-    
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
 # Stack class should have push, pop, and print_stack
