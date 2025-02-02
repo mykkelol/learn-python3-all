@@ -411,6 +411,15 @@ class DoublyLinkedList:
             back = back.prev
         return True
 
+    def pairwise_swap_values(self):
+        if self.length <- 1:
+            return False
+        temp = self.head
+        while temp:
+            temp.value, temp.next.value = temp.next.value, temp.value
+            temp = temp.next
+        return True
+
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
 # Stack class should have push, pop, and print_stack
