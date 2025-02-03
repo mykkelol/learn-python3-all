@@ -412,13 +412,38 @@ class DoublyLinkedList:
         return True
 
     def pairwise_swap_values(self):
-        if self.length <- 1:
+        if self.length <= 1:
             return False
         temp = self.head
         while temp:
             temp.value, temp.next.value = temp.next.value, temp.value
             temp = temp.next
         return True
+
+    def pairwise_swap(self):
+        if self.length <= 1:
+            return False
+        dummy = Node(0)
+        dummy.next = self.head
+        prev = dummy
+
+        while prev.next and prev.next.next:
+            first = prev.next
+            second = first.next
+
+            prev.next = second
+            first.next = second.next
+            second.next = first
+
+            second.prev = prev
+            first.prev = second
+            if first.next:
+                first.next.prev = first
+
+            prev = first
+
+        self.head = dummy.next
+        self.head.prev = None
 
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
