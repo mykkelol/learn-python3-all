@@ -62,7 +62,61 @@
 # Create Account class that can deposit, withdraw, transfer funds to another account, and record a transaction (type, amount, timestamp)
 # Create Bank class that can get_top_k_accounts_by_outgoing, add, and get Account
 # -----------------------------------------------------------------------------
+from datetime import datetime
 
+class Account:
+    def __init__(self, account_number, balance = 0):
+        self.account_number = account_number
+        self.balance = balance
+        self.transactions = []
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            self.transaction({'type': 'deposit', 'amount': amount, 'timestamp': datetime.now()})
+            return True
+        else:
+            print('Amount cannot be 0')
+        return False
+    
+    def withdraw(self, amount):
+        if amount > 0:
+            if amount >= self.balance:
+                self.balance -= amount
+                self.transaction({'type': 'withdraw', 'amount': amount, 'timestamp': datetime.now()})
+                return True
+            else:
+                print('Insufficient funds')
+        else:
+            print('Amount cannot be 0')
+        return False
+    
+    def transfer_funds(self, receiver, amount):
+        if amount > 0:
+            if amount >= self.balance:
+                receiver.deposit(amount)
+                print('Funds successfully transferred!')
+                return True
+            else:
+                print('Insufficient funds')
+        else:
+            print('Amount cannot be 0')
+        return False
+    
+class Bank:
+    def __init__(self):
+        self.accounts = []
+
+    def add_account(self, account):
+        self.accounts.append(account)
+    
+    def get_account(self, account_number):
+        return next((account for account in self.accounts if account.account_number == account_number), None)
+    
+    def get_top_k_accounts_by_outgoing(self, k):
+        sorted_accounts = sorted(self.accounts, key=lambda account: sum(t['amount'] for t in account.transactions if t['type'] == 'withdraw'), reverse=True)
+        return sorted_accounts[:k]
+    
 # ************* Exercise 1: Basics *************
 
 # Task 1: Create the `create_smile_armies` function that accepts a number of armies and a number of rows per army, returning armies of smilies.
