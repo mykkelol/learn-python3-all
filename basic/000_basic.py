@@ -148,11 +148,15 @@ print(intersection([1,2,3,4],[3,1,5,2,3]))
 
 # Task 1: Create the `lower_reversal` function that accepts a list of names, returning a list of it reversed and lowercase.
 def lower_reversal(names):
-    pass
+    return [name.lower()[::-1] for name in names]
+
+print(lower_reversal(['JOHN', 'Jane', 'JACK']))
 
 # Task 2: Create the `get_n_matrix` function that accepts an N and returns an NxN matrix of stars.
-def get_n_matrix(N):
-    pass
+def get_n_matrix(n):
+    return [['*' * n for i in range(n)] for j in range(n)]
+
+print(get_n_matrix(3))
 
 # ************* Exercise 3: Dict, Tuple, Set *************
 
