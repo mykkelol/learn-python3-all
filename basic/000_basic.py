@@ -128,11 +128,17 @@ class Bank:
 
 # Task 1: Create the `create_smile_armies` function that accepts a number of armies and a number of rows per army, returning armies of smilies.
 def create_smile_armies(num_of_armies, num_of_rows):
-    pass
+    for j in range(num_of_armies):
+        for i in range(num_of_rows):
+            print('😀' * (i + 1))
+            
+create_smile_armies(3, 3)
 
 # Task 2: Create the `intersection` function that accepts two lists and returns a list of their intersection.
 def intersection(a, b):
-    pass
+    return [value for value in a if value in b]
+
+print(intersection([1,2,3,4],[3,1,5,2,3]))
 
 # ************* Exercise 2: List *************
 
