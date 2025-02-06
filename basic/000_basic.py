@@ -124,6 +124,10 @@ class Bank:
         sorted_accounts = sorted(self.accounts, key=lambda account: sum(t['amount'] for t in account.transactions if t['type'] == 'withdraw'), reverse=True)
         return sorted_accounts[:k]
     
+    def get_top_k_accounts_by_volume(self, k):
+        sorted_accounts = sorted(self.accounts, key=lambda account: len(account.transactions), reverse=True)
+        return sorted_accounts[:k]
+    
 # ************* Exercise 1: Basics *************
 
 # Task 1: Create the `create_smile_armies` function that accepts a number of armies and a number of rows per army, returning armies of smilies.
