@@ -162,23 +162,28 @@ print(get_n_matrix(3))
 
 # Task 1: Create the `dict_it_up` function that accepts str1 and str2, returning two dicts.
 def dict_it_up(str1, str2):
-    pass
+    return {str1[i]:str2[i] for i in range(len(str2))}
+print(dict_it_up('abc', '123'))
 
 # Task 2: Create the `do_it_all` function that accepts a list, converts it into a tuple, and returns a unique list.
 def do_it_all(nums):
-    pass
+    return list(set(tuple(nums)))
+print(do_it_all([1,2,3,4,4,3]))
 
 # Task 3: Create the `multiple_letter_count` function that accepts a string and returns a dict that counts the number of occurrences of each letter.
 def multiple_letter_count(string):
-    pass
+    return {c: string.count(c) for c in string}
+print(multiple_letter_count('mississipi'))
 
 # Task 4: Create the `check_palindrome` function that accepts a string and returns a boolean indicating if it's a palindrome.
 def check_palindrome(string):
-    pass
+    return string == string[::-1]
+print(check_palindrome('racecar'))
 
 # Task 5: Create the `intersection_join` function that returns a list of intersections between two lists using join.
 def intersection_join(a, b):
-    pass
+    return list(set(a) & set(b))
+print(intersection_join([1,2,3],[2,3,4]))
 
 # ************* Exercise 4: Lambda, *args, *kwargs *************
 
