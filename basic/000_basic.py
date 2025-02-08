@@ -189,36 +189,50 @@ print(intersection_join([1,2,3],[2,3,4]))
 
 # Task 1: Create the `partition` function given a list of nums and a callback that validates each element.
 def isEven(num):
-    pass
+    return num % 2 == 0
     
 def partition(nums, callback):
-    pass
+    return [[n for n in nums if callback(n)], [n for n in nums if not callback(n)]]
+
+print(partition([1,2,3,4,5], isEven))
 
 # Task 2: Create the `all_my_friends` function to understand *args and **kwargs.
 def all_my_friends(a, b, *numbers, word='woof', **words):
-    pass
+    return f'{a}, {b}, {numbers}, {word}, {words}'
 
 print(all_my_friends('Elon', 'Jeff', 1,2,3,4, word='ruff',bob='purple'))
 
 # Task 3: Create the `decrement_list` function that accepts a list of nums and returns a list with all elements decremented by 1.
 def decrement_list(l):
-    pass
+    return [n - 1 for n in l]
+print(decrement_list([1,2,3,4,5]))
 
 # Task 4: Create the `is_all_strings` function that accepts a list and returns a boolean if the list contains all strings.
 def is_all_strings(l):
-    pass
+    return all(type(s) == str for s in l)
+print(is_all_strings(['s', 1]))
+print(is_all_strings(['s', '1']))
 
 # Task 5: Create the `get_longest_lyrics_songs` function that accepts a playlist and returns it sorted by longest lyrics.
 def get_longest_lyrics_songs(l):
-    pass
+    return sorted(l, key=lambda song: len(song['lyric']),reverse=True)
 
 # Task 6: Create the `max_magnitude` function that returns the max magnitude (furthest from zero) given a list.
 def max_magnitude(l):
-    pass
+    return max(abs(n) for n in l)
 
 # Task 7: Given three lists of student names, midterm grades, and final grades, create a function that returns a dict of students and their average grades.
 def student_avg_grades(students, finals, midterms):
-    pass
+    list_approach = {student[0]: (student[1] + student[2])/ 2 for student in zip(students, finals, midterms)}
+
+    lambda_approach = dict(
+        zip(
+            students,
+            map(lambda pair: sum(pair) / len(pair), zip(finals, midterms))
+        )
+    )
+
+    return lambda_approach
 
 students = ['aang', 'korra', 'sato']
 finals = [98, 89, 99]
@@ -227,7 +241,8 @@ print(student_avg_grades(students, finals, midterms))
 
 # Task 8: Create the `interleave` function that returns one string interwoven from two provided strings.
 def interleave(str1, str2):
-    pass
+    return ''.join(''.join(pair) for pair in zip(str1, str2))
+print(interleave('spar','tan'))
 
 # ************* Exercise 5: Debugging *************
 
