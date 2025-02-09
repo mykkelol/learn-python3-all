@@ -277,7 +277,7 @@ class User:
     def from_csv(data):
         pass
     
-    def __init__(self, username, age, type= 'member'):
+    def __init__(self, username, age, type='member'):
         self.username = username,
         self.age = age,
         self.type = type,
@@ -289,21 +289,25 @@ class User:
         return f'{self.username} is online and has {self.likes} likes'
 
     def logout(self):
-        pass
+        self._status = 'offline'
+        User.active_users -= 1
     
     def add_like(self):
-        pass
+        self.likes += 1
     
-    def change_username(self):
-        pass
+    def change_username(self, username):
+        self.username = username
 
     @property
     def status(self):
-        pass
+        return self._status
 
     @status.setter
-    def status(self):
-        pass
+    def status(self, status):
+        if status == 'banned':
+            self._status = status
+            self.logout()
+            User.banned_users.append(self.username)
 
 # ************* Exercise 7: Iterators & Generators *************
 
