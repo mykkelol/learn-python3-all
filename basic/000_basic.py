@@ -274,8 +274,9 @@ class User:
     banned_users = []
 
     @classmethod
-    def from_csv(data):
-        pass
+    def from_csv(cls, csv):
+        username, age = csv.split(',')
+        return cls(username, int(age))
     
     def __init__(self, username, age, type='member'):
         self.username = username,
@@ -308,6 +309,23 @@ class User:
             self._status = status
             self.logout()
             User.banned_users.append(self.username)
+
+class Admin:
+    active_admins = 0
+
+    def __init__(self, username, age, type='admin'):
+        super().__init__(username, age, type)
+        Admin.active_admins += 1
+        self.users_banned = []
+
+    def __repr__(self):
+        pass
+
+    def ban_user(self, username):
+        pass
+
+    def logout(self):
+        pass
 
 # ************* Exercise 7: Iterators & Generators *************
 
