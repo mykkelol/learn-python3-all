@@ -261,13 +261,49 @@ def divide(num1, num2):
 # Task 1: Create a class `User` with specified attributes and methods.
 
 # create class User that has class attributes, active_users and banned_users
-# the class should have three instance attributes: username, likes, age
+# the class should have three instance attributes: username, likes, age, type
 # the class should have three instance methods: logout, add_like, change_username
 # the class should have one class method: from_csv
-# the class should have three methods to access and write a private instance property: status
+# the class should have two methods to access and write a private instance property: status
 # the class should print the username and total likes
 # create class Admin that inherits User with attributes (users_banned, active_admins) and methods (ban_user)
 # the class Admin should leverage polymorphism when Admin logs out
+
+class User:
+    active_users = 0
+    banned_users = []
+
+    @classmethod
+    def from_csv(data):
+        pass
+    
+    def __init__(self, username, age, type= 'member'):
+        self.username = username,
+        self.age = age,
+        self.type = type,
+        self.likes = 0,
+        self._status = 'online'
+        User.active_users += 1
+
+    def __repr__(self):
+        return f'{self.username} is online and has {self.likes} likes'
+
+    def logout(self):
+        pass
+    
+    def add_like(self):
+        pass
+    
+    def change_username(self):
+        pass
+
+    @property
+    def status(self):
+        pass
+
+    @status.setter
+    def status(self):
+        pass
 
 # ************* Exercise 7: Iterators & Generators *************
 
