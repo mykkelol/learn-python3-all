@@ -402,54 +402,63 @@ def your_kms():
 
 # Task 1.1: Retrieve the last element using negative indexing
 numbers = [10, 20, 30, 40, 50]
-print()
+print(numbers[-1])
 
 # Task 1.2: Create a reversed version of numbers using slicing
-print()
+print(numbers[::-1])
 
 # Task 2.1: Join the fruits into a string separated by commas
 fruits = ['apple', 'banana', 'cherry']
-print()
+print(','.join(fruits))
 
 # Task 2.2: Count how many times 4 appears in the list
 numbers = [1, 2, 3, 4, 4, 4, 5]
-print()
+print(numbers.count(4))
 
 # Task 2.3: Replace 2, 3, 4 with 'a', 'b', 'c' using slicing
-print()
+numbers[1:4] = ['a', 'b', 'c']
+print(numbers)
 
 # Task 2.4: Swap the elements in the list without using temporary variables
 words = ['hello', 'world']
-print()
+words[0], words[1] = words[1], words[0]
+print(words)
 
 # Task 3.1: Append 'green' to colors
 colors = ['red', 'blue']
-print()
+print(colors.append('green'))
 
 # Task 3.2: Extend colors with ['yellow', 'purple']
-print()
+print(colors.extend(['yellow', 'purple']))
 
 # Task 3.3: Insert 'orange' at the beginning of the colors list
-print()
+print(colors.insert('orange'))
 
 # Task 3.4: Remove 'blue' from the colors list
-print()
+print(colors.pop(1))
 
 # Task 3.5: Pop the last element from colors and print it
-print()
+print(colors.pop())
 
 # Task 4.1: Create a list of even numbers from nums using slicing
 nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-print()
+print(nums[1::2])
 
 # Task 4.2: Reverse the nums list in-place
-print()
+print(nums[::-1])
 
 # Task 4.3: Create a shallow copy of nums and prove it's a shallow copy
-print()
+nums1 = nums
+nums2 = nums[:]
+print(nums1 is nums)
+print(nums2 is nums)
+print(nums1 == nums)
+print(nums2 == nums)
 
 # Task 4.4: Reverse the order of the first three elements in chars
-print()
+chars = ['a', 'b', 'c', 'd', 'e']
+chars[:3] = chars[2::-1]
+print(chars)
 
 # Bonus: Explain the difference between list_a == list_a[:] and list_a is list_a[:]
 # When slicing, i.e. list_a[:], Python creates a shallow copy of the initial list
