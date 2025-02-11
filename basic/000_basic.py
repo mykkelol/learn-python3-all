@@ -337,7 +337,14 @@ class Admin:
 
 # Task 1: Write a function that generates a Fibonacci sequence up to a given length.
 def get_fib_list(n):
-    pass
+    nums = []
+    for i in range(n):
+        if i == 0 or i == 1:
+            nums.append(1)
+        else:
+            nums.append(nums[i - 1] + nums[i - 2])
+    return nums
+print(get_fib_list(10))
 
 # Task 2: Write a generator function that generates a Fibonacci sequence up to a given integer.
 def get_fib_generator(max):
