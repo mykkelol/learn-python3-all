@@ -470,36 +470,36 @@ print(chars)
 
 # Task 1: Return the first letter of each name in the list names
 names = ["Elie", "Tim", "Matt"]
-print()
+print([name[:-1] for name in names])
 
 # Task 2: Return all even numbers between 1 to 6
-print()
+print([n for n in range(7) if n % 2 == 0])
 
 # Task 3: Find the intersection between two lists (elements present in both lists)
 list_a = [1, 2, 3, 4]
 list_b = [3, 4, 5, 6]
-print()
+print([n for n in list_a if n in list_b])
 
 # Task 4: Reverse each name in the list names and convert them to lowercase
 names = ["Elie", "Tim", "Matt"]
-print()
+print([name.lower()[::-1] for name in names])
 
 # Task 5: Return a list of numbers between 1 and 100 that are divisible by 12
-print()
+print([n for n in range(101) if n % 12])
 
 # Task 6: Convert the string "amazing" to a list containing all its letters except for vowels
 word = 'amazing'
-print()
+print([c for c in ''.split(word) if c in 'aeiou'])
 
 # Task 7: Print all coordinates from a list of location coordinates
 locations = [[10.423, 9.123], [37.212, -14.092], [21.367, 32.572]]
-print()
+[print(location) for location in locations]
 
 # Task 8: Return a 3x3 matrix filled with stars
-print()
+print([['*' * 3 for i in range(3)] for j in range(3)])
 
 # Task 9: Return nested lists of [0, 1, 2] three times
-print()
+print([[n for n in range(3)] for j in range(3)])
 
 # ************* Exercise 16: Dictionary *************
 
