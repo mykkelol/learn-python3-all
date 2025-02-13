@@ -506,12 +506,13 @@ print([[n for n in range(3)] for j in range(3)])
 # Exercise 1: Sum of Donations
 # Given a dictionary of donations, calculate the total amount of donations.
 donations = dict(sam=25.0, lena=88.99, chuck=13.0, linus=99.5, stan=150.0, lisa=50.25, harrison=10.0)
-print()
+print(sum(donation for k,donation in donations.items()))
+print(sum(donations[donator] for donator in donations))
 
 # Exercise 2: Initial Game State
 # Set an initial state value of 0 for all game properties listed in the game_properties list.
 game_properties = ["current_score", "high_score", "number_of_lives", "items_in_inventory", "power_ups", "ammo", "enemies_on_screen", "enemy_kills", "enemy_kill_streaks", "minutes_played", "notifications", "achievements"] 
-print()
+print({}.fromkeys(game_properties, 0))
 
 # Exercise 3: Spotify Playlist Duration
 # Given a playlist dictionary, calculate the total length of all songs in the playlist and update the playlist dictionary with this new key-value pair.
@@ -531,42 +532,46 @@ playlist = {
         }
     ]
 }
-print()
+playlist['total_duration'] = sum(song['duration'] for song in playlist.get('songs'))
+playlist['total_songs'] = len(playlist.get('songs'))
+print(playlist)
 
 # Exercise 4: String to Dictionary
 # Given two strings, str1 and str2, create a dictionary with str1 characters as keys and str2 characters as corresponding values.
 str1 = 'ABC'
 str2 = '123'
-print()
+print({k:v for k,v in zip(tuple(str1), tuple(str2))})
 
 # Exercise 5: Odd or Even Dictionary
 # Given a list of numbers, create a dictionary where the numbers are keys and the values indicate whether the number is odd or even.
 nums = range(1,6)
-print()
+print({n:'even' if n % 2 == 0 else 'odd' for n in nums})
 
 # Exercise 6: Update and Transform
 # Given a dictionary of an instructor, update the key "color" and its value to uppercase.
 my_dict = {'name': 'Blue', 'city': 'San Francisco', 'color': 'purple'}
-print()
+my_dict.update({'color': my_dict['color'].upper()})
+print(my_dict)
 
 # Exercise 7: Lists to Dictionary Without Zip
 # Given two lists, create a dictionary with list1 elements as keys and list2 elements as corresponding values without using the zip() function.
 list1 = ["CA", "NJ", "RI"]
 list2 = ["California", "New Jersey", "Rhode Island"]
-print()
+print({list1[i]:list2[i] for i in range(len(list1))})
+print({pair[0]:pair[1] for pair in zip(list1, list2)})
 
 # Exercise 8: List of Lists to Dictionary
 # Given a list of lists where each sublist contains two elements (a key and a value), convert this into a dictionary.
 person = [["name", "Jared"], ["job", "Musician"], ["city", "Bern"]]  
-print()
+print({attribute[0]:attribute[1] for attribute in person})
 
 # Exercise 9: Vowel Dictionary
 # Create a dictionary with each vowel as a key and all values set to 0.
-print()
+print({}.fromkeys('aeiou', 0))
 
 # Exercise 10: ASCII Dictionary
 # Create a dictionary where the keys are numbers from 65 to 90 (inclusive), and the values are the corresponding ASCII characters (capital A-Z).
-print()
+print({n:chr(n) for n in range(65, 90)})
 
 # ************* Exercise 17: Tuples & Sets *************
 
