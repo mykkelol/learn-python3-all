@@ -578,30 +578,31 @@ print({n:chr(n) for n in range(65, 90)})
 # Exercise 1: Creating and Accessing Tuples
 print("Exercise 1: Creating and Accessing Tuples")
 # 1. Create a tuple named `numbers` containing the numbers 1 through 4.
-print()
+numbers = tuple(range(1,5))
+print(numbers)
 
 # 2. Convert the list `[1, 3, 3, 7]` into a tuple named `list_to_tuple`.
 list_to_tuple = tuple([1,3,3,7])
-print()
+print(list_to_tuple)
 
 # 3. Access and print the second element of the tuple `(1, 3, (3, 7))`.
 complex_tuple = (1, 3, (3, 7))
-print()
+print(complex_tuple[2][1])
 
 # 4. Create a tuple containing just the number 1 named `single_element_tuple`.
 single_element_tuple = (1,)
-print()
+print(single_element_tuple)
 
 # Exercise 2: Tuple Methods
 print("\nExercise 2: Tuple Methods")
 values = (1, 3, 3, 7)
 
 # 1. Count how many times `3` appears in the tuple `values`.
-count_three = None
+count_three = values.count(3)
 print("Number of 3s:", count_three)
 
 # 2. Find the index of the number `7` in the tuple `values`.
-index_seven = None
+index_seven = values.get(7)
 print("Index of 7:", index_seven)
 
 # Sets Exercises
