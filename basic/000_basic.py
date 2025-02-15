@@ -628,30 +628,30 @@ set1 = {1, 2, 3}
 set2 = {3, 4, 5}
 
 # Add `6` to `set1`.
-None
+set1.add(6)
 print("Set1 after adding 6:", set1)
 
 # Remove `2` from `set1` using .remove() method.
-None
+set1.remove(2)
 print("Set1 after removing 2:", set1)
 
 # Use .discard() method to remove `5` from `set2`.
-None
+set2.discard(5)
 print("Set2 after discarding 5:", set2)
 
 # Union of `set1` and `set2`.
-None
+union_set = set1 & set2
 print("Union of Set1 and Set2:", union_set)
 
 # Intersection of `set1` and `set2`.
-None
+intersection_set = set1 | set2
 print("Intersection of Set1 and Set2:", intersection_set)
 
 # Demonstrate .copy() and .clear() methods.
 sample_set = {1, 2, 3, 4, 5}
-sample_set_copy = None
+sample_set_copy = sample_set.copy()
 print("Copy of Sample Set:", sample_set_copy)
-None
+sample_set.clear()
 print("Sample Set after clearing:", sample_set)
 
 # ************* Exercise 18: Functions *************
