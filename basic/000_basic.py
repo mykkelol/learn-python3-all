@@ -657,12 +657,12 @@ print("Sample Set after clearing:", sample_set)
 # ************* Exercise 18: Functions *************
 # Exercise 1: Return the Day of the Week
 def return_day(n):
-    pass
+    return ["Sunday","Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday"][n-1]
 print(return_day(1))
 
 # Exercise 2: Count Letter Occurrences
 def multiple_letter_count(string):
-    pass
+    return {c:string.count(c) for c in string}
 print(multiple_letter_count('SAturday'))
 
 # Exercise 3: Check if a String is a Palindrome
