@@ -662,17 +662,18 @@ print(return_day(1))
 
 # Exercise 2: Count Letter Occurrences
 def multiple_letter_count(string):
-    return {c:string.count(c) for c in string}
+    return {c:string.lower().count(c) for c in string}
 print(multiple_letter_count('SAturday'))
 
 # Exercise 3: Check if a String is a Palindrome
 def check_palindrome(string):
-    pass
+    lower_string = string.lower()
+    return lower_string == lower_string[::-1]
 print(check_palindrome('racecar'))
 
 # Exercise 4: Product of All Even Numbers
 def product_of_even(nums):
-    pass
+    return all(n % 2 == 0 for n in nums)
 print(product_of_even([1,2,3,4,5]))
 
 # Exercise 5: Capitalize a String
