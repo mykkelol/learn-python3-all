@@ -678,17 +678,17 @@ print(product_of_even([1,2,3,4,5]))
 
 # Exercise 5: Capitalize a String
 def capitalize_string(string):
-    pass
+    return string.capitalize()
 print(capitalize_string('test'))
 
 # Exercise 6: Filter Truthy Values
 def compact(collection):
-    pass
+    return [c for c in collection if c]
 print(compact([0, 1, True, False, None, '', 'Test']))
 
 # Exercise 7: Intersection of Two Lists
 def intersection(collection1, collection2):
-    pass
+    return list(set(collection1) & set(collection2))
 print(intersection([1,2,3,4],[2,4,6,8]))
 
 # Exercise 8: Partition List Based on a Callback
