@@ -693,16 +693,15 @@ print(intersection([1,2,3,4],[2,4,6,8]))
 
 # Exercise 8: Partition List Based on a Callback
 def isEven(num):
-    pass
+    return num % 2 == 0
 
 def partition(nums, callback):
-    pass
-
+    return [[n for n in nums if callback(n)], [n for n in nums if not callback(n)]]
 print(partition([1,2,3,4,5], isEven))
 
 # Exercise 9: Understanding Function Parameters
 def all_my_friends(a, b, *numbers, word='woof', **words):
-    pass
+    return f'{a}, {b}, {numbers}, {word}, {words}'
 
 # Call the function to demonstrate parameter usage
 print(all_my_friends(1, 2, 3, beep=1, boop=2, bop=3))
@@ -710,10 +709,16 @@ print(all_my_friends(1, 2, 3, 4, 5, word='mewo', beep=1, boop=2, bop=3))
 
 # Exercise 10: Advanced Calculator
 def add(n1, n2):
-    pass
+    return n1 + n2
 
 def calculate(**kwargs):
-    pass
+    operation = kwargs['operation']
+    make_float = kwargs['make_float']
+    first = kwargs['first']
+    second = kwargs['second']
+
+    if operation is add:
+        return float(add(first, second) ) if make_float else add(first, second)
 
 print(calculate(operation=add, make_float=True, first=1, second=2))
 
