@@ -739,15 +739,15 @@ print(calculate(operation='add', make_float=True, first=1, second=2))
 
 # Decrement List
 def decrement_list(l):
-    pass
+    return [n-1 for n in l]
 
 # Remove Negatives
 def remove_negatives(l):
-    pass
+    return [n for n in l if n > 0]
 
 # Check if All Elements are Strings
 def is_all_strings(lst):
-    pass
+    return all(type(s) is str for s in lst)
 
 # Sort Playlist by Length of Lyrics
 playlist = [
