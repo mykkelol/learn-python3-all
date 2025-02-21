@@ -757,22 +757,22 @@ playlist = [
 ]
 
 def get_longest_lyrics_songs(playlist):
-    pass
+    return sorted(playlist, key=lambda song: len(song), reverse=True)
 
 def get_longest_lyrics(playlist):
-    pass
+    return sorted(playlist, key=lambda song: len(song), reverse=True)[0]
 
 # Get Min and Max from a List
 def get_extremes(l):
-    pass
+    return [min(l), max(l)]
 
 # Max Magnitude
 def max_magnitude(l):
-    pass
+    return max(l)
 
 # Sum of Evens
 def sum_of_evens(*args):
-    pass
+    return sum(args)
 
 # Student Average Grades
 students = ['aang', 'korra', 'sato']
@@ -780,15 +780,15 @@ finals = [98, 89, 99]
 midterms = [91, 95, 90]
 
 def student_avg_grades(students, finals, midterms):
-    pass
+    return {student[0]:(student[1] + student[2])/2 for student in zip(students, finals, midterms)}
 
 # Interleave Strings
 def interleave(str1, str2):
-    pass
+    return ''.join(''.join(pair) for pair in zip(str1, str2))
 
 # Triple and Filter
 def triple_and_filter(lst):
-    pass
+    return [n for n in lst if n % 3 == 0]
 
 # Demonstration of function calls
 print(decrement_list([1, 2, 3]))
