@@ -62,71 +62,6 @@
 # Create Account class that can deposit, withdraw, transfer funds to another account, and record a transaction (type, amount, timestamp)
 # Create Bank class that can get_top_k_accounts_by_outgoing, add, and get Account
 # -----------------------------------------------------------------------------
-from datetime import datetime
-
-class Account:
-    def __init__(self, account_number, balance = 0):
-        self.account_number = account_number
-        self.balance = balance
-        self.transactions = []
-
-    def record_transaction(self, type, amount):
-        self.transaction({
-            'type': type,
-            'amount': amount,
-            'timestamp': datetime.now()
-        })
-
-    def deposit(self, amount):
-        if amount > 0:
-            self.balance += amount
-            self.record_transaction('deposit', amount)
-            return True
-        else:
-            print('Amount cannot be 0')
-        return False
-    
-    def withdraw(self, amount):
-        if amount > 0:
-            if amount >= self.balance:
-                self.balance -= amount
-                self.record_transaction('withdraw', amount)
-                return True
-            else:
-                print('Insufficient funds')
-        else:
-            print('Amount cannot be 0')
-        return False
-    
-    def transfer_funds(self, receiver, amount):
-        if amount > 0:
-            if amount >= self.balance:
-                receiver.deposit(amount)
-                print('Funds successfully transferred!')
-                return True
-            else:
-                print('Insufficient funds')
-        else:
-            print('Amount cannot be 0')
-        return False
-    
-class Bank:
-    def __init__(self):
-        self.accounts = []
-
-    def add_account(self, account):
-        self.accounts.append(account)
-    
-    def get_account(self, account_number):
-        return next((account for account in self.accounts if account.account_number == account_number), None)
-    
-    def get_top_k_accounts_by_outgoing(self, k):
-        sorted_accounts = sorted(self.accounts, key=lambda account: sum(t['amount'] for t in account.transactions if t['type'] == 'withdraw'), reverse=True)
-        return sorted_accounts[:k]
-    
-    def get_top_k_accounts_by_volume(self, k):
-        sorted_accounts = sorted(self.accounts, key=lambda account: len(account.transactions), reverse=True)
-        return sorted_accounts[:k]
     
 # ************* Exercise 1: Basics *************
 
@@ -268,70 +203,6 @@ def divide(num1, num2):
 # the class should print the username and total likes
 # create class Admin that inherits User with attributes (users_banned, active_admins) and methods (ban_user)
 # the class Admin should leverage polymorphism when Admin logs out
-
-class User:
-    active_users = 0
-    banned_users = []
-
-    @classmethod
-    def from_csv(cls, csv):
-        username, age = csv.split(',')
-        return cls(username, int(age))
-    
-    def __init__(self, username, age, type='member'):
-        self.username = username,
-        self.age = age,
-        self.type = type,
-        self.likes = 0,
-        self._status = 'online'
-        User.active_users += 1
-
-    def __repr__(self):
-        return f'{self.username} is online and has {self.likes} likes'
-
-    def logout(self):
-        self._status = 'offline'
-        User.active_users -= 1
-    
-    def add_like(self):
-        self.likes += 1
-    
-    def change_username(self, username):
-        self.username = username
-
-    @property
-    def status(self):
-        return self._status
-
-    @status.setter
-    def status(self, status):
-        if status == 'banned':
-            self._status = status
-            self.logout()
-            User.banned_users.append(self.username)
-
-class Admin:
-    active_admins = 0
-
-    @classmethod
-    def get_active_admins(cls):
-        return cls.active_admins
-
-    def __init__(self, username, age, type='admin'):
-        super().__init__(username, age, type)
-        Admin.active_admins += 1
-        self.users_banned = []
-
-    def __repr__(self):
-        return f'{self.username} is online and there are now {Admin.active_admins} active admins'
-
-    def ban_user(self, user_banned, reason):
-        user_banned.status = 'banned'
-        self.users_banned.append({'user': user_banned.username, 'reason': reason})
-
-    def logout(self):
-        super().logout()
-        Admin.active_admins -= 1
 
 # ************* Exercise 7: Iterators & Generators *************
 
@@ -969,30 +840,33 @@ playlist = {
 
 # Calculating total length of playlist
 total_length = len(playlist['songs'])
-pass
 
 # Creating a dictionary from two strings
 str1, str2 = 'ABC', '123'
-my_dict = None
+my_dict = {str1[i]:str2[i] for i in range(len(str1))}
 
 # Dictionary comprehension with conditionals
 nums = range(1, 6)
-nums_dict = None
+nums_dict = {num:'even' if num % 2 == 0 else 'odd' for num in nums}
 
 # Updating a dictionary and converting specific keys/values to uppercase
 instructor = {'name': 'Blue', 'city': 'San Francisco', 'color': 'purple'}
+instructor.update({'color': instructor.get('color').upper()})
 
 # Creating a dictionary from two lists without using zip()
 list1, list2 = ["CA", "NJ", "RI"], ["California", "New Jersey", "Rhode Island"]
+state_dict = {state[0]:state[1] for state in zip(list1, list2)}
+state_dict = {list1[i]:list2[i] for i in range(len(list1))}
 
 # Converting a list of lists into a dictionary
 person = [["name", "Jared"], ["job", "Musician"], ["city", "Bern"]]
+person_dict = {attribute[0]:attribute[1] for attribute in person}
 
 # Creating a dictionary with vowels as keys and 0 as default value
-vowel_dict = None
+vowel_dict = {}.fromkeys('aeiou')
 
 # Dictionary of ASCII values for capital letters A-Z
-ascii_dict = None
+ascii_dict = {n:chr(n) for n in range(64, 101)}
 
 # Demonstration of function calls and variable values
 print("Total Donations:", total_donations)
@@ -1000,7 +874,7 @@ print("Initial Game State:", initial_game_state)
 print("Playlist with Total Duration:", playlist)
 print("Dictionary from Strings:", my_dict)
 print("Nums Dict (Odd/Even):", nums_dict)
-print("Updated Instructor Dict:", updated_instructor)
+print("Updated Instructor Dict:", instructor)
 print("State Dict:", state_dict)
 print("Person Dict:", person_dict)
 print("Vowel Dict:", vowel_dict)
