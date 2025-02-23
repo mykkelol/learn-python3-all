@@ -104,7 +104,20 @@ class Account:
             print('Insufficient funds')
             return False
 
+class Bank:
+    def __init__(self):
+        self.accounts = []
 
+    def add_account(self, account):
+        self.accounts.append(account)
+        return True
+
+    def get_account(self, account_number):
+        return dict(next((account for account in self.accounts if account.account_number == account_number), None))
+
+    def get_top_k_accounts_by_outgoing(self, k):
+        sorted_accounts = sorted(self.accounts, key=lambda account: sum(t['amount'] for t in account['transactions'] if t['type'] == 'withdraw' or t['type'] == 'transfer'), reverse=True)
+        return sorted_accounts[:k]
     
 # ************* Exercise 1: Basics *************
 
