@@ -87,7 +87,7 @@ class Account:
             return False
     
     def withdraw(self, amount):
-        if amount >= self.balance or amount > 0:
+        if amount <= self.balance and amount > 0:
             self.balance -= amount
             self.record_transaction(amount, 'withdraw')
             return True
@@ -113,12 +113,31 @@ class Bank:
         return True
 
     def get_account(self, account_number):
-        return dict(next((account for account in self.accounts if account.account_number == account_number), None))
+        return next((account for account in self.accounts if account.account_number == account_number), None)
 
     def get_top_k_accounts_by_outgoing(self, k):
-        sorted_accounts = sorted(self.accounts, key=lambda account: sum(t['amount'] for t in account['transactions'] if t['type'] == 'withdraw' or t['type'] == 'transfer'), reverse=True)
+        sorted_accounts = sorted(self.accounts, key=lambda account: sum(t['amount'] for t in account.transactions if t['type'] == 'withdraw' or t['type'] == 'transfer'), reverse=True)
+        return sorted_accounts[:k]
+
+    def get_top_k_accounts_by_volume(self, k):
+        sorted_accounts = sorted(self.accounts, key=lambda account: len(account.transactions), reverse=True)
         return sorted_accounts[:k]
     
+my_bank = Bank()
+account_num1 = '000239944411'
+account_num2 = '000239943123'
+my_account = Account(account_num1, 50)
+my_bank.add_account(my_account)
+my_account.deposit(5000)
+my_account.withdraw(1000)
+bozo_account = Account(account_num2)
+my_bank.add_account(bozo_account)
+bozo_account.withdraw(50)
+my_account.transfer(bozo_account, 500)
+print(my_bank.get_account(account_num1).balance)
+print(my_bank.get_account(account_num2).balance)
+print(my_bank.get_top_k_accounts_by_outgoing(1)[0].__dict__)
+
 # ************* Exercise 1: Basics *************
 
 # Task 1: Create the `create_smile_armies` function that accepts a number of armies and a number of rows per army, returning armies of smilies.
