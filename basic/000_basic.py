@@ -279,6 +279,49 @@ def divide(num1, num2):
 # create class Admin that inherits User with attributes (users_banned, active_admins) and methods (ban_user)
 # the class Admin should leverage polymorphism when Admin logs out
 
+class User:
+    active_users = 0
+    banned_users = []
+
+    @classmethod
+    def from_csv(cls, csv):
+        username, age = csv.split(',')
+        return cls(username, int(age))
+
+    def __init__(self, username, age, type = 'Member'):
+        self.username = username
+        self.age = age
+        self.type = type
+        self.likes = 0
+        self._status = 'online'
+
+    def __repr__(self):
+        return f'{self.username} is online with {self.likes} likes'
+    
+    def logout(self):
+        self.active_users -= 1
+        self._status = 'offline'
+
+    def add_like(self):
+        self.likes += 1
+
+    def change_username(self, username):
+        self.username = username
+
+    @property
+    def status(self):
+        return self._status
+    
+    @property.setter
+    def status(self, status):
+        if status == 'banned':
+            self._status = 'banned'
+            self.likes = 0
+            User.banned_users.append(self.username)
+            if self.status == 'active':
+                User.active_users -= 1
+            return True
+
 # ************* Exercise 7: Iterators & Generators *************
 
 # Task 1: Write a function that generates a Fibonacci sequence up to a given length.
