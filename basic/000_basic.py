@@ -345,8 +345,6 @@ class Admin(User):
         super().logout()
         Admin.active_admins -= 1
 
-        
-
 # ************* Exercise 7: Iterators & Generators *************
 
 # Task 1: Write a function that generates a Fibonacci sequence up to a given length.
