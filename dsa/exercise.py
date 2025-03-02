@@ -33,6 +33,17 @@ class LinkedList:
             self.tail = new_node
         self.length += 1
         return True
+    
+    def prepend(self, value):
+        new_node = Node(value)
+        if self.heaad is None:
+            self.head = value
+            self.tail = value
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self.length += 1
+        return True
 
 # ************* Doubly Linked List *************
 # Create DoublyLinkedList and Node classes
