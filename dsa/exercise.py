@@ -80,7 +80,7 @@ class LinkedList:
         return temp
     
     def get(self, index):
-        if index < 0 or self.length >= None:
+        if index < 0 or index >= self.length:
             return None
         temp = self.head
         for _ in range(index):
@@ -93,6 +93,21 @@ class LinkedList:
             return False
         temp.value = value
         return True
+    
+    def insert(self, index, value):
+        if index < 0 or index >= self.length:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length - 1:
+            return self.append(value)
+        new_node = Node(value)
+        pre = self.get(index - 1)
+        new_node.next = pre.next
+        pre.next = new_node
+        self.length += 1
+        return True
+
 
 # ************* Doubly Linked List *************
 # Create DoublyLinkedList and Node classes
