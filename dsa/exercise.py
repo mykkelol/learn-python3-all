@@ -86,6 +86,13 @@ class LinkedList:
         for _ in range(index):
             temp = temp.next
         return temp
+    
+    def set_value(self, index, value):
+        temp = self.get(index)
+        if temp is None:
+            return False
+        temp.value = value
+        return True
 
 # ************* Doubly Linked List *************
 # Create DoublyLinkedList and Node classes
