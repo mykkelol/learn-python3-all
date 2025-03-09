@@ -121,6 +121,15 @@ class LinkedList:
         temp.next = None
         self.length -= 1
         return temp
+    
+    def reverse(self):
+        pass
+    
+    def print_ll(self):
+        temp = self.head
+        while temp.next:
+            print(temp)
+            temp = temp.next
 
 # ************* Doubly Linked List *************
 # Create DoublyLinkedList and Node classes
