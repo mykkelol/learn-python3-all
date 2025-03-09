@@ -109,8 +109,18 @@ class LinkedList:
         return True
     
     def remove(self, index):
-        pass
-
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length -1:
+            return self.pop()
+        pre = self.get(index - 1)
+        temp = pre.next
+        pre.next = pre.next.next
+        temp.next = None
+        self.length -= 1
+        return temp
 
 # ************* Doubly Linked List *************
 # Create DoublyLinkedList and Node classes
