@@ -107,6 +107,9 @@ class LinkedList:
         pre.next = new_node
         self.length += 1
         return True
+    
+    def remove(self, index):
+        pass
 
 
 # ************* Doubly Linked List *************
