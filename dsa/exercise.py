@@ -128,15 +128,10 @@ class LinkedList:
         self.tail = temp
         after = temp.next
         before = None
-        
+
         for _ in range(self.length):
-            after = temp.next
-            temp.next = before
-            before = temp
-            temp = after
-            
-        return True
-    
+            pass
+
     def print_ll(self):
         temp = self.head
         while temp:
