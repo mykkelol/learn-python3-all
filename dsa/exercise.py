@@ -123,14 +123,20 @@ class LinkedList:
         return temp
     
     def reverse(self):
+        # 1 > 2 > 3 > 4 > None
+        # None < 1 < 2 < 3 < 4
         temp = self.head
         self.head = self.tail
         self.tail = temp
+        
         after = temp.next
         before = None
 
         for _ in range(self.length):
-            pass
+            after = temp.next
+            temp.next = before 
+            before = temp
+            temp = after
 
     def print_ll(self):
         temp = self.head
