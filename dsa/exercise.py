@@ -159,6 +159,18 @@ class LinkedList:
                 return True
         return False
 
+    def find_kth_from_end_naive(self, k):
+        if k <= 0 or k > self.length:
+            return -1
+      
+        position_from_end = self.length - k
+        temp = self.head
+
+        for _ in range(position_from_end):
+            temp = temp.next
+        
+        return temp
+
     def print_ll(self):
         temp = self.head
         while temp:
