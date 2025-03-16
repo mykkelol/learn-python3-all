@@ -150,11 +150,29 @@ class LinkedList:
             temp = temp.next
         return temp
 
+    def has_loop(self):
+        slow = fast = self.head
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        return False
+
     def print_ll(self):
         temp = self.head
         while temp:
-            print(temp)
+            print(temp.value)
             temp = temp.next
+
+my_ll = LinkedList(1)
+my_ll.append(2)
+my_ll.append(3)
+my_ll.append(4)
+my_ll.print_ll()
+print(my_ll.find_middle_node().value)
+print(my_ll.find_middle_node_naive().value)
+print(my_ll.has_loop())
 
 # ************* Doubly Linked List *************
 # Create DoublyLinkedList and Node classes
