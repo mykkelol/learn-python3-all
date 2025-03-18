@@ -171,6 +171,17 @@ class LinkedList:
         
         return temp
 
+    def find_kth_from_end(self, k):
+        if k <= 0 or k > self.length:
+            return None
+        slow = fast = self.head
+        for _ in range(k-1):
+            fast = fast.next
+        while fast.next:
+            slow = slow.next
+            fast = fast.next
+        return slow
+
     def print_ll(self):
         temp = self.head
         while temp:
