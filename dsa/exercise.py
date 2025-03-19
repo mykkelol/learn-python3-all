@@ -187,6 +187,9 @@ class LinkedList:
             fast = fast.next
             slow = slow.next
         return slow
+    
+    def partition_list(self):
+        pass
 
     def print_ll(self):
         temp = self.head
