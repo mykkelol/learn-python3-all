@@ -188,8 +188,29 @@ class LinkedList:
             slow = slow.next
         return slow
     
-    def partition_list(self):
-        pass
+    def partition_list(self, x):
+        if self.head is None:
+            return None
+        
+        dummy1 = Node(0)
+        dummy2 = Node(0)
+        prev1 = dummy1
+        prev2 = dummy2
+
+        current = self.head
+        while current:
+            if current.value < x:
+                prev1.next = current
+                prev1 = current
+            else:
+                prev2.next = current
+                prev2 = current
+            current = current.next
+        
+        prev1.next = prev2.next
+        prev2.next = None
+
+        return prev1.next
 
     def print_ll(self):
         temp = self.head
