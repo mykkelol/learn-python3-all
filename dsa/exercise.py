@@ -211,6 +211,9 @@ class LinkedList:
         prev2.next = None
 
         return prev1.next
+    
+    def remove_duplicates(self):
+        pass
 
     def print_ll(self):
         temp = self.head
