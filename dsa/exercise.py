@@ -213,7 +213,19 @@ class LinkedList:
         return prev1.next
     
     def remove_duplicates(self):
-        pass
+        if self.head is None:
+            return None
+        current = self.head
+        prev = None 
+        values = set()
+        while current:
+            if current.value in values:
+                prev.next = current.next
+                self.length -= 1
+            else:
+                values.add(current.value)
+            prev = current
+            current = current.next
 
     def print_ll(self):
         temp = self.head
