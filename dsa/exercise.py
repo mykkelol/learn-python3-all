@@ -227,6 +227,9 @@ class LinkedList:
             prev = current
             current = current.next
 
+    def binary_to_decimal(self):
+        pass
+
     def print_ll(self):
         temp = self.head
         while temp:
