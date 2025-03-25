@@ -235,6 +235,9 @@ class LinkedList:
             temp = temp.next
         return decimal
 
+    def reverse_between(self, start, end):
+        pass
+    
     def print_ll(self):
         temp = self.head
         while temp:
