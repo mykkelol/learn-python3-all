@@ -228,7 +228,12 @@ class LinkedList:
             current = current.next
 
     def binary_to_decimal(self):
-        pass
+        decimal = 0
+        temp = self.head
+        while temp:
+            decimal = decimal * 2 + temp.value
+            temp = temp.next
+        return decimal
 
     def print_ll(self):
         temp = self.head
