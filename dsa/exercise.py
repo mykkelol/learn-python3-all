@@ -236,8 +236,29 @@ class LinkedList:
         return decimal
 
     def reverse_between(self, start, end):
-        pass
-    
+        # (1, 3) in: dummy → 1 → 2 → 3 → 4 → 5 → 6
+        # (1, 3) out: dummy → 1 → 4 → 3 → 2 → 5 → 6
+
+        if self.length <= 1:
+            return None
+        
+        dummy_node = Node(0)
+        dummy_node.next = self.head
+        prev = dummy_node
+
+        for _ in range(start):
+            prev = prev.next
+
+        current = prev.next
+
+        for _ in range(end - start):
+            node_to_move = current.next
+            current.next = node_to_move.next
+            node_to_move.next = current
+            prev.next = node_to_move
+
+        self.head = dummy_node.next
+
     def print_ll(self):
         temp = self.head
         while temp:
