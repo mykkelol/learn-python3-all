@@ -238,26 +238,7 @@ class LinkedList:
     def reverse_between(self, start, end):
         # (1, 3) in: dummy → 1 → 2 → 3 → 4 → 5 → 6
         # (1, 3) out: dummy → 1 → 4 → 3 → 2 → 5 → 6
-
-        if self.length <= 1:
-            return None
-        
-        dummy_node = Node(0)
-        dummy_node.next = self.head
-        prev = dummy_node
-
-        for _ in range(start):
-            prev = prev.next
-
-        current = prev.next
-
-        for _ in range(end - start):
-            node_to_move = current.next
-            current.next = node_to_move.next
-            node_to_move.next = current
-            prev.next = node_to_move
-
-        self.head = dummy_node.next
+        pass
 
     def print_ll(self):
         temp = self.head
@@ -284,6 +265,19 @@ print(my_ll.has_loop())
     pairwise_swap_values()
     pairwise_swap_nodes()
 """
+
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+        self.prev = None
+
+class DoublyLinkedList:
+    def __init__(self, value):
+        new_node = Node(value)
+        self.head = new_node
+        self.tail = new_node
+        self.length = 1
 
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
