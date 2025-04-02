@@ -349,6 +349,14 @@ class DoublyLinkedList:
             temp.next = None
         self.length -= 1
         return temp
+    
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp
 
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
