@@ -384,11 +384,11 @@ class DoublyLinkedList:
         return True
     
     def insert(self, index, value):
-        if index < 0 or index >= self.length:
+        if index < 0 or index > self.length:
             return False
         if index == 0:
             return self.prepend(value)
-        if index == self.length - 1:
+        if index == self.length:
             return self.append(value)
         
         new_node = Node(value)
@@ -396,10 +396,11 @@ class DoublyLinkedList:
 
         new_node.next = temp
         new_node.prev = temp.prev
-        temp.next = None
-        
+        temp.prev.next = new_node
+        temp.prev = new_node
+
         self.length += 1
-        return new_node
+        return True
     
     def remove(self, index):
         if index < 0 or index >= self.length:
