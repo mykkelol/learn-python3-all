@@ -369,6 +369,26 @@ class DoublyLinkedList:
             return False
         temp.value = value
         return True
+    
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+        
+        new_node = Node(value)
+        temp = self.get(index)
+
+        new_node.next = temp
+        new_node.prev = temp.prev
+        temp.prev.next = new_node
+        temp.prev = new_node
+
+        self.length += 1
+        return True
+        
 
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
