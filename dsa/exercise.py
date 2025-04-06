@@ -388,6 +388,9 @@ class DoublyLinkedList:
 
         self.length += 1
         return True
+    
+    def remove(self, index):
+        pass
         
 
 # ************* Stacks & Queues *************
