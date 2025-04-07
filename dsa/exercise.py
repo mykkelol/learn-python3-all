@@ -390,8 +390,19 @@ class DoublyLinkedList:
         return True
     
     def remove(self, index):
-        pass
+        if index < 0 or index >= self.lenght:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
         
+        temp = self.get(index)
+        temp.prev.next = temp.next
+        temp.next.prev = temp.prev
+
+        self.length -= 1
+        return True
 
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
