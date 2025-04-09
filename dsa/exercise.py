@@ -410,6 +410,9 @@ class DoublyLinkedList:
             print(temp.value)
             temp = temp.next
 
+    def swap_first_last(self):
+        self.head.value, self.tail.value = self.tail.value, self.head.value
+
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
 # Stack class should have push, pop, and print_stack
