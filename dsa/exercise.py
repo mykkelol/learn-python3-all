@@ -411,7 +411,10 @@ class DoublyLinkedList:
             temp = temp.next
 
     def swap_first_last(self):
+        if self.length == 0:
+            return False
         self.head.value, self.tail.value = self.tail.value, self.head.value
+        return True
 
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
