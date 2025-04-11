@@ -427,8 +427,16 @@ class DoublyLinkedList:
         return True
 
     def is_palindrome(self):
-        pass
-
+        if self.length <= 1:
+            return False
+        front = self.head
+        back = self.tail
+        for _ in range(self.length // 2):
+            if front.value is not back.value:
+                return False
+            front = front.next
+            back = back.prev
+        return True
 
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
