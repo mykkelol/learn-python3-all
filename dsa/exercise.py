@@ -415,6 +415,20 @@ class DoublyLinkedList:
             return False
         self.head.value, self.tail.value = self.tail.value, self.head.value
         return True
+    
+    def reverse(self):
+        if self.length <= 1:
+            return False
+        temp = self.head
+        while temp:
+            temp.prev, temp.next = temp.next, temp.prev
+            temp = temp.prev
+        self.head, self.tail = self.tail, self.head
+        return True
+
+    def is_palindrome(self):
+        pass
+
 
 # ************* Stacks & Queues *************
 # Create Stack, Queues, and Node classes
