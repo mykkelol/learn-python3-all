@@ -448,7 +448,32 @@ class DoublyLinkedList:
         return True
     
     def pairwise_swap(self):
-        pass
+        # dummy → 1 ↔ 2 ↔ 3 ↔ 4
+        dummy_node = Node(0)
+        dummy_node.next = self.head
+        prev = dummy_node
+
+        while prev.next and prev.next.next:
+            first = prev.next
+            second = first.next
+
+            # dummy → 2 → 1 → 3 ↔ 4
+            prev.next = second
+            first.next = second.next
+            second.next = first
+
+            # dummy ↔ 2 ↔ 1 ↔ 3 ↔ 4
+            second.prev = prev
+            first.prev = second
+            if first.next:
+                first.next.prev = first
+
+            prev = first
+
+        # 2 ↔ 1 ↔ 4 ↔ 3
+        self.head = dummy_node.next
+        self.head.prev = None
+
 
     def print_doubly(self):
         temp = self.head
