@@ -62,7 +62,30 @@
 # Create Account class that can deposit, withdraw, transfer funds to another account, and record a transaction (type, amount, timestamp)
 # Create Bank class that can get_top_k_accounts_by_outgoing, add, and get Account
 # -----------------------------------------------------------------------------
+from datetime import datetime
 
+class Account:
+    def __init__(self, account_number, balance = 0):
+        self.account_number = account_number
+        self.balance = balance
+        self.transactions = []
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            return True
+        print('Amount cannot be 0')
+        return False
+        
+    def withdraw(self, amount):
+        if amount > 0:
+            if amount <= self.balance:
+                self.balance -= amount
+            else:
+                print('Insufficient funds')
+        else:
+            print('Amount cannot be 0')
+        return False
     
 my_bank = Bank()
 account_num1 = '000239944411'
