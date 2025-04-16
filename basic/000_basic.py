@@ -62,66 +62,7 @@
 # Create Account class that can deposit, withdraw, transfer funds to another account, and record a transaction (type, amount, timestamp)
 # Create Bank class that can get_top_k_accounts_by_outgoing, add, and get Account
 # -----------------------------------------------------------------------------
-from datetime import datetime
 
-class Account:
-    def __init__(self, account_number, balance = 0):
-        self.account_number = account_number
-        self.balance = balance
-        self.transactions = []
-
-    def record_transaction(self, amount, type):
-        self.transactions.append({
-            'type': type,
-            'amount': amount,
-            'datetime': datetime.now(),
-        })
-
-    def deposit(self, amount):
-        if amount > 0:
-            self.balance += amount
-            self.record_transaction(amount, 'deposit')
-            return True
-        else:
-            print('Amount cannot be 0')
-            return False
-    
-    def withdraw(self, amount):
-        if amount <= self.balance and amount > 0:
-            self.balance -= amount
-            self.record_transaction(amount, 'withdraw')
-            return True
-        else:
-            print('Insufficient funds')
-            return False
-
-    def transfer(self, receiver, amount):
-        if self.withdraw(amount):
-            receiver.deposit(amount)
-            self.record_transaction(amount, 'transfer')
-            return True
-        else:
-            print('Insufficient funds')
-            return False
-
-class Bank:
-    def __init__(self):
-        self.accounts = []
-
-    def add_account(self, account):
-        self.accounts.append(account)
-        return True
-
-    def get_account(self, account_number):
-        return next((account for account in self.accounts if account.account_number == account_number), None)
-
-    def get_top_k_accounts_by_outgoing(self, k):
-        sorted_accounts = sorted(self.accounts, key=lambda account: sum(t['amount'] for t in account.transactions if t['type'] == 'withdraw' or t['type'] == 'transfer'), reverse=True)
-        return sorted_accounts[:k]
-
-    def get_top_k_accounts_by_volume(self, k):
-        sorted_accounts = sorted(self.accounts, key=lambda account: len(account.transactions), reverse=True)
-        return sorted_accounts[:k]
     
 my_bank = Bank()
 account_num1 = '000239944411'

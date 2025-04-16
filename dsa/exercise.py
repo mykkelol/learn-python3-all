@@ -473,8 +473,7 @@ class DoublyLinkedList:
         # 2 ↔ 1 ↔ 4 ↔ 3
         self.head = dummy_node.next
         self.head.prev = None
-
-
+        
     def print_doubly(self):
         temp = self.head
         while temp:
