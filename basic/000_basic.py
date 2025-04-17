@@ -87,6 +87,17 @@ class Account:
             print('Amount cannot be 0')
         return False
     
+class Bank:
+    def __init__(self):
+        self.accounts = []
+
+    def get_account(self, account_number):
+        return next((account for account in self.accounts if account.account_number == account_number), None)
+    
+    def add_account(self, account):
+        return self.accounts.append(account)
+    
+    
 my_bank = Bank()
 account_num1 = '000239944411'
 account_num2 = '000239943123'
