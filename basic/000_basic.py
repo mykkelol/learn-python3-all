@@ -70,9 +70,13 @@ class Account:
         self.balance = balance
         self.transactions = []
 
+    def record_transactions(self, type, amount):
+        self.transactions.append({'type': type, 'amount': amount, 'timestamp': datetime.now()})
+
     def deposit(self, amount):
         if amount > 0:
             self.balance += amount
+            self.record_transactions('deposit', amount)
             return True
         print('Amount cannot be 0')
         return False
@@ -81,6 +85,7 @@ class Account:
         if amount > 0:
             if amount <= self.balance:
                 self.balance -= amount
+                self.record_transactions('withdraw', amount)
             else:
                 print('Insufficient funds')
         else:
