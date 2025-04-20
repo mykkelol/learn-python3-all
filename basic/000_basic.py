@@ -109,7 +109,10 @@ class Bank:
     
     def add_account(self, account):
         return self.accounts.append(account)
-    
+
+    def get_top_k_accounts_volume(self, k):
+        sorted_accounts = sorted(self.accounts, lambda account: len(account['transactions']), reverse=True)
+        return sorted_accounts[:k]
     
 my_bank = Bank()
 account_num1 = '000239944411'
