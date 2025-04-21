@@ -114,6 +114,10 @@ class Bank:
         sorted_accounts = sorted(self.accounts, lambda account: len(account['transactions']), reverse=True)
         return sorted_accounts[:k]
     
+    def get_top_k_accounts_outgoing(self, k):
+        sorted_accounts = sorted(self.accounts, lambda account: sum(t['amount'] for t in account['transactions'] if t['type'] == 'withdraw'), reverse=True)
+        return sorted_accounts[:k]
+    
 my_bank = Bank()
 account_num1 = '000239944411'
 account_num2 = '000239943123'
