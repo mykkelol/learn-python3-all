@@ -138,7 +138,11 @@ print(my_bank.get_top_k_accounts_by_outgoing(1)[0].__dict__)
 # Create a function that accepts a string of CSV and generates a PDF for each row
 # -----------------------------------------------------------------------------
 
-
+# -----------------------------------------------------------------------------
+# Question 10:
+# Create a function that accepts a JSON which contains a list of users and their emoployee payroll data
+# The function should return a list of grouped payroll general ledger data that can be used by accountants to reconcile payroll
+# -----------------------------------------------------------------------------
 
 # ************* Exercise 1: Basics *************
 
