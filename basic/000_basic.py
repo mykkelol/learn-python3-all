@@ -117,7 +117,7 @@ class Bank:
     def get_top_k_accounts_outgoing(self, k):
         sorted_accounts = sorted(self.accounts, lambda account: sum(t['amount'] for t in account['transactions'] if t['type'] == 'withdraw'), reverse=True)
         return sorted_accounts[:k]
-    
+
 my_bank = Bank()
 account_num1 = '000239944411'
 account_num2 = '000239943123'
@@ -132,6 +132,13 @@ my_account.transfer(bozo_account, 500)
 print(my_bank.get_account(account_num1).balance)
 print(my_bank.get_account(account_num2).balance)
 print(my_bank.get_top_k_accounts_by_outgoing(1)[0].__dict__)
+
+# -----------------------------------------------------------------------------
+# Question 9:
+# Create a function that accepts a string of CSV and generates a PDF for each row
+# -----------------------------------------------------------------------------
+
+
 
 # ************* Exercise 1: Basics *************
 
