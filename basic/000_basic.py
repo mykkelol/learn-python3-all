@@ -138,6 +138,9 @@ print(my_bank.get_top_k_accounts_by_outgoing(1)[0].__dict__)
 # Create a function that accepts a string of CSV and generates a PDF for each row
 # -----------------------------------------------------------------------------
 
+def create_pdf(row):
+    return f'{row[0]}.pdf'
+
 def generate_pdf(csv_string):
     rows = [row.split(',') for row in csv_string.split('\n')]
     for row in rows:
