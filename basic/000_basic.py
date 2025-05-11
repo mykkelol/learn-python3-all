@@ -136,7 +136,12 @@ print(my_bank.get_top_k_accounts_by_outgoing(1)[0].__dict__)
 # -----------------------------------------------------------------------------
 # Question 9:
 # Create a function that accepts a string of CSV and generates a PDF for each row
+# The PDF should leverage an existing doc file as template
 # -----------------------------------------------------------------------------
+import docx
+
+def load_template(path):
+    return docx.Document(path)
 
 def create_pdf(row):
     return f'{row[0]}.pdf'
