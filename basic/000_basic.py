@@ -146,10 +146,10 @@ def load_template(path):
 def create_pdf(row):
     return f'{row[0]}.pdf'
 
-def generate_pdf(csv_string):
+def generate_pdfs(csv_string):
     rows = [row.split(',') for row in csv_string.split('\n')]
     for row in rows:
-        pdf = generate_pdf(row)
+        pdf = create_pdf(row)
         pdf.save(f'{row[0]}.pdf')
 
 # -----------------------------------------------------------------------------
