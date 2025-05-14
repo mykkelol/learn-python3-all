@@ -139,11 +139,14 @@ print(my_bank.get_top_k_accounts_by_outgoing(1)[0].__dict__)
 # The PDF should leverage an existing doc file as template
 # -----------------------------------------------------------------------------
 import docx
+from pypdf import PdfReader
 
 def load_template(path):
     return docx.Document(path)
 
 def create_pdf(row):
+    template = load_template('template.docx')
+    pdf = PdfReader('template.pdf')
     return f'{row[0]}.pdf'
 
 def generate_pdfs(csv_string):
