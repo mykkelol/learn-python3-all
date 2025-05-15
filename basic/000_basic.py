@@ -139,6 +139,7 @@ print(my_bank.get_top_k_accounts_by_outgoing(1)[0].__dict__)
 # The PDF should leverage an existing doc file as template
 # -----------------------------------------------------------------------------
 import docx
+import pandas as pd
 from pypdf import PdfReader
 
 def load_template(path):
@@ -151,6 +152,10 @@ def create_pdf(row):
 
 def generate_pdfs(csv_string):
     rows = [row.split(',') for row in csv_string.split('\n')]
+    df = pd.DataFrame(rows)
+    filtered_df = df[df[0].astype(float) > 1000]
+    rows = filtered_df.values.tolist()
+    
     for row in rows:
         pdf = create_pdf(row)
         pdf.save(f'{row[0]}.pdf')
