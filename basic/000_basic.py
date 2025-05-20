@@ -138,27 +138,49 @@ print(my_bank.get_top_k_accounts_by_outgoing(1)[0].__dict__)
 # Create a function that accepts a string of CSV and generates a PDF for each row
 # The PDF should leverage an existing doc file as template
 # -----------------------------------------------------------------------------
-import docx
+from dataclasses import dataclass
+from pathlib import Path
+from typing import List, Optional
 import pandas as pd
-from pypdf import PdfReader
+from docx import Document
+from docx.shared import Pt
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 
-def load_template(path):
-    return docx.Document(path)
 
-def create_pdf(row):
-    template = load_template('template.docx')
-    pdf = PdfReader('template.pdf')
-    return f'{row[0]}.pdf'
-
-def generate_pdfs(csv_string):
-    rows = [row.split(',') for row in csv_string.split('\n')]
-    df = pd.DataFrame(rows)
-    filtered_df = df[df[0].astype(float) > 1000]
-    rows = filtered_df.values.tolist()
+class LetterGenerator:
+    def __init__(self, template_path: str):
+        self.template_path = Path(template_path)
+        if not self.template_path.exists():
+            raise FileNotFoundError(f"Template not found at {template_path}")
+        
+    def _load_template(self) -> Document:
+        return Document(self.template_path)
     
-    for row in rows:
-        pdf = create_pdf(row)
-        pdf.save(f'{row[0]}.pdf')
+    def generate_letter(self, employee: Employee, output_dir: Path) -> Path:
+        doc = self._load_template()
+        self._replace_placeholders(doc, employee)
+        
+        output_path = output_dir / f"letter_{employee.id}.docx"
+        doc.save(output_path)
+        return output_path
+
+def generate_employee_letters(csv_string: str, template_path: str, output_dir: str) -> List[Path]:
+    output_path = Path(output_dir)
+    output_path.mkdir(parents=True, exist_ok=True)
+    
+    df = pd.read_csv(pd.StringIO(csv_string))
+    if not all(col in df.columns for col in ['id', 'name', 'department', 'position', 'salary']):
+        raise ValueError("CSV must contain columns: id,name,department,position,salary")
+    
+    generator = LetterGenerator(template_path)
+    
+    generated_files = []
+    for _, row in df.iterrows():
+        employee = Employee.from_csv_row(row)
+        letter_path = generator.generate_letter(employee, output_path)
+        generated_files.append(letter_path)
+    
+    return generated_files
 
 # -----------------------------------------------------------------------------
 # Question 10:
