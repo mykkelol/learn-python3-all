@@ -146,7 +146,6 @@ from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
-
 class LetterGenerator:
     def __init__(self, template_path: str):
         self.template_path = Path(template_path)
@@ -155,6 +154,22 @@ class LetterGenerator:
         
     def _load_template(self) -> Document:
         return Document(self.template_path)
+    
+    def _replace_placeholders(self, doc: Document, employee: Employee) -> None:
+        replacements = {
+            '{{name}}': employee.name,
+            '{{department}}': employee.department,
+            '{{position}}': employee.position,
+            '{{salary}}': f"${employee.salary:,.2f}"
+        }
+        
+        for paragraph in doc.paragraphs:
+            for key, value in replacements.items():
+                if key in paragraph.text:
+                    paragraph.text = paragraph.text.replace(key, value)
+                    paragraph.alignment = WD_ALIGN_PARAGRAPH.LEFT
+                    for run in paragraph.runs:
+                        run.font.size = Pt(12)
     
     def generate_letter(self, employee: Employee, output_dir: Path) -> Path:
         doc = self._load_template()
