@@ -146,6 +146,24 @@ from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
+@dataclass
+class Employee:
+    id: str
+    name: str
+    department: str
+    position: str
+    salary: float
+    
+    @classmethod
+    def from_csv_row(cls, row: List[str]) -> 'Employee':
+        return cls(
+            id=row[0],
+            name=row[1],
+            department=row[2],
+            position=row[3],
+            salary=float(row[4])
+        )
+
 class LetterGenerator:
     def __init__(self, template_path: str):
         self.template_path = Path(template_path)
