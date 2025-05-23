@@ -221,7 +221,15 @@ def generate_employee_letters(csv_string: str, template_path: str, output_dir: s
 # The function should return a list of grouped payroll general ledger data that can be used by accountants to reconcile payroll
 # The grouping should be by department, pay type, pay period, and subsidiary
 # -----------------------------------------------------------------------------
+from dataclasses import dataclass
 
+@dataclass
+class PayrollData:
+    department: str
+    pay_type: str
+    pay_period: str
+    subsidiary: str
+    
 # ************* Exercise 1: Basics *************
 
 # Task 1: Create the `create_smile_armies` function that accepts a number of armies and a number of rows per army, returning armies of smilies.
