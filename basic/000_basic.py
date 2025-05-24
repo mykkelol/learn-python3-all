@@ -229,7 +229,15 @@ class PayrollData:
     pay_type: str
     pay_period: str
     subsidiary: str
-    
+
+@dataclass
+class PayrollGeneralLedger:
+    department: str
+    pay_type: str
+    pay_period: str
+    subsidiary: str
+    total_amount: float
+
 # ************* Exercise 1: Basics *************
 
 # Task 1: Create the `create_smile_armies` function that accepts a number of armies and a number of rows per army, returning armies of smilies.
