@@ -238,6 +238,14 @@ class PayrollGeneralLedger:
     subsidiary: str
     total_amount: float
 
+    @classmethod
+    def from_json(cls, json_data):
+        return cls(
+            department=json_data['department'],
+            pay_type=json_data['pay_type'],
+            pay_period=json_data['pay_period'],
+        )
+
 # ************* Exercise 1: Basics *************
 
 # Task 1: Create the `create_smile_armies` function that accepts a number of armies and a number of rows per army, returning armies of smilies.
