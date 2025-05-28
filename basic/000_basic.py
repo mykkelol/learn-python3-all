@@ -245,6 +245,14 @@ class PayrollGeneralLedger:
             pay_type=json_data['pay_type'],
             pay_period=json_data['pay_period'],
         )
+    
+    def to_dict(self):
+        return {
+            'department': self.department,
+            'pay_type': self.pay_type,
+            'pay_period': self.pay_period,
+            'subsidiary': self.subsidiary,
+        }
 
 # ************* Exercise 1: Basics *************
 
