@@ -253,6 +253,14 @@ class PayrollGeneralLedger:
             'pay_period': self.pay_period,
             'subsidiary': self.subsidiary,
         }
+    
+class PayrollGeneralLedger:
+    def __init__(self):
+        self.data = []
+    
+    def add_data(self, data):
+        self.data.append(data)
+        
 
 # ************* Exercise 1: Basics *************
 
