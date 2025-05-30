@@ -260,6 +260,14 @@ class PayrollGeneralLedger:
     
     def add_data(self, data):
         self.data.append(data)
+
+    def get_grouped_data(self):
+        return {
+            'department': self.department,
+            'pay_type': self.pay_type,
+            'pay_period': self.pay_period,
+            'subsidiary': self.subsidiary,
+        }
         
 
 # ************* Exercise 1: Basics *************
