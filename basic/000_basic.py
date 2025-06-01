@@ -274,6 +274,14 @@ class PayrollGeneralLedger:
     
     def get_total_amount_by_department(self):
         return {data.department: sum(data.total_amount for data in self.data) for data in self.data}
+    
+    def get_total_amount_by_pay_type(self):
+        return {data.pay_type: sum(data.total_amount for data in self.data) for data in self.data}
+    
+    def get_total_amount_by_pay_period(self):
+        return {data.pay_period: sum(data.total_amount for data in self.data) for data in self.data}
+    
+    def get_total_amount_by_subsidiary(self):
         
 
 # ************* Exercise 1: Basics *************
