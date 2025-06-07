@@ -222,6 +222,8 @@ def generate_employee_letters(csv_string: str, template_path: str, output_dir: s
 # The grouping should be by department, pay type, pay period, and subsidiary
 # -----------------------------------------------------------------------------
 from dataclasses import dataclass
+from typing import List, Dict
+from collections import defaultdict
 
 @dataclass
 class PayrollData:
@@ -229,63 +231,55 @@ class PayrollData:
     pay_type: str
     pay_period: str
     subsidiary: str
+    amount: float
 
-@dataclass
-class PayrollGeneralLedger:
-    department: str
-    pay_type: str
-    pay_period: str
-    subsidiary: str
-    total_amount: float
-
-    @classmethod
-    def from_json(cls, json_data):
-        return cls(
-            department=json_data['department'],
-            pay_type=json_data['pay_type'],
-            pay_period=json_data['pay_period'],
-        )
-    
-    def to_dict(self):
-        return {
-            'department': self.department,
-            'pay_type': self.pay_type,
-            'pay_period': self.pay_period,
-            'subsidiary': self.subsidiary,
-        }
-    
 class PayrollGeneralLedger:
     def __init__(self):
-        self.data = []
+        self.data: List[PayrollData] = []
     
-    def add_data(self, data):
+    def add_data(self, data: PayrollData) -> None:
         self.data.append(data)
 
-    def get_grouped_data(self):
-        return {
-            'department': self.department,
-            'pay_type': self.pay_type,
-            'pay_period': self.pay_period,
-            'subsidiary': self.subsidiary,
-        }
+    def get_grouped_data(self) -> Dict:
+        grouped = defaultdict(lambda: defaultdict(lambda: defaultdict(float)))
+        
+        for entry in self.data:
+            grouped[entry.department][entry.pay_type][entry.pay_period] += entry.amount
+            
+        return dict(grouped)
     
-    def get_total_amount(self):
-        return sum(data.total_amount for data in self.data)
+    def get_total_amount(self) -> float:
+        return sum(data.amount for data in self.data)
     
-    def get_total_amount_by_department(self):
-        return {data.department: sum(data.total_amount for data in self.data) for data in self.data}
+    def get_total_amount_by_department(self) -> Dict[str, float]:
+        totals = defaultdict(float)
+        for data in self.data:
+            totals[data.department] += data.amount
+        return dict(totals)
     
-    def get_total_amount_by_pay_type(self):
-        return {data.pay_type: sum(data.total_amount for data in self.data) for data in self.data}
+    def get_total_amount_by_pay_type(self) -> Dict[str, float]:
+        totals = defaultdict(float)
+        for data in self.data:
+            totals[data.pay_type] += data.amount
+        return dict(totals)
     
-    def get_total_amount_by_pay_period(self):
-        return {data.pay_period: sum(data.total_amount for data in self.data) for data in self.data}
+    def get_total_amount_by_pay_period(self) -> Dict[str, float]:
+        totals = defaultdict(float)
+        for data in self.data:
+            totals[data.pay_period] += data.amount
+        return dict(totals)
     
-    def get_total_amount_by_subsidiary(self):
-        return {data.subsidiary: sum(data.total_amount for data in self.data) for data in self.data}
+    def get_total_amount_by_subsidiary(self) -> Dict[str, float]:
+        totals = defaultdict(float)
+        for data in self.data:
+            totals[data.subsidiary] += data.amount
+        return dict(totals)
 
-    def get_total_amount_by_department_and_pay_type(self):
-        return {data.department: {data.pay_type: sum(data.total_amount for data in self.data) for data in self.data}}
+    def get_total_amount_by_department_and_pay_type(self) -> Dict[str, Dict[str, float]]:
+        grouped = defaultdict(lambda: defaultdict(float))
+        for data in self.data:
+            grouped[data.department][data.pay_type] += data.amount
+        return dict(grouped)
 
 # ************* Exercise 1: Basics *************
 
