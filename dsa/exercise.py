@@ -498,6 +498,21 @@ class DoublyLinkedList:
     is_empty()
 """
 
+def Stack(self, value):
+    new_node = Node(value)
+    self.top = new_node
+    self.height = 1
+
+    def push(self, value):
+        new_node = Node(value)
+        new_node.next = self.top
+        self.top = new_node
+        self.height += 1
+
+    def pop(self):
+        if self.height == 0:
+            return None
+
 # ************* Trees *************
 # Create BinarySearchTree and Node classes
 # BinarySearchTree class should have insert and contains
