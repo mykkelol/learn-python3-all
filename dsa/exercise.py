@@ -512,7 +512,12 @@ def Stack(self, value):
     def pop(self):
         if self.height == 0:
             return None
-
+        temp = self.top
+        self.top = self.top.next
+        temp.next = None
+        self.height -= 1
+        return temp
+    
 # ************* Trees *************
 # Create BinarySearchTree and Node classes
 # BinarySearchTree class should have insert and contains
