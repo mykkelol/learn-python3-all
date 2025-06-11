@@ -222,62 +222,61 @@ def generate_employee_letters(csv_string: str, template_path: str, output_dir: s
 # The grouping should be by department, pay type, pay period, and subsidiary
 # -----------------------------------------------------------------------------
 from dataclasses import dataclass
-from typing import List, Dict
+from typing import List, Dict, Any
 from collections import defaultdict
+from decimal import Decimal
 
-@dataclass
+@dataclass(frozen=True)
 class PayrollData:
     department: str
     pay_type: str
     pay_period: str
     subsidiary: str
-    amount: float
+    amount: Decimal
+
+    def __post_init__(self):
+        if self.amount < 0:
+            raise ValueError("Amount cannot be negative")
 
 class PayrollGeneralLedger:
     def __init__(self):
-        self.data: List[PayrollData] = []
+        self._data: List[PayrollData] = []
     
     def add_data(self, data: PayrollData) -> None:
-        self.data.append(data)
+        self._data.append(data)
 
-    def get_grouped_data(self) -> Dict:
-        grouped = defaultdict(lambda: defaultdict(lambda: defaultdict(float)))
+    def get_grouped_data(self) -> Dict[str, Dict[str, Dict[str, Decimal]]]:
+        grouped = defaultdict(lambda: defaultdict(lambda: defaultdict(Decimal)))
         
-        for entry in self.data:
+        for entry in self._data:
             grouped[entry.department][entry.pay_type][entry.pay_period] += entry.amount
             
         return dict(grouped)
     
-    def get_total_amount(self) -> float:
-        return sum(data.amount for data in self.data)
+    def get_total_amount(self) -> Decimal:
+        return sum(data.amount for data in self._data)
     
-    def get_total_amount_by_department(self) -> Dict[str, float]:
-        totals = defaultdict(float)
-        for data in self.data:
-            totals[data.department] += data.amount
+    def _get_totals_by_field(self, field: str) -> Dict[str, Decimal]:
+        totals = defaultdict(Decimal)
+        for data in self._data:
+            totals[getattr(data, field)] += data.amount
         return dict(totals)
     
-    def get_total_amount_by_pay_type(self) -> Dict[str, float]:
-        totals = defaultdict(float)
-        for data in self.data:
-            totals[data.pay_type] += data.amount
-        return dict(totals)
+    def get_total_amount_by_department(self) -> Dict[str, Decimal]:
+        return self._get_totals_by_field('department')
     
-    def get_total_amount_by_pay_period(self) -> Dict[str, float]:
-        totals = defaultdict(float)
-        for data in self.data:
-            totals[data.pay_period] += data.amount
-        return dict(totals)
+    def get_total_amount_by_pay_type(self) -> Dict[str, Decimal]:
+        return self._get_totals_by_field('pay_type')
     
-    def get_total_amount_by_subsidiary(self) -> Dict[str, float]:
-        totals = defaultdict(float)
-        for data in self.data:
-            totals[data.subsidiary] += data.amount
-        return dict(totals)
+    def get_total_amount_by_pay_period(self) -> Dict[str, Decimal]:
+        return self._get_totals_by_field('pay_period')
+    
+    def get_total_amount_by_subsidiary(self) -> Dict[str, Decimal]:
+        return self._get_totals_by_field('subsidiary')
 
-    def get_total_amount_by_department_and_pay_type(self) -> Dict[str, Dict[str, float]]:
-        grouped = defaultdict(lambda: defaultdict(float))
-        for data in self.data:
+    def get_total_amount_by_department_and_pay_type(self) -> Dict[str, Dict[str, Decimal]]:
+        grouped = defaultdict(lambda: defaultdict(Decimal))
+        for data in self._data:
             grouped[data.department][data.pay_type] += data.amount
         return dict(grouped)
 
