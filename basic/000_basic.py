@@ -280,6 +280,21 @@ class PayrollGeneralLedger:
             grouped[data.department][data.pay_type] += data.amount
         return dict(grouped)
 
+def process_payroll_data(json_data: List[Dict[str, Any]]) -> PayrollGeneralLedger:
+    ledger = PayrollGeneralLedger()
+    
+    for entry in json_data:
+        payroll_data = PayrollData(
+            department=entry['department'],
+            pay_type=entry['pay_type'],
+            pay_period=entry['pay_period'],
+            subsidiary=entry['subsidiary'],
+            amount=Decimal(str(entry['amount']))
+        )
+        ledger.add_data(payroll_data)
+    
+    return ledger
+
 # ************* Exercise 1: Basics *************
 
 # Task 1: Create the `create_smile_armies` function that accepts a number of armies and a number of rows per army, returning armies of smilies.
