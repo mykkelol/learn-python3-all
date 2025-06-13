@@ -518,6 +518,12 @@ def Stack(self, value):
         self.height -= 1
         return temp
     
+    def print_stack(self):
+        temp = self.top
+        while temp:
+            print(temp.value)
+            temp = temp.next
+    
 # ************* Trees *************
 # Create BinarySearchTree and Node classes
 # BinarySearchTree class should have insert and contains
