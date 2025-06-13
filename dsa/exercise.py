@@ -518,6 +518,12 @@ def Stack(self, value):
         self.height -= 1
         return temp
     
+    def is_empty(self):
+        return self.height == 0
+    
+    def size(self):
+        return self.height
+    
     def print_stack(self):
         temp = self.top
         while temp:
