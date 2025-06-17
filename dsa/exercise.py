@@ -518,6 +518,11 @@ def Stack(self, value):
         self.height -= 1
         return temp
     
+    def peek(self):
+        if self.height == 0:
+            return None
+        return self.top.value
+    
     def is_empty(self):
         return self.height == 0
     
