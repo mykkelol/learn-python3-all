@@ -529,6 +529,15 @@ def Stack(self, value):
     def size(self):
         return self.height
     
+    def is_balanced_parentheses(self, s):
+        stack = []
+        for char in s:
+            if char == "(":
+                stack.append(char)
+            elif char == ")":
+                if not stack or stack[-1] != "(":
+                    return False
+                
     def print_stack(self):
         temp = self.top
         while temp:
