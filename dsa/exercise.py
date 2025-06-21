@@ -538,6 +538,12 @@ def Stack(self, value):
                 if not stack or stack[-1] != "(":
                     return False
                 
+    def reverse_string(self, s):
+        stack = []
+        for char in s:
+            stack.append(char)
+        return "".join(stack)
+                
     def print_stack(self):
         temp = self.top
         while temp:
