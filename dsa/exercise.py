@@ -543,6 +543,14 @@ def Stack(self, value):
         for char in s:
             stack.append(char)
         return "".join(stack)
+    
+    def sort_stack(self):
+        stack = []
+        while self.top:
+            temp = self.pop()
+            while stack and stack[-1] > temp:
+                self.push(stack.pop())
+            stack.append(temp)
                 
     def print_stack(self):
         temp = self.top
