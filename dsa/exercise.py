@@ -544,6 +544,12 @@ def Stack(self, value):
             stack.append(char)
         return "".join(stack)
     
+    def reverse_string_stack(self, s):
+        stack = []
+        for char in s:
+            stack.append(char)
+        return "".join(stack)
+    
     def sort_stack(self):
         stack = []
         while self.top:
