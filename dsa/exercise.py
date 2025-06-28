@@ -557,6 +557,14 @@ def Stack(self, value):
             while stack and stack[-1] > temp:
                 self.push(stack.pop())
             stack.append(temp)
+
+    def sort_stack_naive(self):
+        stack = []
+        while self.top:
+            temp = self.pop()
+            while stack and stack[-1] > temp:
+                self.push(stack.pop())
+            stack.append(temp)
                 
     def print_stack(self):
         temp = self.top
