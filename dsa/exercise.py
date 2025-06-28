@@ -565,6 +565,16 @@ def Stack(self, value):
             while stack and stack[-1] > temp:
                 self.push(stack.pop())
             stack.append(temp)
+    
+    def enqueue(self, value):
+        new_node = Node(value)
+        if self.height == 0:
+            self.top = new_node
+            self.bottom = new_node
+        else:
+            self.bottom.next = new_node
+            self.bottom = new_node
+        self.height += 1
                 
     def print_stack(self):
         temp = self.top
