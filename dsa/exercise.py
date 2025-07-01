@@ -575,6 +575,14 @@ def Stack(self, value):
             self.bottom.next = new_node
             self.bottom = new_node
         self.height += 1
+
+    def dequeue(self):
+        if self.height == 0:
+            return None
+        temp = self.top
+        self.top = self.top.next
+        temp.next = None
+        self.height -= 1
                 
     def print_stack(self):
         temp = self.top
