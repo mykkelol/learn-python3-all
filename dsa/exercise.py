@@ -594,6 +594,16 @@ def Stack(self, value):
 # Create BinarySearchTree and Node classes
 # BinarySearchTree class should have insert and contains
 
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+class BinarySearchTree:
+    def __init__(self):
+        self.root = None
+
 # ************* Hash Tables *************
 # Create HashTable class
 # HashTable class should have __hash, set_item, get_item, get_keys, print_table
