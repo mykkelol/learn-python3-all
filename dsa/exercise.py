@@ -624,6 +624,17 @@ class BinarySearchTree:
                     return True
                 temp = temp.right
 
+    def contains(self, value):
+        temp = self.root
+        while temp:
+            if value < temp.value:
+                temp = temp.left
+            elif value > temp.value:
+                temp = temp.right
+            else:
+                return True
+        return False
+
 # ************* Hash Tables *************
 # Create HashTable class
 # HashTable class should have __hash, set_item, get_item, get_keys, print_table
