@@ -634,6 +634,15 @@ class BinarySearchTree:
             else:
                 return True
         return False
+    
+    def bfs(self):
+        current_node = self.root
+        queue = []
+        results = []
+        queue.append(current_node)
+        while len(queue) > 0:
+            current_node = queue.pop(0)
+            results.append(current_node.value)
 
 # ************* Hash Tables *************
 # Create HashTable class
