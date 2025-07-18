@@ -644,6 +644,12 @@ class BinarySearchTree:
             current_node = queue.pop(0)
             results.append(current_node.value)
 
+            if current_node.left is not None:
+                queue.append(current_node.left)
+            if current_node.right is not None:
+                queue.append(current_node.right)
+        return results
+
 # ************* Hash Tables *************
 # Create HashTable class
 # HashTable class should have __hash, set_item, get_item, get_keys, print_table
