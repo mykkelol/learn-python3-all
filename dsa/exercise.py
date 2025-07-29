@@ -682,6 +682,20 @@ class BinarySearchTree:
                 traverse(current_node.right)
         traverse(self.root)
         return results
+    
+    def dfs_pre_order_iterative(self):
+        results = []
+        stack = []
+        current_node = self.root
+        while current_node or stack:
+            while current_node:
+                results.append(current_node.value)
+                stack.append(current_node)
+                current_node = current_node.left
+            current_node = stack.pop()
+            current_node = current_node.right
+        return results
+
 
 # ************* Hash Tables *************
 # Create HashTable class
