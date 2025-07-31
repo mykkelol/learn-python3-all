@@ -709,6 +709,19 @@ class BinarySearchTree:
             current_node = current_node.left
         return results
 
+    def dfs_in_order_iterative(self):
+        results = []
+        stack = []
+        current_node = self.root
+        while current_node or stack:
+            while current_node:
+                stack.append(current_node)
+                current_node = current_node.left
+            current_node = stack.pop()
+            results.append(current_node.value)
+            current_node = current_node.right
+        return results
+    
 
 # ************* Hash Tables *************
 # Create HashTable class
