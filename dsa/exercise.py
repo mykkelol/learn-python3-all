@@ -771,6 +771,13 @@ class HashTable:
                     all_keys.append(self.data_map[i][j][0])
         return all_keys
     
+    def item_in_common(self, list1, list2):
+        for i in list1:
+            for j in list2:
+                if i == j:
+                    return True
+        return False
+    
     def print_table(self):
         for i, val in enumerate(self.data_map):
             print(i, ": ", val)
