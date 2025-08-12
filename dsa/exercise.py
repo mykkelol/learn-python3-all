@@ -778,6 +778,12 @@ class HashTable:
                     return True
         return False
     
+    def find_duplicates(self, list):
+        for i in list:
+            if self.get_item(i) is not None:
+                return True
+        return False
+    
     def print_table(self):
         for i, val in enumerate(self.data_map):
             print(i, ": ", val)
