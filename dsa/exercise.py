@@ -784,6 +784,16 @@ class HashTable:
                 return True
         return False
     
+    def first_non_repeating_char(self, string):
+        for i in string:
+            if self.get_item(i) is None:
+                return i
+        return None
+    
+    def group_anagrams(self, strings):
+        for i in strings:
+            self.set_item(i, i)
+    
     def print_table(self):
         for i, val in enumerate(self.data_map):
             print(i, ": ", val)
