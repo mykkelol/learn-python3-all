@@ -793,6 +793,13 @@ class HashTable:
     def group_anagrams(self, strings):
         for i in strings:
             self.set_item(i, i)
+        return self.get_keys()
+    
+    def two_sum(self, list, target):
+        for i in list:
+            if self.get_item(target - i) is not None:
+                return True
+        return False
     
     def print_table(self):
         for i, val in enumerate(self.data_map):
