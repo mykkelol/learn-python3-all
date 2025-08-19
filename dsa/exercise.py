@@ -801,6 +801,13 @@ class HashTable:
                 return True
         return False
     
+    def subarray_sum(self, list, target):
+        for i in range(len(list)):
+            for j in range(i + 1, len(list)):
+                if sum(list[i:j]) == target:
+                    return True
+        return False
+    
     def print_table(self):
         for i, val in enumerate(self.data_map):
             print(i, ": ", val)
