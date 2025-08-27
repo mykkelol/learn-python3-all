@@ -814,6 +814,12 @@ class HashTable:
                 return True
         return False
     
+    def has_unique_chars(self, string):
+        for i in string:
+            if self.get_item(i) is not None:
+                return False
+        return True
+    
     def print_table(self):
         for i, val in enumerate(self.data_map):
             print(i, ": ", val)
