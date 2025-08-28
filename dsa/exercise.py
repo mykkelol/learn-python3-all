@@ -820,6 +820,12 @@ class HashTable:
                 return False
         return True
     
+    def find_pairs(self, list1, list2, k):
+        for i in list1:
+            if self.get_item(k - i) is not None:
+                return True
+        return False
+    
     def print_table(self):
         for i, val in enumerate(self.data_map):
             print(i, ": ", val)
