@@ -883,3 +883,13 @@ class Graph:
             del self.adj_list[vertex]
             return True
         return False
+
+    def print_graph(self):
+        for vertex in self.adj_list:
+            print(vertex, "->", self.adj_list[vertex])
+
+my_graph = Graph()
+my_graph.add_vertex("A")
+my_graph.add_vertex("B")
+my_graph.add_vertex("C")
+my_graph.print_graph()
