@@ -884,6 +884,13 @@ class Graph:
             return True
         return False
 
+    def item_in_common(self, list1, list2):
+        for i in list1:
+            for j in list2:
+                if i == j:
+                    return True
+        return False
+
     def print_graph(self):
         for vertex in self.adj_list:
             print(vertex, "->", self.adj_list[vertex])
