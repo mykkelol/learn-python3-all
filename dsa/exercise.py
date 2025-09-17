@@ -891,6 +891,12 @@ class Graph:
                     return True
         return False
 
+    def find_duplicates(self, list):
+        for i in list:
+            if self.get_item(i) is not None:
+                return True
+        return False
+
     def print_graph(self):
         for vertex in self.adj_list:
             print(vertex, "->", self.adj_list[vertex])
