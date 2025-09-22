@@ -141,6 +141,168 @@ print(svb.get_account('JASDDDAS40931').balance)
 print([account.__dict__ for account in svb.get_top_k_accounts_by_outgoing(3)])
 print(svb.get_top_k_accounts_by_volume(1)[0].__dict__)
 
+# -----------------------------------------------------------------------------
+# Question 9:
+# Create a function that accepts a string of CSV and generates a PDF for each row
+# The PDF should leverage an existing doc file as template
+# -----------------------------------------------------------------------------
+from dataclasses import dataclass
+from pathlib import Path
+from typing import List, Optional
+import pandas as pd
+from docx import Document
+from docx.shared import Pt
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+
+@dataclass
+class Employee:
+    id: str
+    name: str
+    department: str
+    position: str
+    salary: float
+    
+    @classmethod
+    def from_csv_row(cls, row: List[str]) -> 'Employee':
+        return cls(
+            id=row[0],
+            name=row[1],
+            department=row[2],
+            position=row[3],
+            salary=float(row[4])
+        )
+
+class LetterGenerator:
+    def __init__(self, template_path: str):
+        self.template_path = Path(template_path)
+        if not self.template_path.exists():
+            raise FileNotFoundError(f"Template not found at {template_path}")
+        
+    def _load_template(self) -> Document:
+        return Document(self.template_path)
+    
+    def _replace_placeholders(self, doc: Document, employee: Employee) -> None:
+        replacements = {
+            '{{name}}': employee.name,
+            '{{department}}': employee.department,
+            '{{position}}': employee.position,
+            '{{salary}}': f"${employee.salary:,.2f}"
+        }
+        
+        for paragraph in doc.paragraphs:
+            for key, value in replacements.items():
+                if key in paragraph.text:
+                    paragraph.text = paragraph.text.replace(key, value)
+                    paragraph.alignment = WD_ALIGN_PARAGRAPH.LEFT
+                    for run in paragraph.runs:
+                        run.font.size = Pt(12)
+    
+    def generate_letter(self, employee: Employee, output_dir: Path) -> Path:
+        doc = self._load_template()
+        self._replace_placeholders(doc, employee)
+        
+        output_path = output_dir / f"letter_{employee.id}.docx"
+        doc.save(output_path)
+        return output_path
+
+def generate_employee_letters(csv_string: str, template_path: str, output_dir: str) -> List[Path]:
+    output_path = Path(output_dir)
+    output_path.mkdir(parents=True, exist_ok=True)
+    
+    df = pd.read_csv(pd.StringIO(csv_string))
+    if not all(col in df.columns for col in ['id', 'name', 'department', 'position', 'salary']):
+        raise ValueError("CSV must contain columns: id,name,department,position,salary")
+    
+    generator = LetterGenerator(template_path)
+    
+    generated_files = []
+    for _, row in df.iterrows():
+        employee = Employee.from_csv_row(row)
+        letter_path = generator.generate_letter(employee, output_path)
+        generated_files.append(letter_path)
+    
+    return generated_files
+
+# -----------------------------------------------------------------------------
+# Question 10:
+# Create a function that accepts a JSON which contains a list of users and their emoployee payroll data
+# The function should return a list of grouped payroll general ledger data that can be used by accountants to reconcile payroll
+# The grouping should be by department, pay type, pay period, and subsidiary
+# -----------------------------------------------------------------------------
+from dataclasses import dataclass
+from typing import List, Dict, Any
+from collections import defaultdict
+from decimal import Decimal
+
+@dataclass(frozen=True)
+class PayrollData:
+    department: str
+    pay_type: str
+    pay_period: str
+    subsidiary: str
+    amount: Decimal
+
+    def __post_init__(self):
+        if self.amount < 0:
+            raise ValueError("Amount cannot be negative")
+
+class PayrollGeneralLedger:
+    def __init__(self):
+        self._data: List[PayrollData] = []
+    
+    def add_data(self, data: PayrollData) -> None:
+        self._data.append(data)
+
+    def get_grouped_data(self) -> Dict[str, Dict[str, Dict[str, Decimal]]]:
+        grouped = defaultdict(lambda: defaultdict(lambda: defaultdict(Decimal)))
+        
+        for entry in self._data:
+            grouped[entry.department][entry.pay_type][entry.pay_period] += entry.amount
+            
+        return dict(grouped)
+    
+    def get_total_amount(self) -> Decimal:
+        return sum(data.amount for data in self._data)
+    
+    def _get_totals_by_field(self, field: str) -> Dict[str, Decimal]:
+        totals = defaultdict(Decimal)
+        for data in self._data:
+            totals[getattr(data, field)] += data.amount
+        return dict(totals)
+    
+    def get_total_amount_by_department(self) -> Dict[str, Decimal]:
+        return self._get_totals_by_field('department')
+    
+    def get_total_amount_by_pay_type(self) -> Dict[str, Decimal]:
+        return self._get_totals_by_field('pay_type')
+    
+    def get_total_amount_by_pay_period(self) -> Dict[str, Decimal]:
+        return self._get_totals_by_field('pay_period')
+    
+    def get_total_amount_by_subsidiary(self) -> Dict[str, Decimal]:
+        return self._get_totals_by_field('subsidiary')
+
+    def get_total_amount_by_department_and_pay_type(self) -> Dict[str, Dict[str, Decimal]]:
+        grouped = defaultdict(lambda: defaultdict(Decimal))
+        for data in self._data:
+            grouped[data.department][data.pay_type] += data.amount
+        return dict(grouped)
+
+def process_payroll_data(json_data: List[Dict[str, Any]]) -> PayrollGeneralLedger:
+    ledger = PayrollGeneralLedger()
+    
+    for entry in json_data:
+        payroll_data = PayrollData(
+            department=entry['department'],
+            pay_type=entry['pay_type'],
+            pay_period=entry['pay_period'],
+            subsidiary=entry['subsidiary'],
+            amount=Decimal(str(entry['amount']))
+        )
+        ledger.add_data(payroll_data)
+    
+    return ledger
+
 # ************* Exercise 1: Basics *************
 
 # Task 1: Create the `create_smile_armies` function that accepts a number of armies and a number of rows per army, returning armies of smilies.
