@@ -63,6 +63,19 @@
 # Create Bank class that can get_top_k_accounts_by_outgoing, add, and get Account
 # -----------------------------------------------------------------------------
 
+# -----------------------------------------------------------------------------
+# Question 9:
+# Create a function that accepts a string of CSV and generates a PDF for each row
+# The PDF should leverage an existing doc file as template
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# Question 10:
+# Create a function that accepts a JSON which contains a list of users and their emoployee payroll data
+# The function should return a list of grouped payroll general ledger data that can be used by accountants to reconcile payroll
+# The grouping should be by department, pay type, pay period, and subsidiary
+# -----------------------------------------------------------------------------
+
 # ************* Exercise 1: Basics *************
 
 # Task 1: Create the `create_smile_armies` function that accepts a number of armies and a number of rows per army, returning armies of smilies.
